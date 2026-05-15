@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时尚情报 · 每日内参</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Noto+Sans+SC:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F4F1EC;
+  --surface: #FDFCF9;
+  --ink: #2A2720;
+  --ink-2: #6A6258;
+  --ink-3: #A09890;
+  --ink-4: #C0B8B0;
+  --rule: #C8C2B8;
+  --rule-light: #DDD8D0;
+  --gold: #7A6E62;
+  --cat-m-border: #B8C4D4; --cat-m-text: #6878A0;
+  --cat-s-border: #D4B8D0; --cat-s-text: #907888;
+  --cat-r-border: #B8D4C0; --cat-r-text: #607A68;
+  --cat-c-border: #D4B8B8; --cat-c-text: #907070;
+  --cat-t-border: #C8B8D4; --cat-t-text: #7868A0;
+  --crisis: #9A7070;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', sans-serif; font-weight: 200; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+
+/* MASTHEAD */
+.mast { padding: 2.4rem 2.4rem 0; border-bottom: 1px solid var(--rule); }
+.mast-eyebrow { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2rem; }
+.mast-center { text-align: center; padding-bottom: 1.6rem; }
+.mast-title { font-family: 'Cormorant', serif; font-size: 3.6rem; font-weight: 300; letter-spacing: 0.18em; color: var(--ink); line-height: 1; }
+.mast-title em { font-style: italic; font-weight: 300; color: var(--gold); }
+.mast-ornament { display: flex; align-items: center; gap: 1rem; margin: 1rem auto; width: 200px; }
+.mast-ornament-line { flex: 1; height: 1px; background: var(--rule); }
+.mast-ornament-dot { width: 4px; height: 4px; background: var(--ink-3); border-radius: 50%; }
+.mast-tagline { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-4); }
+.mast-nav { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-4); }
+.nav-items { display: flex; gap: 1.8rem; }
+
+/* BODY */
+.body { padding: 2rem 2.4rem; }
+
+/* STATS */
+.stats-row { display: grid; grid-template-columns: repeat(5, 1fr); margin-bottom: 2.4rem; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.stat { padding: 1.2rem 0.6rem; text-align: center; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.stat-n { font-family: 'Cormorant', serif; font-size: 2.4rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+.stat-l { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+
+/* SECTION HEADING */
+.sec-h { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.4rem; }
+.sec-h-line { flex: 1; height: 1px; background: var(--rule); }
+.sec-h-text { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+
+/* FORECAST */
+.forecast-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); margin-bottom: 2.4rem; }
+.fc { padding: 1.4rem 1.3rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.fc-horizon { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.6rem; }
+.fc-title { font-family: 'Cormorant', serif; font-size: 1.3rem; font-weight: 300; color: var(--ink); line-height: 1.3; margin-bottom: 0.6rem; }
+.fc-body { font-size: 11px; font-weight: 200; color: var(--ink-2); line-height: 1.8; margin-bottom: 0.9rem; }
+.fc-signals { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.fc-sig { font-family: 'DM Mono', monospace; font-size: 7.5px; color: var(--ink-3); border: 1px solid var(--rule); padding: 2px 7px; letter-spacing: 0.04em; }
+
+/* INTEL CARDS */
+.cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.icard { padding: 1.5rem 1.5rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.icard.crisis { border-top: 2px solid var(--crisis); }
+
+.cmeta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.85rem; flex-wrap: wrap; }
+.ctag { font-family: 'DM Mono', monospace; font-size: 7.5px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border: 1px solid; }
+.ctag-m { border-color: var(--cat-m-border); color: var(--cat-m-text); }
+.ctag-s { border-color: var(--cat-s-border); color: var(--cat-s-text); }
+.ctag-r { border-color: var(--cat-r-border); color: var(--cat-r-text); }
+.ctag-c { border-color: var(--cat-c-border); color: var(--cat-c-text); }
+.ctag-t { border-color: var(--cat-t-border); color: var(--cat-t-text); }
+.bpill { font-family: 'DM Mono', monospace; font-size: 7.5px; color: var(--ink-3); padding: 2px 7px; border: 1px solid var(--rule); }
+.cdt { font-family: 'DM Mono', monospace; font-size: 7.5px; color: var(--ink-4); margin-left: auto; }
+.clv { font-family: 'DM Mono', monospace; font-size: 7.5px; color: var(--crisis); letter-spacing: 0.08em; }
+
+.ctitle { font-family: 'Cormorant', serif; font-size: 1.2rem; font-weight: 300; color: var(--ink); line-height: 1.38; margin-bottom: 0.55rem; }
+.cbody { font-size: 11px; font-weight: 200; color: var(--ink-2); line-height: 1.8; margin-bottom: 0.9rem; }
+
+.facts { border-top: 1px solid var(--rule-light); padding-top: 0.8rem; margin-bottom: 0.85rem; display: flex; flex-direction: column; gap: 0.32rem; }
+.fact { display: flex; gap: 0.7rem; font-size: 11px; }
+.fk { font-family: 'DM Mono', monospace; font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-4); min-width: 48px; flex-shrink: 0; padding-top: 2px; }
+.fv { color: var(--ink-2); line-height: 1.55; font-weight: 200; }
+
+.msig { display: flex; gap: 0.7rem; align-items: flex-start; border-top: 1px solid var(--rule-light); padding-top: 0.8rem; margin-bottom: 0.75rem; }
+.ms-l { font-family: 'DM Mono', monospace; font-size: 7.5px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; padding-top: 2px; }
+.ms-t { font-size: 11px; color: var(--ink-2); line-height: 1.65; font-style: italic; font-weight: 200; }
+
+/* SOURCE LINK */
+.source-row { display: flex; align-items: center; gap: 0.5rem; padding-top: 0.6rem; border-top: 1px solid var(--rule-light); }
+.source-icon { font-family: 'DM Mono', monospace; font-size: 7.5px; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.1em; flex-shrink: 0; }
+.source-link { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); text-decoration: none; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid var(--rule-light); transition: color 0.15s, border-color 0.15s; }
+.source-link:hover { color: var(--ink); border-color: var(--ink-3); }
+.source-name { font-family: 'DM Mono', monospace; font-size: 7.5px; color: var(--ink-4); flex-shrink: 0; }
+
+/* FOOTER */
+.foot { border-top: 1px solid var(--rule); padding: 1rem 2.4rem; display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-4); }
+
+/* EMPTY STATE */
+.state-empty { text-align: center; padding: 5rem 2rem; }
+.state-empty h2 { font-family: 'Cormorant', serif; font-size: 1.6rem; font-weight: 300; color: var(--ink-3); margin-bottom: 0.75rem; }
+.state-empty p { font-size: 12px; color: var(--ink-4); line-height: 1.9; }
+.state-empty code { font-family: 'DM Mono', monospace; font-size: 11px; background: var(--surface); border: 1px solid var(--rule); padding: 2px 8px; color: var(--ink-2); }
+
+@media (max-width: 800px) {
+  .forecast-grid, .cards-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .mast, .body { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .mast-nav { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .foot { padding-left: 1.2rem; padding-right: 1.2rem; flex-direction: column; gap: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-eyebrow">
+    <span>Fashion Intelligence Brief</span>
+    <span id="issue-date">--</span>
+  </div>
+  <div class="mast-center">
+    <div class="mast-title">时尚&nbsp;<em>情报</em></div>
+    <div class="mast-ornament">
+      <div class="mast-ornament-line"></div>
+      <div class="mast-ornament-dot"></div>
+      <div class="mast-ornament-line"></div>
+    </div>
+    <div class="mast-tagline">For Market Practitioners &nbsp;·&nbsp; 中国市场视角 &nbsp;·&nbsp; 每日 08:00 自动更新</div>
+  </div>
+  <div class="mast-nav">
+    <div class="nav-items">
+      <span>营销动作</span>
+      <span>社媒声量</span>
+      <span>渠道零售</span>
+      <span>危机舆情</span>
+      <span>趋势前瞻</span>
+    </div>
+    <span>LVMH · 历峰 · 开云 · CHANEL · 爱马仕 · 观夏 · 山下有松 · 精选品牌</span>
+  </div>
+</header>
+
+<main class="body">
+  <div id="main-content">
+    <div class="state-empty">
+      <h2>等待今日情报</h2>
+      <p>首次运行请执行 <code>node generate.js</code><br>
+      或等待 GitHub Actions 每日 08:00 自动更新</p>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <span>时尚情报 · Fashion Intelligence Brief</span>
+  <span id="footer-ts">--</span>
+</footer>
+
+<script>
+const CAT_MAP = { '营销动作':'m', '社媒声量':'s', '渠道零售':'r', '危机舆情':'c', '趋势前瞻':'t' };
+const CATS = ['营销动作','社媒声量','渠道零售','危机舆情','趋势前瞻'];
+
+document.getElementById('issue-date').textContent =
+  new Date().toLocaleDateString('zh-CN', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
+
+fetch('news-data.json?t=' + Date.now())
+  .then(r => r.json())
+  .then(render)
+  .catch(() => {});
+
+function render(data) {
+  if (!data?.items?.length) return;
+  const { items, trend_forecast, updated } = data;
+
+  document.getElementById('footer-ts').textContent = '最后更新 · ' + (updated || '--') + ' · 由 Claude AI 生成';
+
+  const counts = {};
+  CATS.forEach(c => counts[c] = 0);
+  items.forEach(i => { if (counts[i.category] !== undefined) counts[i.category]++; });
+
+  let html = '';
+
+  // stats
+  html += `<div class="stats-row">${CATS.map(c => `
+    <div class="stat">
+      <div class="stat-n">${counts[c]}</div>
+      <div class="stat-l">${c}</div>
+    </div>`).join('')}</div>`;
+
+  // trend forecast
+  if (trend_forecast?.length) {
+    html += `<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">趋势前瞻 · Trend Forecast</div><div class="sec-h-line"></div></div>`;
+    html += `<div class="forecast-grid">${trend_forecast.map(t => `
+      <div class="fc">
+        <div class="fc-horizon">${t.horizon}</div>
+        <div class="fc-title">${t.title}</div>
+        <div class="fc-body">${t.summary}</div>
+        <div class="fc-signals">${(t.signals || []).map(s => `<span class="fc-sig">${s}</span>`).join('')}</div>
+      </div>`).join('')}</div>`;
+  }
+
+  // intel cards
+  html += `<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">今日情报 · Intelligence Feed</div><div class="sec-h-line"></div></div>`;
+  html += `<div class="cards-grid">`;
+
+  items.forEach(item => {
+    const ck = CAT_MAP[item.category] || 't';
+    const isCrisis = item.category === '危机舆情';
+
+    // source row
+    let sourceHtml = '';
+    if (item.source_url) {
+      const displayUrl = item.source_url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+      const truncated = displayUrl.length > 52 ? displayUrl.slice(0, 52) + '…' : displayUrl;
+      sourceHtml = `
+        <div class="source-row">
+          <span class="source-icon">来源</span>
+          ${item.source_name ? `<span class="source-name">${item.source_name} &nbsp;/</span>` : ''}
+          <a class="source-link" href="${item.source_url}" target="_blank" rel="noopener" title="${item.source_url}">${truncated}</a>
+        </div>`;
+    }
+
+    html += `
+    <div class="icard${isCrisis ? ' crisis' : ''}">
+      <div class="cmeta">
+        <span class="ctag ctag-${ck}">${item.category}</span>
+        <span class="bpill">${item.brand}</span>
+        ${isCrisis && item.crisis_level ? `<span class="clv">⚑ ${item.crisis_level}</span>` : ''}
+        <span class="cdt">${item.date || ''}</span>
+      </div>
+      <div class="ctitle">${item.title}</div>
+      <div class="cbody">${item.summary}</div>
+      <div class="facts">
+        ${(item.facts || []).map(f => `
+          <div class="fact">
+            <span class="fk">${f.label}</span>
+            <span class="fv">${f.value}</span>
+          </div>`).join('')}
+      </div>
+      <div class="msig">
+        <span class="ms-l">市场信号</span>
+        <span class="ms-t">${item.market_signal}</span>
+      </div>
+      ${sourceHtml}
+    </div>`;
+  });
+
+  html += `</div>`;
+  document.getElementById('main-content').innerHTML = html;
+}
+</script>
+</body>
+</html>
