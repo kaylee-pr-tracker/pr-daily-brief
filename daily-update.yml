@@ -2,9 +2,8 @@ name: 每日时尚情报更新
 
 on:
   schedule:
-    # 北京时间每天 08:00（UTC 00:00）
     - cron: '0 0 * * *'
-  workflow_dispatch:  # 允许手动触发
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -12,21 +11,17 @@ permissions:
 jobs:
   update-intel:
     runs-on: ubuntu-latest
-
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
-
       - name: 配置 Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: 抓取今日时尚情报
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node generate.js
-
       - name: 提交并推送
         run: |
           git config --local user.email "action@github.com"
