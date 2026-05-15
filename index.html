@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时尚情报 · 每日内参</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F5F0;
+  --surface: #FDFCF9;
+  --ink: #1C1A17;
+  --ink-2: #4A4640;
+  --ink-3: #8A857E;
+  --ink-4: #C0BAB2;
+  --rule: #E2DDD6;
+  --accent: #B8965A;
+  --accent-light: #F5EFE3;
+  --accent-dark: #8C6F3A;
+  --red: #C0392B;
+  --red-light: #FAEAEA;
+  --green: #2C7A4B;
+  --green-light: #EAF5EE;
+  --cat-campaign-bg: #EAF0F8; --cat-campaign: #1C3A5E;
+  --cat-social-bg: #F8EAF4;   --cat-social: #5E1C4A;
+  --cat-retail-bg: #EAF5EE;   --cat-retail: #1C5E2C;
+  --cat-crisis-bg: #F8EAEA;   --cat-crisis: #5E1C1C;
+  --cat-trend-bg: #F0EAF8;    --cat-trend: #3D1C5E;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC',sans-serif;font-weight:300;font-size:14px;line-height:1.6;min-height:100vh;}
+
+.masthead{background:var(--ink);color:#F7F5F0;padding:0 2.5rem;}
+.mast-inner{max-width:1200px;margin:0 auto;}
+.mast-top{display:flex;justify-content:space-between;align-items:flex-end;padding:2rem 0 1.2rem;border-bottom:1px solid rgba(255,255,255,0.1);}
+.mast-title{font-family:'Noto Serif SC',serif;font-size:2.4rem;font-weight:700;letter-spacing:0.06em;color:#F7F5F0;line-height:1;}
+.mast-title em{font-style:normal;color:var(--accent);}
+.mast-tagline{font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.3);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.4rem;}
+.mast-subtitle{font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-align:right;line-height:1.9;}
+.mast-bottom{display:flex;justify-content:space-between;align-items:center;padding:0.7rem 0;font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;text-transform:uppercase;}
+.brand-tags{display:flex;gap:1.2rem;flex-wrap:wrap;}
+
+.page{max-width:1200px;margin:0 auto;padding:2rem 2.5rem;}
+
+.sec-label{font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);display:flex;align-items:center;gap:0.75rem;margin-bottom:1.2rem;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--rule);}
+
+/* Summary bar */
+.summary-bar{background:var(--ink);border-radius:2px;padding:1.2rem 1.8rem;margin-bottom:2rem;display:flex;gap:0;overflow:hidden;}
+.sum-item{flex:1;text-align:center;padding:0 0.5rem;}
+.sum-item+.sum-item{border-left:1px solid rgba(255,255,255,0.08);}
+.sum-num{font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:var(--accent);line-height:1;margin-bottom:0.3rem;}
+.sum-label{font-family:'DM Mono',monospace;font-size:0.52rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);}
+
+/* Trend forecast */
+.forecast-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
+.trend-block{background:var(--surface);border:1px solid var(--rule);border-top:3px solid var(--accent);padding:1.2rem 1.3rem;}
+.trend-horizon{font-family:'DM Mono',monospace;font-size:0.56rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;}
+.trend-block h3{font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:0.6rem;line-height:1.35;}
+.trend-block p{font-size:0.78rem;color:var(--ink-2);line-height:1.75;margin-bottom:0.75rem;}
+.trend-signals{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.signal-pill{font-family:'DM Mono',monospace;font-size:0.52rem;background:var(--accent-light);color:var(--accent-dark);padding:2px 7px;letter-spacing:0.04em;}
+
+/* Intel cards */
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:2rem;}
+.intel-card{background:var(--surface);border:1px solid var(--rule);padding:1.3rem 1.4rem;transition:border-color 0.15s;}
+.intel-card:hover{border-color:var(--ink-3);}
+.intel-card.is-crisis{border-left:3px solid var(--red);}
+
+.card-meta{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;flex-wrap:wrap;}
+.cat-tag{font-family:'DM Mono',monospace;font-size:0.52rem;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;}
+.cat-campaign{background:var(--cat-campaign-bg);color:var(--cat-campaign);}
+.cat-social{background:var(--cat-social-bg);color:var(--cat-social);}
+.cat-retail{background:var(--cat-retail-bg);color:var(--cat-retail);}
+.cat-crisis{background:var(--cat-crisis-bg);color:var(--cat-crisis);}
+.cat-trend{background:var(--cat-trend-bg);color:var(--cat-trend);}
+.brand-pill{font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--ink-3);border:1px solid var(--rule);padding:1px 6px;}
+.card-date{font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--ink-4);margin-left:auto;}
+.crisis-lv{font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--red);letter-spacing:0.06em;}
+
+.card-headline{font-family:'Noto Serif SC',serif;font-size:1.05rem;font-weight:600;line-height:1.4;color:var(--ink);margin-bottom:0.55rem;}
+.card-summary{font-size:0.79rem;color:var(--ink-2);line-height:1.75;margin-bottom:0.9rem;}
+
+.facts-table{border-top:1px solid var(--rule);padding-top:0.8rem;margin-bottom:0.85rem;display:flex;flex-direction:column;gap:0.32rem;}
+.fact-row{display:flex;gap:0.6rem;font-size:0.75rem;}
+.fact-k{font-family:'DM Mono',monospace;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);min-width:58px;padding-top:1px;flex-shrink:0;}
+.fact-v{color:var(--ink-2);line-height:1.5;}
+
+.market-signal{background:var(--accent-light);padding:0.65rem 0.85rem;display:flex;gap:0.6rem;align-items:flex-start;}
+.ms-label{font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--accent-dark);text-transform:uppercase;letter-spacing:0.06em;padding-top:2px;white-space:nowrap;}
+.ms-text{font-size:0.75rem;color:#5a3d10;line-height:1.55;font-style:italic;}
+
+.page-footer{background:var(--ink);padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:0.56rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em;text-transform:uppercase;}
+
+.state-empty{text-align:center;padding:5rem 2rem;}
+.state-empty h2{font-family:'Noto Serif SC',serif;font-size:1.4rem;font-weight:400;color:var(--ink-3);margin-bottom:0.75rem;}
+.state-empty p{font-size:0.8rem;color:var(--ink-4);line-height:1.8;}
+.state-empty code{font-family:'DM Mono',monospace;background:var(--surface);border:1px solid var(--rule);padding:2px 6px;font-size:0.75rem;color:var(--ink-2);}
+
+@media(max-width:800px){
+  .news-grid,.forecast-grid{grid-template-columns:1fr;}
+  .mast-top{flex-direction:column;gap:0.75rem;}
+  .mast-subtitle{text-align:left;}
+  .page,.masthead{padding-left:1.2rem;padding-right:1.2rem;}
+  .summary-bar{flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="mast-inner">
+    <div class="mast-top">
+      <div>
+        <div class="mast-title">时尚<em>情报</em></div>
+        <div class="mast-tagline">Fashion Intelligence Brief · For Market Practitioners</div>
+      </div>
+      <div class="mast-subtitle">
+        <span id="issue-date">--</span><br>
+        中国市场视角 · AI 精选情报<br>
+        每日 08:00 自动更新
+      </div>
+    </div>
+    <div class="mast-bottom">
+      <div class="brand-tags">
+        <span>LVMH</span><span>历峰集团</span><span>开云集团</span>
+        <span>CHANEL</span><span>爱马仕</span><span>宝格丽</span>
+        <span>观夏</span><span>山下有松</span><span>现象级新锐</span>
+      </div>
+      <div>精选品牌 · 实时追踪</div>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div id="main-content">
+    <div class="state-empty">
+      <h2>等待今日情报</h2>
+      <p>首次运行请执行 <code>node generate.js</code><br>
+      或等待 GitHub Actions 每日 08:00 自动更新</p>
+    </div>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <span>时尚情报 · Fashion Intelligence Brief</span>
+  <span id="footer-ts">--</span>
+</footer>
+
+<script>
+const CAT_MAP = {'营销动作':'campaign','社媒声量':'social','渠道零售':'retail','危机舆情':'crisis','趋势前瞻':'trend'};
+const CATS = ['营销动作','社媒声量','渠道零售','危机舆情','趋势前瞻'];
+
+document.getElementById('issue-date').textContent =
+  new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
+
+fetch('news-data.json?t='+Date.now()).then(r=>r.json()).then(render).catch(()=>{});
+
+function render(data) {
+  if (!data?.items?.length) return;
+  const {items, trend_forecast, updated} = data;
+  document.getElementById('footer-ts').textContent = '最后更新 · '+(updated||'--');
+
+  const counts = {};
+  CATS.forEach(c=>counts[c]=0);
+  items.forEach(i=>{ if(counts[i.category]!==undefined) counts[i.category]++; });
+
+  let html = '';
+
+  // summary bar
+  html += `<div class="summary-bar">${CATS.map(c=>`
+    <div class="sum-item">
+      <div class="sum-num">${counts[c]}</div>
+      <div class="sum-label">${c}</div>
+    </div>`).join('')}</div>`;
+
+  // trend forecast
+  if (trend_forecast?.length) {
+    html += `<div class="sec-label">趋势前瞻 · Trend Forecast</div>
+    <div class="forecast-grid">${trend_forecast.map(t=>`
+      <div class="trend-block">
+        <div class="trend-horizon">${t.horizon}</div>
+        <h3>${t.title}</h3>
+        <p>${t.summary}</p>
+        <div class="trend-signals">${(t.signals||[]).map(s=>`<span class="signal-pill">${s}</span>`).join('')}</div>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  // intel cards
+  html += `<div class="sec-label">今日情报 · Intelligence Feed</div><div class="news-grid">`;
+  items.forEach(item=>{
+    const ck = CAT_MAP[item.category]||'trend';
+    const isCrisis = item.category==='危机舆情';
+    html += `
+    <div class="intel-card${isCrisis?' is-crisis':''}">
+      <div class="card-meta">
+        <span class="cat-tag cat-${ck}">${item.category}</span>
+        <span class="brand-pill">${item.brand}</span>
+        ${isCrisis&&item.crisis_level?`<span class="crisis-lv">⚠ ${item.crisis_level}</span>`:''}
+        <span class="card-date">${item.date||''}</span>
+      </div>
+      <div class="card-headline">${item.title}</div>
+      <div class="card-summary">${item.summary}</div>
+      <div class="facts-table">
+        ${(item.facts||[]).map(f=>`<div class="fact-row"><span class="fact-k">${f.label}</span><span class="fact-v">${f.value}</span></div>`).join('')}
+      </div>
+      <div class="market-signal">
+        <span class="ms-label">市场信号</span>
+        <span class="ms-text">${item.market_signal}</span>
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  document.getElementById('main-content').innerHTML = html;
+}
+</script>
+</body>
+</html>
