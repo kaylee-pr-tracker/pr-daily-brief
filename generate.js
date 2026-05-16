@@ -147,23 +147,12 @@ async function gatherIntel() {
   return [...withContent, ...unique.slice(30).map(r => ({ ...r, body: '' }))];
 }
 
-// ── DeepSeek 每日情报分析 ─────────────────────────────────────
-function callDeepSeekDaily(articles) {
-  const contextText = articles.slice(0, 40).map((r, i) => {
-    const content = r.body ? `正文：${r.body.slice(0, 1000)}` : `摘要：${r.snippet}`;
+// ── DeepSeek Pass 1：生成精简情报列表 ─────────────────────────
+function callDeepSeekPass1(articles) {
+  const contextText = articles.slice(0, 35).map((r, i) => {
+    const content = r.body ? r.body.slice(0, 600) : r.snippet;
     return `[${i+1}]【${r.queryLabel}】${r.title}\n📅 ${r.date||'近期'} | ${r.source}\n🔗 ${r.url}\n${content}`;
   }).join('\n\n---\n\n');
-
-  const SYSTEM = `你是一位同时精通 Marketing 和 PR 的奢侈品行业资深顾问，拥有消费者心理学、宏观经济分析和危机公关的深厚背景。
-
-你的分析必须做到：
-1. 站在消费者视角：区分Z世代（95后）、高净值人群（HNW）、新中产三类群体的不同心理动机和反应，而非笼统概括
-2. 综合多个框架：4P营销组合 + PESTEL宏观背景 + PR的RACE模型 + 消费者情感/身份认同理论
-3. 客观平衡：指出品牌动作的优势，也要指出潜在的矛盾、风险和未被满足的需求
-4. 跨品类比较：当前事件在整个时尚生态中的位置，而非孤立分析
-5. 严禁一刀切的评论，每个分析结论都要有具体的人群细分和情境说明
-
-只输出JSON，第一个字符{，最后字符}。`;
 
   const USER = `今天是${today}。
 
@@ -173,46 +162,16 @@ ${contextText}
 
 ---
 
-输出每日情报简报JSON，分析必须系统深入，覆盖消费者心理、多个框架维度、客观平衡评价：
+请输出精简的每日情报JSON，每条情报只包含核心事实，不需要深度分析字段。
+category只能用：营销动作、社媒声量、渠道零售、危机舆情、趋势前瞻
 
 {
   "updated": "${today}",
   "date_key": "${dateKey}",
   "trend_forecast": [
-    {
-      "title": "8字内趋势标题",
-      "horizon": "近期 · 1–4周",
-      "summary": "含具体品牌+事件+数据，2-3句，禁止套话",
-      "signals": ["具体可观测信号", "具体信号", "具体信号"],
-      "consumer_psychology": {
-        "z_gen": "Z世代（95后）对这个趋势的心理反应：动机/情感/身份认同层面的具体分析，包括正面共鸣和潜在排斥",
-        "hnw": "高净值人群（HNW）的反应：他们的核心需求是什么？这个趋势满足还是威胁了他们的身份认同？",
-        "new_middle": "新中产群体的反应：消费升级还是降级的语境下，他们如何解读这个趋势？"
-      },
-      "pestel_context": "这个趋势背后的宏观PESTEL驱动力：是政策变化、经济压力、社会文化转型、还是技术驱动？2-3句，要有具体背景",
-      "marketing_implication": "对Marketing策略的影响：4P哪个维度最受冲击？品牌应该如何调整？给出具体可操作的方向",
-      "pr_implication": "对PR传播的影响：品牌叙事应该如何响应这个趋势？潜在舆情风险点在哪里？"
-    },
-    {
-      "title": "中期趋势标题",
-      "horizon": "中期 · 1–3个月",
-      "summary": "2-3句",
-      "signals": ["信号1", "信号2", "信号3"],
-      "consumer_psychology": {"z_gen": "", "hnw": "", "new_middle": ""},
-      "pestel_context": "",
-      "marketing_implication": "",
-      "pr_implication": ""
-    },
-    {
-      "title": "长期趋势标题",
-      "horizon": "长期 · 季度级",
-      "summary": "2-3句",
-      "signals": ["信号1", "信号2", "信号3"],
-      "consumer_psychology": {"z_gen": "", "hnw": "", "new_middle": ""},
-      "pestel_context": "",
-      "marketing_implication": "",
-      "pr_implication": ""
-    }
+    {"title": "8字内标题", "horizon": "近期 · 1–4周", "summary": "含具体品牌+事件+数据2-3句", "signals": ["信号1","信号2","信号3"]},
+    {"title": "8字内标题", "horizon": "中期 · 1–3个月", "summary": "2-3句", "signals": ["信号1","信号2","信号3"]},
+    {"title": "8字内标题", "horizon": "长期 · 季度级", "summary": "2-3句", "signals": ["信号1","信号2","信号3"]}
   ],
   "items": [
     {
@@ -220,63 +179,103 @@ ${contextText}
       "brand": "品牌名",
       "category": "营销动作",
       "date": "具体日期",
-      "summary": "什么产品/系列全名？哪个城市/平台？什么数据？涉及哪些人？3-4句，每句有具体事实",
+      "summary": "3-4句具体事实：产品名、城市、数据、涉及人物",
       "facts": [
         {"label": "产品/活动", "value": "具体名称"},
-        {"label": "地点/平台", "value": "具体地点或平台"},
+        {"label": "地点/平台", "value": "具体地点"},
         {"label": "数据", "value": "具体数字"},
-        {"label": "核心差异", "value": "与以往或竞品的区别"}
+        {"label": "核心差异", "value": "区别说明"}
       ],
-      "consumer_analysis": {
-        "primary_target": "这次动作的核心目标消费群体，要具体到年龄/消费力/心理特征",
-        "z_gen_reaction": "Z世代的预期反应：会产生共鸣还是反感？为什么？有没有潜在的文化错位风险？",
-        "hnw_reaction": "高净值人群的预期反应：这个动作强化还是稀释了品牌的稀缺感和身份标签？",
-        "new_middle_reaction": "新中产的预期反应：对于「够不着又想要」的这个群体，这个动作如何影响他们的品牌印象和购买意愿？",
-        "unmet_needs": "这个动作没有覆盖到的消费者需求：哪个群体的需求被忽视了？这是机会还是风险？"
-      },
-      "marketing_analysis": {
-        "4p_focus": "这次动作主要在4P哪个维度发力（Product/Price/Place/Promotion），为什么选择这个维度",
-        "strategy": "创意策略：背后的营销逻辑，与品牌长期策略的关系",
-        "channel_logic": "渠道选择逻辑：为什么选这个平台/渠道？预算分配重心判断",
-        "roi_measure": "效果衡量框架：关键指标是什么？短期和长期指标如何平衡？",
-        "cross_category_threat": "跨品类威胁：除了直接竞品，哪些看似无关的品牌或品类正在抢夺同一批消费者？"
-      },
-      "pr_analysis": {
-        "narrative_built": "品牌叙事：这个动作在强化什么故事？这个故事与目标受众的价值观是否真正契合，还是存在表面迎合的风险？",
-        "race_model": {
-          "reach": "触达：这次传播能触达哪些媒体圈层和人群？覆盖面的盲点在哪里？",
-          "act": "行动：引导受众做出什么具体行动？转化路径是否清晰？",
-          "convert": "转化：从关注到购买的关键障碍是什么？品牌如何设计了转化路径？",
-          "engage": "互动：如何维持长期用户关系？有没有设计持续互动的机制？"
-        },
-        "risk_assessment": "舆情风险评估：列出2-3个具体的潜在风险点，以及每个风险点触发的条件",
-        "crisis_protocol": "危机处置预案：如果最大风险点爆发，品牌应在什么时间窗口（T+0/T+6/T+24小时）用什么核心口径响应？"
-      },
-      "next_move": "基于今天的动作，预判该品牌未来2-4周最可能的下一步，竞品应在哪里布防，2-3句",
       "source_url": "原文URL",
-      "source_name": "来源媒体",
+      "source_name": "媒体名称",
       "crisis_level": null
     }
   ]
 }
 
-规则：
-- 中国境内事件占70%以上，输出8-10条items，覆盖不同品牌
-- 覆盖全部5个category：营销动作、社媒声量、渠道零售、危机舆情、趋势前瞻
-- 危机舆情类填crisis_level（轻微/中度/严重），pr_analysis.crisis_protocol必须详细
-- 所有consumer_analysis字段必须区分三类人群，不能笼统概括
-- 分析要客观平衡，指出优势也要指出矛盾和风险
-- source_url必须来自搜索结果真实URL
-- 只返回JSON`;
+输出6-8条items，覆盖不同品牌和5个category，危机舆情填crisis_level。只返回JSON。`;
 
+  return callDS(USER, 5000, '生成精简情报列表');
+}
+
+// ── DeepSeek Pass 2：逐条深度分析 ───────────────────────────
+async function callDeepSeekPass2(items, articles) {
+  const contextSummary = articles.slice(0, 20).map(r =>
+    `${r.title} | ${r.source} | ${r.url}`
+  ).join('\n');
+
+  const itemsText = items.map((item, i) =>
+    `[${i+1}] ${item.brand} — ${item.title}\n${item.summary}`
+  ).join('\n\n');
+
+  const USER = `今天是${today}。
+
+以下是今日时尚情报条目（已从搜索结果中提取）：
+
+${itemsText}
+
+搜索来源参考：
+${contextSummary}
+
+---
+
+请为以上每条情报生成深度分析，输出JSON数组（数组长度与输入条目数相同，顺序一致）：
+
+[
+  {
+    "consumer_analysis": {
+      "primary_target": "核心目标消费群体，具体到年龄/消费力/心理特征",
+      "z_gen_reaction": "Z世代（95后）预期反应：共鸣还是反感？有无文化错位风险？要客观，不能一刀切",
+      "hnw_reaction": "高净值人群：强化还是稀释品牌稀缺感？具体说明",
+      "new_middle_reaction": "新中产：消费升降级语境下的解读，影响购买意愿如何？",
+      "unmet_needs": "被忽视的消费者需求：哪个群体被这个动作忽视了？"
+    },
+    "marketing_analysis": {
+      "4p_focus": "主要在4P哪个维度发力（Product/Price/Place/Promotion）及原因",
+      "strategy": "创意策略和营销逻辑，与品牌长期策略的关系",
+      "channel_logic": "渠道选择逻辑和预算重心判断",
+      "roi_measure": "效果衡量框架和关键指标",
+      "cross_category_threat": "跨品类竞争：非直接竞品中谁在抢同一批消费者"
+    },
+    "pr_analysis": {
+      "narrative_built": "品牌叙事：强化什么故事？与受众价值观是否真正契合还是表面迎合？",
+      "race_model": {
+        "reach": "触达：覆盖哪些媒体圈层？盲点在哪？",
+        "act": "行动：引导什么具体行动？转化路径是否清晰？",
+        "convert": "转化：从关注到购买的关键障碍是什么？",
+        "engage": "互动：长期用户关系维护机制是否存在？"
+      },
+      "risk_assessment": "舆情风险：2-3个具体风险点及触发条件",
+      "crisis_protocol": "危机预案：T+0/T+6/T+24小时各应做什么，用什么口径"
+    },
+    "next_move": "预判品牌未来2-4周下一步，竞品应在哪里布防，2-3句"
+  }
+]
+
+分析要客观平衡，区分三类人群，指出优势也要指出矛盾和风险。只返回JSON数组。`;
+
+  return callDS(USER, 6000, '深度分析');
+}
+
+// ── DeepSeek 通用调用 ─────────────────────────────────────────
+function callDS(userPrompt, maxTokens, label) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify({
       model: 'deepseek-chat',
-      messages: [{ role: 'system', content: SYSTEM }, { role: 'user', content: USER }],
+      messages: [
+        {
+          role: 'system',
+          content: '你是奢侈品行业顶级市场顾问，精通消费者心理学、4P营销、PESTEL宏观分析和PR RACE模型。分析客观平衡，区分Z世代/高净值/新中产三类人群，指出优势也指出风险。严禁套话。只输出JSON。'
+        },
+        { role: 'user', content: userPrompt }
+      ],
       temperature: 0.2,
-      max_tokens: 7000
+      max_tokens: maxTokens
     });
-    const req = https.request({
+
+    console.log(`  → DeepSeek [${label}] max_tokens=${maxTokens}...`);
+
+    const req = require('https').request({
       hostname: 'api.deepseek.com', path: '/chat/completions',
       method: 'POST', timeout: 180000,
       headers: {
@@ -291,11 +290,11 @@ ${contextText}
         const raw = Buffer.concat(chunks).toString('utf8');
         try {
           const parsed = JSON.parse(raw);
-          if (parsed.error) { reject(new Error(`DeepSeek: ${JSON.stringify(parsed.error)}`)); return; }
+          if (parsed.error) { reject(new Error(`DeepSeek[${label}]: ${JSON.stringify(parsed.error)}`)); return; }
           const text = parsed?.choices?.[0]?.message?.content;
-          if (!text) { reject(new Error('返回空内容')); return; }
+          if (!text) { reject(new Error(`[${label}] 返回空内容`)); return; }
           resolve(text);
-        } catch(e) { reject(new Error(`解析失败: ${e.message}`)); }
+        } catch(e) { reject(new Error(`[${label}] 解析失败: ${e.message}`)); }
       });
     });
     req.on('error', reject);
@@ -476,6 +475,23 @@ function parseJSON(raw) {
   }
 }
 
+// ── JSON 数组解析 ────────────────────────────────────────────
+function parseJSONArray(raw) {
+  let jsonStr = raw.trim().replace(/^[^[{]*/, '');
+  // 如果是数组
+  if (jsonStr.startsWith('[')) {
+    try { return JSON.parse(jsonStr.slice(0, jsonStr.lastIndexOf(']') + 1)); } catch {}
+  }
+  // 如果包在对象里
+  const s = jsonStr.indexOf('[');
+  const e = jsonStr.lastIndexOf(']');
+  if (s !== -1) {
+    try { return JSON.parse(jsonStr.slice(s, e + 1)); } catch {}
+  }
+  return [];
+}
+
+
 // ── 主流程 ────────────────────────────────────────────────────
 async function main() {
   console.log(`\n🚀 时尚情报生成器 — ${today}`);
@@ -490,14 +506,33 @@ async function main() {
     const articles = await gatherIntel();
     if (articles.length < 3) throw new Error('搜索结果不足');
 
-    // 2. 每日情报
-    console.log('\n🤖 DeepSeek 生成每日情报（多框架深度分析）...');
-    const dailyRaw = await callDeepSeekDaily(articles);
-    const data = parseJSON(dailyRaw);
+    // 2. 每日情报 — 两阶段生成
+    console.log('\n🤖 Pass 1：生成精简情报列表...');
+    const pass1Raw = await callDeepSeekPass1(articles);
+    const data = parseJSON(pass1Raw);
     data.updated = data.updated || today;
     data.date_key = dateKey;
     if (!Array.isArray(data.trend_forecast)) data.trend_forecast = [];
     if (!Array.isArray(data.items)) data.items = [];
+
+    console.log(`\n🤖 Pass 2：深度分析 ${data.items.length} 条情报...`);
+    try {
+      const pass2Raw = await callDeepSeekPass2(data.items, articles);
+      const analyses = parseJSONArray(pass2Raw);
+      if (Array.isArray(analyses)) {
+        data.items.forEach((item, i) => {
+          if (analyses[i]) {
+            item.consumer_analysis = analyses[i].consumer_analysis || {};
+            item.marketing_analysis = analyses[i].marketing_analysis || {};
+            item.pr_analysis = analyses[i].pr_analysis || {};
+            item.next_move = analyses[i].next_move || '';
+          }
+        });
+        console.log('✅ 深度分析合并完成');
+      }
+    } catch(e2) {
+      console.log(`⚠️ 深度分析失败，使用基础情报: ${e2.message}`);
+    }
 
     // 3. 周期性报告
     const periodicReports = {};
