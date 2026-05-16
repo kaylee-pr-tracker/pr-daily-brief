@@ -1,5 +1,7 @@
 // generate.js — 时尚情报每日抓取脚本
-// 架构：SerpAPI → 正文抓取 → DeepSeek 多框架深度分析 + 周期性报告
+// 每日：精简情报（事实+市场信号+下一步预判）
+// 每周一：周度趋势报告（消费者行为+PESTEL+市场动态）
+// 每月1日：月度报告  /  每季首日：季度报告
 // 依赖环境变量：DS_API_KEY, SERP_API_KEY
 
 const fs = require('fs');
@@ -16,18 +18,16 @@ if (!SERP_KEY) { console.error('❌ 缺少 SERP_API_KEY'); process.exit(1); }
 const now = new Date();
 const today = now.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 const dateKey = now.toISOString().slice(0, 10);
-const dayOfWeek = now.getDay(); // 0=周日, 1=周一...
+const dayOfWeek = now.getDay();
 const dayOfMonth = now.getDate();
-
-// 判断是否需要生成周期报告
 const isMonday = dayOfWeek === 1;
 const isFirstOfMonth = dayOfMonth === 1;
-const isFirstOfQuarter = isFirstOfMonth && [1, 4, 7, 10].includes(now.getMonth() + 1);
+const isFirstOfQuarter = isFirstOfMonth && [1,4,7,10].includes(now.getMonth() + 1);
 
 if (!fs.existsSync('archive')) fs.mkdirSync('archive');
 
-// ── 抓取文章正文 ──────────────────────────────────────────────
-function fetchArticle(url, maxChars = 2000) {
+// ── 文章正文抓取 ──────────────────────────────────────────────
+function fetchArticle(url) {
   return new Promise((resolve) => {
     try {
       const parsed = new URL(url);
@@ -38,7 +38,7 @@ function fetchArticle(url, maxChars = 2000) {
         method: 'GET', timeout: 8000,
         headers: {
           'User-Agent': 'Mozilla/5.0 (compatible; FashionIntelBot/2.0)',
-          'Accept': 'text/html', 'Accept-Language': 'zh-CN,zh;q=0.9'
+          'Accept-Language': 'zh-CN,zh;q=0.9'
         }
       }, (res) => {
         const chunks = [];
@@ -48,11 +48,8 @@ function fetchArticle(url, maxChars = 2000) {
           const clean = html
             .replace(/<script[\s\S]*?<\/script>/gi, '')
             .replace(/<style[\s\S]*?<\/style>/gi, '')
-            .replace(/<nav[\s\S]*?<\/nav>/gi, '')
-            .replace(/<header[\s\S]*?<\/header>/gi, '')
-            .replace(/<footer[\s\S]*?<\/footer>/gi, '')
             .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-          resolve(clean.slice(0, maxChars));
+          resolve(clean.slice(0, 1500));
         });
       });
       req.setTimeout(8000, () => { req.destroy(); resolve(''); });
@@ -80,11 +77,11 @@ function serpSearch(query, tbs = 'qdr:w') {
         try {
           const data = JSON.parse(Buffer.concat(chunks).toString('utf8'));
           if (data.error) { resolve([]); return; }
-          resolve([...(data.organic_results || []), ...(data.news_results || [])]
-            .slice(0, 6).map(r => ({
-              title: r.title || '', url: r.link || '',
-              snippet: (r.snippet || '').slice(0, 400),
-              date: r.date || '', source: r.displayed_link || r.source || ''
+          resolve([...(data.organic_results||[]), ...(data.news_results||[])]
+            .slice(0,6).map(r => ({
+              title: r.title||'', url: r.link||'',
+              snippet: (r.snippet||'').slice(0,400),
+              date: r.date||'', source: r.displayed_link||r.source||''
             })));
         } catch { resolve([]); }
       });
@@ -96,7 +93,7 @@ function serpSearch(query, tbs = 'qdr:w') {
 }
 
 // ── 多方向搜索 ────────────────────────────────────────────────
-async function gatherIntel() {
+async function gatherIntel(extraQueries = []) {
   const queries = [
     { q: '奢侈品 品牌 中国 营销 活动 最新', label: '奢品中国营销' },
     { q: '时尚品牌 代言人 联名 官宣 最新', label: '代言联名' },
@@ -107,17 +104,10 @@ async function gatherIntel() {
     { q: 'site:socialbeta.com 品牌 案例', label: 'SocialBeta' },
     { q: 'site:jiemian.com 时尚 奢侈品', label: '界面时尚' },
     { q: 'site:cn.concall.com 时尚 奢侈品 品牌', label: 'Concall' },
-    { q: 'luxury brand China consumer behavior trend 2026', label: '消费趋势' },
-    { q: 'LVMH Chanel Hermes Gucci China strategy 2026', label: '奢品集团' },
+    { q: 'luxury brand China campaign news latest', label: '国际奢品' },
+    { q: 'LVMH Chanel Hermes Gucci China 2026', label: '奢品集团' },
+    ...extraQueries
   ];
-
-  // 如果是周一，额外搜索周度趋势数据
-  if (isMonday) {
-    queries.push(
-      { q: '时尚行业 中国市场 本周 趋势 消费', label: '周度趋势' },
-      { q: 'luxury China weekly market trend consumer', label: '周度市场' }
-    );
-  }
 
   console.log('🌐 SerpAPI 搜索中（限定1周内）...\n');
   const allResults = [];
@@ -135,267 +125,29 @@ async function gatherIntel() {
     seen.add(r.url); return true;
   });
 
-  console.log(`\n📥 共 ${unique.length} 条，抓取文章正文...\n`);
+  console.log(`\n📥 共 ${unique.length} 条，抓取正文...\n`);
   const withContent = await Promise.all(
-    unique.slice(0, 30).map(async (r, i) => {
-      await new Promise(res => setTimeout(res, i * 100));
+    unique.slice(0, 25).map(async (r, i) => {
+      await new Promise(res => setTimeout(res, i * 80));
       const body = await fetchArticle(r.url);
       if (body) console.log(`  ✓ [${i+1}] ${r.source} — ${r.title.slice(0,35)}...`);
       return { ...r, body };
     })
   );
-  return [...withContent, ...unique.slice(30).map(r => ({ ...r, body: '' }))];
-}
-
-// ── DeepSeek Pass 1：生成精简情报列表 ─────────────────────────
-function callDeepSeekPass1(articles) {
-  const contextText = articles.slice(0, 35).map((r, i) => {
-    const content = r.body ? r.body.slice(0, 600) : r.snippet;
-    return `[${i+1}]【${r.queryLabel}】${r.title}\n📅 ${r.date||'近期'} | ${r.source}\n🔗 ${r.url}\n${content}`;
-  }).join('\n\n---\n\n');
-
-  const USER = `今天是${today}。
-
-以下是今日最新时尚行业资讯：
-
-${contextText}
-
----
-
-请输出精简的每日情报JSON，每条情报只包含核心事实，不需要深度分析字段。
-category只能用：营销动作、社媒声量、渠道零售、危机舆情、趋势前瞻
-
-{
-  "updated": "${today}",
-  "date_key": "${dateKey}",
-  "trend_forecast": [
-    {"title": "8字内标题", "horizon": "近期 · 1–4周", "summary": "含具体品牌+事件+数据2-3句", "signals": ["信号1","信号2","信号3"]},
-    {"title": "8字内标题", "horizon": "中期 · 1–3个月", "summary": "2-3句", "signals": ["信号1","信号2","信号3"]},
-    {"title": "8字内标题", "horizon": "长期 · 季度级", "summary": "2-3句", "signals": ["信号1","信号2","信号3"]}
-  ],
-  "items": [
-    {
-      "title": "品牌+具体事件15字内",
-      "brand": "品牌名",
-      "category": "营销动作",
-      "date": "具体日期",
-      "summary": "3-4句具体事实：产品名、城市、数据、涉及人物",
-      "facts": [
-        {"label": "产品/活动", "value": "具体名称"},
-        {"label": "地点/平台", "value": "具体地点"},
-        {"label": "数据", "value": "具体数字"},
-        {"label": "核心差异", "value": "区别说明"}
-      ],
-      "source_url": "原文URL",
-      "source_name": "媒体名称",
-      "crisis_level": null
-    }
-  ]
-}
-
-输出6-8条items，覆盖不同品牌和5个category，危机舆情填crisis_level。只返回JSON。`;
-
-  return callDS(USER, 5000, '生成精简情报列表');
-}
-
-// ── DeepSeek Pass 2：逐条深度分析 ───────────────────────────
-async function callDeepSeekPass2(items, articles) {
-  const contextSummary = articles.slice(0, 20).map(r =>
-    `${r.title} | ${r.source} | ${r.url}`
-  ).join('\n');
-
-  const itemsText = items.map((item, i) =>
-    `[${i+1}] ${item.brand} — ${item.title}\n${item.summary}`
-  ).join('\n\n');
-
-  const USER = `今天是${today}。
-
-以下是今日时尚情报条目（已从搜索结果中提取）：
-
-${itemsText}
-
-搜索来源参考：
-${contextSummary}
-
----
-
-请为以上每条情报生成深度分析，输出JSON数组（数组长度与输入条目数相同，顺序一致）：
-
-[
-  {
-    "consumer_analysis": {
-      "primary_target": "核心目标消费群体，具体到年龄/消费力/心理特征",
-      "z_gen_reaction": "Z世代（95后）预期反应：共鸣还是反感？有无文化错位风险？要客观，不能一刀切",
-      "hnw_reaction": "高净值人群：强化还是稀释品牌稀缺感？具体说明",
-      "new_middle_reaction": "新中产：消费升降级语境下的解读，影响购买意愿如何？",
-      "unmet_needs": "被忽视的消费者需求：哪个群体被这个动作忽视了？"
-    },
-    "marketing_analysis": {
-      "4p_focus": "主要在4P哪个维度发力（Product/Price/Place/Promotion）及原因",
-      "strategy": "创意策略和营销逻辑，与品牌长期策略的关系",
-      "channel_logic": "渠道选择逻辑和预算重心判断",
-      "roi_measure": "效果衡量框架和关键指标",
-      "cross_category_threat": "跨品类竞争：非直接竞品中谁在抢同一批消费者"
-    },
-    "pr_analysis": {
-      "narrative_built": "品牌叙事：强化什么故事？与受众价值观是否真正契合还是表面迎合？",
-      "race_model": {
-        "reach": "触达：覆盖哪些媒体圈层？盲点在哪？",
-        "act": "行动：引导什么具体行动？转化路径是否清晰？",
-        "convert": "转化：从关注到购买的关键障碍是什么？",
-        "engage": "互动：长期用户关系维护机制是否存在？"
-      },
-      "risk_assessment": "舆情风险：2-3个具体风险点及触发条件",
-      "crisis_protocol": "危机预案：T+0/T+6/T+24小时各应做什么，用什么口径"
-    },
-    "next_move": "预判品牌未来2-4周下一步，竞品应在哪里布防，2-3句"
-  }
-]
-
-分析要客观平衡，区分三类人群，指出优势也要指出矛盾和风险。只返回JSON数组。`;
-
-  return callDS(USER, 6000, '深度分析');
+  return [...withContent, ...unique.slice(25).map(r => ({ ...r, body: '' }))];
 }
 
 // ── DeepSeek 通用调用 ─────────────────────────────────────────
-function callDS(userPrompt, maxTokens, label) {
+function callDS(systemPrompt, userPrompt, maxTokens) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify({
       model: 'deepseek-chat',
       messages: [
-        {
-          role: 'system',
-          content: '你是奢侈品行业顶级市场顾问，精通消费者心理学、4P营销、PESTEL宏观分析和PR RACE模型。分析客观平衡，区分Z世代/高净值/新中产三类人群，指出优势也指出风险。严禁套话。只输出JSON。'
-        },
+        { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt }
       ],
       temperature: 0.2,
       max_tokens: maxTokens
-    });
-
-    console.log(`  → DeepSeek [${label}] max_tokens=${maxTokens}...`);
-
-    const req = require('https').request({
-      hostname: 'api.deepseek.com', path: '/chat/completions',
-      method: 'POST', timeout: 180000,
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Authorization': `Bearer ${DS_KEY}`,
-        'Content-Length': Buffer.byteLength(body, 'utf8')
-      }
-    }, (res) => {
-      const chunks = [];
-      res.on('data', c => chunks.push(c));
-      res.on('end', () => {
-        const raw = Buffer.concat(chunks).toString('utf8');
-        try {
-          const parsed = JSON.parse(raw);
-          if (parsed.error) { reject(new Error(`DeepSeek[${label}]: ${JSON.stringify(parsed.error)}`)); return; }
-          const text = parsed?.choices?.[0]?.message?.content;
-          if (!text) { reject(new Error(`[${label}] 返回空内容`)); return; }
-          resolve(text);
-        } catch(e) { reject(new Error(`[${label}] 解析失败: ${e.message}`)); }
-      });
-    });
-    req.on('error', reject);
-    req.write(body, 'utf8');
-    req.end();
-  });
-}
-
-// ── DeepSeek 周期性趋势报告 ───────────────────────────────────
-function callDeepSeekPeriodic(articles, period) {
-  const periodLabel = { weekly: '本周', monthly: '本月', quarterly: '本季度' }[period];
-  const contextText = articles.slice(0, 30).map((r, i) =>
-    `[${i+1}] ${r.title} | ${r.date||'近期'} | ${r.source}\n${r.snippet}`
-  ).join('\n\n');
-
-  const USER = `今天是${today}，请基于以下近期资讯，生成${periodLabel}时尚行业综合趋势报告。
-
-资讯背景：
-${contextText}
-
----
-
-输出${periodLabel}趋势报告JSON（只返回JSON）：
-
-{
-  "period": "${period}",
-  "period_label": "${periodLabel}",
-  "generated_at": "${today}",
-  "executive_summary": "高管摘要：${periodLabel}最重要的3件事，每件事一句话，直接说结论",
-  "pestel_scan": {
-    "political": "政治/政策层面：影响中国时尚行业的政策动向，如关税、进口政策、平台监管等",
-    "economic": "经济层面：消费信心、奢品销售数据、汇率对定价的影响、高净值人群财富变化",
-    "social": "社会文化层面：消费观念变化、审美趋势、代际差异、身份认同的演变",
-    "technological": "技术层面：AI在营销中的应用、直播电商、虚拟试衣、数字藏品等新技术的影响",
-    "environmental": "环境/可持续层面：ESG压力、消费者对可持续奢品的真实态度（不是表态而是行为）",
-    "legal": "法律/合规层面：广告法、代言人监管、数据隐私对营销的约束"
-  },
-  "consumer_psychology_report": {
-    "z_gen_profile": {
-      "core_desire": "Z世代核心消费欲望：他们真正想要什么，而不是品牌以为他们想要什么",
-      "identity_logic": "身份认同逻辑：奢品/时尚在他们的自我表达中扮演什么角色",
-      "pain_points": "被忽视的痛点：品牌普遍没做好的地方",
-      "emerging_behavior": "新兴消费行为：本周期内观察到的新变化"
-    },
-    "hnw_profile": {
-      "core_desire": "高净值人群核心需求：在经济不确定背景下，他们的购买逻辑如何变化",
-      "scarcity_sensitivity": "稀缺性敏感度：他们如何判断一个品牌是否还值得作为身份标签",
-      "channel_preference": "渠道偏好变化：线下旗舰店 vs 私域 vs 限定活动",
-      "emerging_behavior": "本周期新变化"
-    },
-    "new_middle_profile": {
-      "core_desire": "新中产核心矛盾：想要奢品的身份感但面临消费压力，他们如何取舍",
-      "affordable_luxury_logic": "轻奢逻辑：哪些品类是他们的「入门票」，哪些已经超出心理价位",
-      "social_proof_need": "社交证明需求：他们需要什么样的内容来justify自己的消费决定",
-      "emerging_behavior": "本周期新变化"
-    }
-  },
-  "social_ecosystem_report": {
-    "xiaohongshu": "小红书：本周期平台算法/内容生态变化，哪类时尚内容在涨，哪类在跌",
-    "douyin": "抖音：直播电商动态，品牌自播 vs KOL带货的格局变化",
-    "weibo": "微博：时尚话题的舆情特征，哪些类型的事件容易上热搜",
-    "wechat": "微信：私域运营趋势，品牌如何通过企业微信做高净值客户管理",
-    "overall_shift": "整体生态位移：内容消费重心在向哪里移动，品牌内容预算应如何重新分配"
-  },
-  "market_share_dynamics": {
-    "rising_brands": "上升势头品牌：本周期声量/热度明显上升的品牌及原因",
-    "declining_brands": "下滑信号品牌：有衰退迹象的品牌及潜在原因",
-    "positioning_shift": "定位位移：有品牌在悄悄改变目标人群或价格定位吗？",
-    "cross_category_competition": "跨品类竞争：哪些非时尚品类正在蚕食时尚品牌的消费份额和心智"
-  },
-  "actionable_recommendations": [
-    {
-      "audience": "针对奢品牌市场团队",
-      "priority": "高",
-      "action": "具体可执行的建议，包括时间节点和衡量标准"
-    },
-    {
-      "audience": "针对国货新锐品牌",
-      "priority": "高",
-      "action": "具体建议"
-    },
-    {
-      "audience": "针对PR/传播团队",
-      "priority": "中",
-      "action": "具体建议"
-    }
-  ]
-}`;
-
-  return new Promise((resolve, reject) => {
-    const body = JSON.stringify({
-      model: 'deepseek-chat',
-      messages: [
-        {
-          role: 'system',
-          content: '你是一位顶级时尚行业战略顾问，专注于消费者行为研究和品牌传播。你的报告以客观平衡、洞察深刻著称，从不给出片面或粉饰的结论。只输出JSON。'
-        },
-        { role: 'user', content: USER }
-      ],
-      temperature: 0.3,
-      max_tokens: 8000
     });
     const req = https.request({
       hostname: 'api.deepseek.com', path: '/chat/completions',
@@ -412,11 +164,11 @@ ${contextText}
         const raw = Buffer.concat(chunks).toString('utf8');
         try {
           const parsed = JSON.parse(raw);
-          if (parsed.error) { reject(new Error(`DeepSeek: ${JSON.stringify(parsed.error)}`)); return; }
+          if (parsed.error) { reject(new Error(JSON.stringify(parsed.error))); return; }
           const text = parsed?.choices?.[0]?.message?.content;
           if (!text) { reject(new Error('返回空内容')); return; }
           resolve(text);
-        } catch(e) { reject(new Error(`解析失败: ${e.message}`)); }
+        } catch(e) { reject(new Error('解析失败: ' + e.message)); }
       });
     });
     req.on('error', reject);
@@ -425,9 +177,8 @@ ${contextText}
   });
 }
 
-// ── JSON 解析工具（带截断修复）────────────────────────────────
+// ── JSON 解析（带控制字符清理和截断修复）────────────────────
 function cleanJSON(str) {
-  // 清理字符串值内的非法控制字符（换行、制表等）
   let result = '';
   let inString = false;
   let escape = false;
@@ -438,11 +189,9 @@ function cleanJSON(str) {
     if (ch === '\\') { escape = true; result += ch; continue; }
     if (ch === '"') { inString = !inString; result += ch; continue; }
     if (inString && code < 0x20) {
-      // 替换非法控制字符
-      if (code === 0x0A) { result += '\\n'; }
-      else if (code === 0x0D) { result += '\\r'; }
-      else if (code === 0x09) { result += '\\t'; }
-      // 其他控制字符直接跳过
+      if (code === 0x0A) result += '\\n';
+      else if (code === 0x0D) result += '\\r';
+      else if (code === 0x09) result += '\\t';
       continue;
     }
     result += ch;
@@ -450,98 +199,214 @@ function cleanJSON(str) {
   return result;
 }
 
-function parseJSON(raw) {
-  let jsonStr = raw.trim().replace(/^[^{]*/, '');
-  const s = jsonStr.indexOf('{');
+function parseJSON(raw, isArray = false) {
+  let jsonStr = raw.trim();
+  // 去掉 markdown 代码块
+  jsonStr = jsonStr.replace(/^```json\s*/i,'').replace(/^```\s*/i,'').replace(/```\s*$/i,'').trim();
+  // 找到 JSON 起点
+  const startChar = isArray ? '[' : '{';
+  const s = jsonStr.indexOf(startChar);
   if (s === -1) throw new Error('未找到JSON');
   jsonStr = cleanJSON(jsonStr.slice(s));
+
+  // 直接解析
   try {
-    const e = jsonStr.lastIndexOf('}');
+    const endChar = isArray ? ']' : '}';
+    const e = jsonStr.lastIndexOf(endChar);
     return JSON.parse(jsonStr.slice(0, e + 1));
   } catch(e1) {
-    console.log('  ⚠️  JSON不完整，尝试修复...');
-    for (let trim = 0; trim < 3000; trim += 5) {
+    // 截断修复
+    console.log('  ⚠️  JSON不完整，修复中...');
+    for (let trim = 0; trim < 3000; trim += 10) {
       const candidate = jsonStr.slice(0, jsonStr.length - trim);
       const opens = candidate.split('{').length - 1;
       const closes = candidate.split('}').length - 1;
-      const arrOpens = candidate.split('[').length - 1;
-      const arrCloses = candidate.split(']').length - 1;
-      if (opens >= closes && arrOpens >= arrCloses) {
-        const fixedStr = candidate + ']'.repeat(arrOpens - arrCloses) + '}'.repeat(opens - closes);
-        try { const r = JSON.parse(fixedStr); console.log('  ✅ 修复成功'); return r; } catch {}
+      const aOpens = candidate.split('[').length - 1;
+      const aCloses = candidate.split(']').length - 1;
+      if (opens >= closes && aOpens >= aCloses) {
+        const fixed = candidate + ']'.repeat(aOpens-aCloses) + '}'.repeat(opens-closes);
+        try { const r = JSON.parse(fixed); console.log('  ✅ 修复成功'); return r; } catch {}
       }
     }
     throw new Error('JSON修复失败: ' + e1.message);
   }
 }
 
-// ── JSON 数组解析 ────────────────────────────────────────────
-function parseJSONArray(raw) {
-  let jsonStr = raw.trim().replace(/^[^[{]*/, '');
-  // 如果是数组
-  if (jsonStr.startsWith('[')) {
-    try { return JSON.parse(jsonStr.slice(0, jsonStr.lastIndexOf(']') + 1)); } catch {}
-  }
-  // 如果包在对象里
-  const s = jsonStr.indexOf('[');
-  const e = jsonStr.lastIndexOf(']');
-  if (s !== -1) {
-    try { return JSON.parse(jsonStr.slice(s, e + 1)); } catch {}
-  }
-  return [];
+// ── 每日情报生成 ──────────────────────────────────────────────
+function generateDailyIntel(articles) {
+  const contextText = articles.slice(0, 35).map((r, i) => {
+    const content = r.body ? r.body.slice(0, 800) : r.snippet;
+    return `[${i+1}]【${r.queryLabel}】${r.title}\n📅 ${r.date||'近期'} | ${r.source}\n🔗 ${r.url}\n${content}`;
+  }).join('\n\n---\n\n');
+
+  const SYSTEM = `你是奢侈品行业市场情报分析师，有15年经验。
+每条情报必须极度具体：产品系列全名、具体城市/门店/平台、真实数字、涉及人物姓名。
+market_signal三层：①战略意图 ②竞品影响 ③可操作建议。
+next_move：预判品牌未来2-4周下一步，竞品应在哪里布防。
+严禁套话，只输出JSON。`;
+
+  const USER = `今天是${today}。
+
+以下是今日最新时尚行业资讯：
+
+${contextText}
+
+---
+
+输出每日情报JSON（只返回JSON）：
+
+{
+  "updated": "${today}",
+  "date_key": "${dateKey}",
+  "trend_forecast": [
+    {"title": "8字内趋势标题", "horizon": "近期 · 1–4周", "summary": "含具体品牌+事件+数据，2-3句", "signals": ["信号1","信号2","信号3"]},
+    {"title": "8字内趋势标题", "horizon": "中期 · 1–3个月", "summary": "2-3句", "signals": ["信号1","信号2","信号3"]},
+    {"title": "8字内趋势标题", "horizon": "长期 · 季度级", "summary": "2-3句", "signals": ["信号1","信号2","信号3"]}
+  ],
+  "items": [
+    {
+      "title": "品牌+具体事件15字内",
+      "brand": "品牌名",
+      "category": "营销动作",
+      "date": "具体日期",
+      "summary": "3-4句：产品系列名、城市/平台、数据、涉及人物、品牌意图",
+      "facts": [
+        {"label": "产品/活动", "value": "具体名称"},
+        {"label": "地点/平台", "value": "具体地点或平台"},
+        {"label": "数据", "value": "具体数字，无则填「暂无公开数据」"},
+        {"label": "核心差异", "value": "与以往或竞品的区别"}
+      ],
+      "market_signal": "①战略意图：[说明] ②竞品影响：[具体品牌受何影响] ③市场建议：[可执行建议]",
+      "next_move": "预判品牌未来2-4周下一步，竞品应在哪里布防，2-3句",
+      "source_url": "原文URL",
+      "source_name": "来源媒体",
+      "crisis_level": null
+    }
+  ]
 }
 
+规则：中国境内事件占70%以上，输出6-8条items，覆盖不同品牌，覆盖5个category（营销动作/社媒声量/渠道零售/危机舆情/趋势前瞻），危机舆情填crisis_level（轻微/中度/严重）。只返回JSON。`;
+
+  return callDS(SYSTEM, USER, 6000);
+}
+
+// ── 周期性趋势报告 ────────────────────────────────────────────
+function generatePeriodicReport(articles, period) {
+  const label = { weekly:'本周', monthly:'本月', quarterly:'本季度' }[period];
+
+  const contextText = articles.slice(0, 25).map((r, i) =>
+    `[${i+1}] ${r.title} | ${r.date||'近期'} | ${r.source}\n${r.snippet}`
+  ).join('\n\n');
+
+  const SYSTEM = `你是时尚行业战略顾问，专注消费者行为研究和市场传播分析。
+报告客观平衡，基于数据和事实，指出机会也指出风险，不做片面美化。只输出JSON。`;
+
+  const USER = `今天是${today}，请生成${label}时尚行业综合趋势报告。
+
+参考资讯：
+${contextText}
+
+---
+
+输出${label}趋势报告JSON（只返回JSON）：
+
+{
+  "period": "${period}",
+  "period_label": "${label}",
+  "generated_at": "${today}",
+
+  "executive_summary": "${label}最重要的3个结论，每个一句话，直接说核心发现，不要废话",
+
+  "pestel_scan": {
+    "political": "政策层：影响中国时尚行业的政策动向（关税、平台监管、进口政策等）",
+    "economic": "经济层：消费信心指数变化、奢品销售趋势、高净值人群财富变化、汇率影响",
+    "social": "社会文化层：本周期最显著的消费观念转变、审美趋势、代际消费差异",
+    "technological": "技术层：AI营销工具、直播电商、社交平台算法变化对品牌的实际影响",
+    "environmental": "ESG层：消费者对可持续奢品的真实行为（不是表态，是实际购买数据）",
+    "legal": "合规层：广告法、代言人风险、数据隐私对营销操作的具体约束"
+  },
+
+  "consumer_trends": {
+    "overall_sentiment": "整体消费情绪：本周期中国奢品/时尚消费者的整体心态，是扩张还是收缩？",
+    "z_gen": {
+      "key_shift": "Z世代本周期最显著的消费行为变化",
+      "what_they_want": "他们真正想要什么（不是品牌以为的，是实际搜索/购买/传播数据显示的）",
+      "what_brands_miss": "品牌普遍忽视的Z世代需求",
+      "platform_preference": "他们在哪个平台消费内容，偏好什么形式"
+    },
+    "hnw": {
+      "key_shift": "高净值人群本周期行为变化",
+      "scarcity_logic": "他们如何判断一个品牌是否还值得作为身份标签，标准在变吗",
+      "channel_preference": "线下旗舰 vs 私域 vs 限定活动，他们的渠道偏好如何演变",
+      "trust_drivers": "什么在驱动他们的购买决策，价格透明度/工艺叙事/文化资本？"
+    },
+    "new_middle": {
+      "key_shift": "新中产本周期行为变化",
+      "affordable_luxury": "哪些品类是他们的「入场券」，哪些已超出心理价位",
+      "value_logic": "在消费压力下，他们如何重新定义「值得买」",
+      "social_proof": "他们需要什么样的内容来justify自己的消费决定"
+    }
+  },
+
+  "social_media_ecosystem": {
+    "xiaohongshu": "小红书：时尚内容哪类在涨哪类在跌，算法偏好变化，品牌机会点",
+    "douyin": "抖音：品牌自播 vs KOL带货格局，什么品类直播ROI在提升",
+    "weibo": "微博：时尚话题舆情特征，什么类型事件容易引爆",
+    "overall_budget_shift": "综合建议：品牌内容预算在各平台如何重新分配才合理"
+  },
+
+  "market_dynamics": {
+    "rising_brands": "上升势头：声量/销售/话题度明显提升的品牌及核心原因",
+    "under_pressure": "承压品牌：有衰退信号的品牌及潜在原因（客观分析，不是唱衰）",
+    "positioning_shifts": "定位位移：哪些品牌在悄悄调整目标人群或价格带",
+    "cross_category": "跨品类竞争：非时尚品类在抢夺哪些时尚消费份额，威胁程度如何"
+  },
+
+  "actionable_recommendations": [
+    {"for": "奢品牌市场团队", "priority": "高", "action": "具体可执行建议，含时间节点"},
+    {"for": "国货新锐品牌", "priority": "高", "action": "具体建议"},
+    {"for": "PR/传播团队", "priority": "中", "action": "具体建议"}
+  ]
+}`;
+
+  return callDS(SYSTEM, USER, 6000);
+}
 
 // ── 主流程 ────────────────────────────────────────────────────
 async function main() {
   console.log(`\n🚀 时尚情报生成器 — ${today}`);
   console.log(`📅 周${['日','一','二','三','四','五','六'][dayOfWeek]} | 每月第${dayOfMonth}天`);
-  if (isMonday) console.log('📊 今日生成周度趋势报告');
-  if (isFirstOfMonth) console.log('📊 今日生成月度趋势报告');
-  if (isFirstOfQuarter) console.log('📊 今日生成季度趋势报告');
+  if (isMonday) console.log('📊 今日额外生成周度趋势报告');
+  if (isFirstOfMonth) console.log('📊 今日额外生成月度趋势报告');
+  if (isFirstOfQuarter) console.log('📊 今日额外生成季度趋势报告');
   console.log('');
 
   try {
     // 1. 搜索
-    const articles = await gatherIntel();
+    const extraQueries = isMonday ? [
+      { q: '中国奢侈品消费 趋势 本周', label: '周度消费趋势' },
+      { q: 'China luxury consumer trend weekly 2026', label: '周度英文趋势' }
+    ] : [];
+    const articles = await gatherIntel(extraQueries);
     if (articles.length < 3) throw new Error('搜索结果不足');
 
-    // 2. 每日情报 — 两阶段生成
-    console.log('\n🤖 Pass 1：生成精简情报列表...');
-    const pass1Raw = await callDeepSeekPass1(articles);
-    const data = parseJSON(pass1Raw);
+    // 2. 每日情报
+    console.log('\n🤖 生成每日情报...');
+    const dailyRaw = await generateDailyIntel(articles);
+    const data = parseJSON(dailyRaw);
     data.updated = data.updated || today;
     data.date_key = dateKey;
     if (!Array.isArray(data.trend_forecast)) data.trend_forecast = [];
     if (!Array.isArray(data.items)) data.items = [];
 
-    console.log(`\n🤖 Pass 2：深度分析 ${data.items.length} 条情报...`);
-    try {
-      const pass2Raw = await callDeepSeekPass2(data.items, articles);
-      const analyses = parseJSONArray(pass2Raw);
-      if (Array.isArray(analyses)) {
-        data.items.forEach((item, i) => {
-          if (analyses[i]) {
-            item.consumer_analysis = analyses[i].consumer_analysis || {};
-            item.marketing_analysis = analyses[i].marketing_analysis || {};
-            item.pr_analysis = analyses[i].pr_analysis || {};
-            item.next_move = analyses[i].next_move || '';
-          }
-        });
-        console.log('✅ 深度分析合并完成');
-      }
-    } catch(e2) {
-      console.log(`⚠️ 深度分析失败，使用基础情报: ${e2.message}`);
-    }
-
-    // 3. 周期性报告
+    // 3. 周期性报告（周/月/季）
     const periodicReports = {};
 
     if (isMonday) {
       console.log('\n📊 生成周度趋势报告...');
       try {
-        const weeklyRaw = await callDeepSeekPeriodic(articles, 'weekly');
-        periodicReports.weekly = parseJSON(weeklyRaw);
+        const raw = await generatePeriodicReport(articles, 'weekly');
+        periodicReports.weekly = parseJSON(raw);
         console.log('✅ 周度报告完成');
       } catch(e) { console.log(`⚠️ 周度报告失败: ${e.message}`); }
     }
@@ -549,13 +414,10 @@ async function main() {
     if (isFirstOfMonth) {
       console.log('\n📊 生成月度趋势报告...');
       try {
-        const monthlyRaw = await callDeepSeekPeriodic(articles, 'monthly');
-        periodicReports.monthly = parseJSON(monthlyRaw);
-        // 保存月度报告
-        fs.writeFileSync(
-          path.join('archive', `monthly-${dateKey.slice(0,7)}.json`),
-          JSON.stringify(periodicReports.monthly, null, 2), { encoding: 'utf8' }
-        );
+        const raw = await generatePeriodicReport(articles, 'monthly');
+        periodicReports.monthly = parseJSON(raw);
+        fs.writeFileSync(path.join('archive', `monthly-${dateKey.slice(0,7)}.json`),
+          JSON.stringify(periodicReports.monthly, null, 2), { encoding: 'utf8' });
         console.log('✅ 月度报告完成');
       } catch(e) { console.log(`⚠️ 月度报告失败: ${e.message}`); }
     }
@@ -563,50 +425,47 @@ async function main() {
     if (isFirstOfQuarter) {
       console.log('\n📊 生成季度趋势报告...');
       try {
-        const quarterlyRaw = await callDeepSeekPeriodic(articles, 'quarterly');
-        periodicReports.quarterly = parseJSON(quarterlyRaw);
-        fs.writeFileSync(
-          path.join('archive', `quarterly-${dateKey.slice(0,7)}.json`),
-          JSON.stringify(periodicReports.quarterly, null, 2), { encoding: 'utf8' }
-        );
+        const raw = await generatePeriodicReport(articles, 'quarterly');
+        periodicReports.quarterly = parseJSON(raw);
+        fs.writeFileSync(path.join('archive', `quarterly-${dateKey.slice(0,7)}.json`),
+          JSON.stringify(periodicReports.quarterly, null, 2), { encoding: 'utf8' });
         console.log('✅ 季度报告完成');
       } catch(e) { console.log(`⚠️ 季度报告失败: ${e.message}`); }
     }
 
-    // 合并周期报告到每日数据
     if (Object.keys(periodicReports).length > 0) {
       data.periodic_reports = periodicReports;
     }
 
     // 4. 写入文件
     fs.writeFileSync('news-data.json', JSON.stringify(data, null, 2), { encoding: 'utf8' });
-
-    const archivePath = path.join('archive', `${dateKey}.json`);
-    fs.writeFileSync(archivePath, JSON.stringify(data, null, 2), { encoding: 'utf8' });
+    fs.writeFileSync(path.join('archive', `${dateKey}.json`),
+      JSON.stringify(data, null, 2), { encoding: 'utf8' });
 
     // 更新归档索引
     const indexPath = 'archive/index.json';
-    let archiveIndex = [];
+    let idx = [];
     if (fs.existsSync(indexPath)) {
-      try { archiveIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8')); } catch {}
+      try { idx = JSON.parse(fs.readFileSync(indexPath, 'utf8')); } catch {}
     }
-    if (!archiveIndex.find(d => d.date_key === dateKey)) {
-      archiveIndex.unshift({
+    if (!idx.find(d => d.date_key === dateKey)) {
+      idx.unshift({
         date_key: dateKey, updated: today,
         count: data.items.length,
         has_weekly: !!periodicReports.weekly,
         has_monthly: !!periodicReports.monthly,
         has_quarterly: !!periodicReports.quarterly
       });
-      archiveIndex = archiveIndex.slice(0, 90);
-      fs.writeFileSync(indexPath, JSON.stringify(archiveIndex, null, 2), { encoding: 'utf8' });
+      idx = idx.slice(0, 90);
+      fs.writeFileSync(indexPath, JSON.stringify(idx, null, 2), { encoding: 'utf8' });
     }
 
     console.log(`\n✅ 完成`);
     console.log(`📊 趋势前瞻：${data.trend_forecast.length} 条`);
-    console.log(`📰 情报条目：${data.items.length} 条`);
+    console.log(`📰 情报条目：${data.items.length} 条\n`);
     data.items.forEach((item, i) => {
       console.log(`  ${i+1}. [${item.category}] ${item.brand} — ${item.title}`);
+      if (item.source_url) console.log(`      └ ${item.source_name} | ${item.source_url}`);
     });
     console.log('');
 
