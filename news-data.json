@@ -2,51 +2,51 @@
   "updated": "2026年5月16日",
   "trend_forecast": [
     {
-      "title": "秀场即媒体",
+      "title": "中国520消费变革",
       "horizon": "近期 · 1–4周",
-      "summary": "2026年巴黎时装周期间，Dior、Chanel和Louis Vuitton通过影响者营销创造了8.81亿美元的媒体价值，物理秀场仅是起点，数字传播成为驱动全球零售趋势的核心。",
+      "summary": "Jing Daily 2026年5月15日报道指出，中国520营销传统正在瓦解，从男性送礼转向自我犒赏、实用奢侈和情感体验。品牌需重新设计520 campaign，聚焦女性自我表达而非浪漫叙事。",
       "signals": [
-        "Dior、Chanel、Louis Vuitton在巴黎时装周2026中通过影响者营销驱动8.81亿美元媒体价值",
-        "品牌将秀场内容优先在社交媒体分发，而非仅依赖传统媒体",
-        "消费者决策受屏幕端内容影响超过实体秀场体验"
+        "Jing Daily 5月15日文章明确520规则已变，自购和体验消费崛起",
+        "Bain报告显示2025年中国个人奢侈品市场收缩3%-5%，消费者更注重价值与体验",
+        "Hurun调查显示中国高净值人群偏好文化体验旅行，而非传统硬奢"
       ]
     },
     {
-      "title": "中国本土品牌崛起",
+      "title": "体验式旗舰店竞争",
       "horizon": "中期 · 1–3个月",
-      "summary": "中国本土品牌Songmont和Anta通过结合高端美学与中国身份认同获得增长，Songmont在LVMH主席Bernard Arnault访问其上海门店后获得国际关注，显示中国奢侈品市场正经历结构性演变。",
+      "summary": "Louis Vuitton在上海开设约1600平方米旗舰店'The Louis'，形似品牌船舶，融合零售与文化体验。Luxury Tribune 5月7日报道指出，中国旗舰店正与博物馆、餐厅争夺消费者时间，品牌需超越欧洲传统门店模式。",
       "signals": [
-        "Songmont在Bernard Arnault访问后获得国际关注",
-        "中国消费者转向支持本土品牌，如Anta和Songmont",
-        "Bain指出中国已成为奢侈品市场基石，但消费正重新分配"
+        "Louis Vuitton上海'The Louis'旗舰店面积约1600平方米，设计独特",
+        "Balenciaga在香港旗舰店设立首个VIC私人预约区",
+        "Hermès在台北SOGO复兴店推出城市灵感零售概念"
       ]
     },
     {
-      "title": "腕表珠宝化趋势",
+      "title": "专业内容危机升级",
       "horizon": "长期 · 季度级",
-      "summary": "2026年Watches & Wonders展会上，Cartier推出Grain de Café系列珠宝腕表，Bvlgari在Serpenti Aeterna中融入彩色宝石，Chanel强化J12陶瓷腕表技术，显示奢侈腕表品牌正通过珠宝化设计吸引女性高净值客户。",
+      "summary": "2026奢侈品行业舆情白皮书揭示，B站鉴定博主拆解视频引发某腕表品牌系统性危机，视频72小时播放820万，微博话题阅读5亿，负面率飙升230%。传统公关手段在可视化证据前几乎无效。",
       "signals": [
-        "Cartier推出Grain de Café系列，采用钻石咖啡豆设计",
-        "Bvlgari在Serpenti Aeterna中融入彩色宝石",
-        "Chanel在2026年推出J12新款，强化陶瓷技术"
+        "B站百万粉丝博主拆解视频引发品牌机芯争议，播放量820万",
+        "微博话题阅读量突破5亿，负面率高于基线230%",
+        "白皮书提出PRISM风险预警框架，强调价格公平感知和渠道信任"
       ]
     }
   ],
   "items": [
     {
-      "title": "Dior冬季秀致敬Poiret",
-      "brand": "Dior",
+      "title": "LV任命奥运冠军刘娅莉为大使",
+      "brand": "Louis Vuitton",
       "category": "营销动作",
-      "date": "2026年5月16日",
-      "summary": "Dior在2026-2027冬季秀中，于30 Avenue Montaigne精品店前设置纪念牌致敬Paul Poiret，秀中重现Poiret的黄色连衣裙元素，模特发型采用亮黄色，系列融合飞行员夹克与锦缎斗篷，体现历史与现代的对话。",
+      "date": "2026年5月11日",
+      "summary": "Louis Vuitton于2026年5月宣布任命奥运金牌得主、花样滑冰运动员Alysa Liu（刘娅莉）为最新品牌大使。刘娅莉此前已出席LV 2026秋冬秀场前排，并在Vanity Fair奥斯卡派对等红毯场合多次穿着LV。此举延续品牌与体育明星的合作策略，强化年轻化与运动时尚关联。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "Dior Winter 2026-2027 Show"
+          "value": "品牌大使任命"
         },
         {
           "label": "地点/平台",
-          "value": "巴黎，30 Avenue Montaigne Dior精品店"
+          "value": "全球（官宣）"
         },
         {
           "label": "数据",
@@ -54,173 +54,173 @@
         },
         {
           "label": "核心差异",
-          "value": "首次在秀前设置纪念牌致敬Paul Poiret，将历史元素（黄色连衣裙）直接融入当代设计"
+          "value": "首次选择花样滑冰奥运冠军，区别于以往足球、网球等主流运动明星"
         }
       ],
-      "market_signal": "①战略意图：通过历史叙事强化Dior的法国高级定制正统性，差异化于Chanel和Louis Vuitton的现代主义路线。②竞品影响：对Chanel构成威胁，因Chanel同样依赖历史遗产但缺乏类似具体致敬事件。③市场建议：立即在社交媒体发布秀场幕后故事，突出Poiret与Dior的关联，抢占文化话语权。",
-      "source_url": "https://www.lvmh.com/en/news-lvmh/modern-day-flaneurs-at-dior-winter-2026-2027-show",
-      "source_name": "LVMH",
+      "market_signal": "①战略意图：通过非传统体育明星（花样滑冰）拓展年轻女性消费者，强化运动时尚与优雅并存的品牌形象。②竞品影响：对Dior、Chanel等依赖传统名人的品牌构成差异化竞争，尤其在冬奥会周期前抢占体育时尚话语权。③市场建议：建议竞品品牌关注2026年冬奥会相关运动员，提前布局代言或合作。",
+      "source_url": "https://www.thezoereport.com/fashion/may-2026-fashion-news",
+      "source_name": "The Zoe Report",
       "crisis_level": null
     },
     {
-      "title": "LVMH开放日回归",
-      "brand": "LVMH",
-      "category": "营销动作",
-      "date": "2026年5月16日",
-      "summary": "LVMH宣布第六届Les Journées Particulières开放日活动回归，时隔四年后再次举办，将开放旗下品牌工坊和总部，让公众参观，旨在增强品牌透明度和消费者忠诚度。",
+      "title": "积家新加坡ION新店开业",
+      "brand": "Jaeger-LeCoultre",
+      "category": "渠道零售",
+      "date": "2026年5月8日",
+      "summary": "积家于2026年5月8日在新加坡ION Orchard购物中心开设全新精品店。该店位于新加坡核心高端商圈，旨在加强品牌在东南亚市场的零售布局。同期，积家在2026年钟表与奇迹展上推出多款新品，包括Master Hybris Mechanica超薄三问陀飞轮腕表。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "Les Journées Particulières 2026"
+          "value": "ION Orchard精品店开业"
         },
         {
           "label": "地点/平台",
-          "value": "LVMH旗下全球品牌工坊和总部"
+          "value": "新加坡ION Orchard购物中心"
         },
         {
           "label": "数据",
-          "value": "第六届，距上一届间隔四年"
+          "value": "暂无公开数据"
         },
         {
           "label": "核心差异",
-          "value": "与Chanel和Kering相比，LVMH通过开放工坊强化工艺叙事，而非仅依赖产品发布"
+          "value": "选址新加坡顶级购物中心，强化东南亚高端零售网络"
         }
       ],
-      "market_signal": "①战略意图：通过工坊开放日强化LVMH集团的手工艺传承，提升品牌溢价能力，应对消费者对透明度的需求。②竞品影响：对Chanel和Hermès构成压力，因后者同样强调工艺但缺乏类似大规模公众活动。③市场建议：竞品应策划类似工坊参观或大师班，在社交媒体直播，以争夺消费者心智。",
-      "source_url": "https://wwd.com/fashion-news/fashion-scoops/lvmh-les-journees-particulieres-2026-dates-open-doors-event-1238926395/",
-      "source_name": "WWD",
+      "market_signal": "①战略意图：通过线下精品店深化东南亚市场渗透，与钟表展新品形成联动推广。②竞品影响：对同价位段竞品如朗格、宝玑构成渠道竞争，抢占高净值游客和本地消费者。③市场建议：建议竞品品牌评估新加坡核心商圈入驻机会，或加强现有门店体验服务。",
+      "source_url": "https://www.jaeger-lecoultre.com/sg-sc/news/watchmaking/watches-and-wonders-2026",
+      "source_name": "Jaeger-LeCoultre官网",
       "crisis_level": null
     },
     {
-      "title": "Dior成LVMH反弹关键",
-      "brand": "Dior",
+      "title": "中国二手奢侈品市场增长15-20%",
+      "brand": "行业整体",
       "category": "趋势前瞻",
-      "date": "2026年5月16日",
-      "summary": "HSBC报告指出，Dior是LVMH时装皮具部门的“关键牛市案例”，而Louis Vuitton是“关键熊市案例”，后者2026年预计仅增长2.5%。Dior的“重启”计划被视为LVMH反弹的核心驱动力。",
+      "date": "2026年5月（报告发布）",
+      "summary": "Bain & Company最新报告显示，2025年中国个人奢侈品市场收缩3%-5%，但二手奢侈品市场逆势增长15%-20%，目前规模仍不足一级市场的10%。消费者更注重价值驱动型奢侈品，偏好兼具品质、排他性和实用性的产品。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "Dior Reboot计划"
+          "value": "中国奢侈品市场报告"
         },
         {
           "label": "地点/平台",
-          "value": "全球"
+          "value": "中国全国"
         },
         {
           "label": "数据",
-          "value": "Louis Vuitton 2026年预计增长2.5%"
+          "value": "二手市场增长15%-20%，一级市场收缩3%-5%"
         },
         {
           "label": "核心差异",
-          "value": "HSBC明确将Dior定位为增长引擎，与Louis Vuitton的疲软形成对比"
+          "value": "二手市场增速远超一级市场，显示消费观念转变"
         }
       ],
-      "market_signal": "①战略意图：LVMH正将资源倾斜至Dior，通过Jonathan Anderson的创意领导推动品牌复兴。②竞品影响：对Gucci和Chanel构成威胁，因Dior的强势可能分流高端消费者。③市场建议：竞品应密切关注Dior的产品发布节奏，在Dior重启期间加大自身差异化营销，如Gucci可强调其意大利工艺。",
-      "source_url": "https://finance.yahoo.com/news/dior-reboot-seen-helping-lvmh-144704872.html",
-      "source_name": "Yahoo Finance",
+      "market_signal": "①战略意图：品牌需重视二手市场对品牌价值的双刃剑效应，可探索官方认证二手业务。②竞品影响：对硬奢品牌（腕表、珠宝）影响最大，二手渠道可能分流新品销售。③市场建议：建议品牌建立官方二手交易平台或认证体系，控制流通渠道并获取消费者数据。",
+      "source_url": "https://www.bain.com/about/media-center/press-releases/2026/chinas-personal-luxury-market-contracts-35-in-2025-but-shows-signs-of-recovery/",
+      "source_name": "Bain & Company",
       "crisis_level": null
     },
     {
-      "title": "Bottega Veneta新纪元",
-      "brand": "Bottega Veneta",
-      "category": "营销动作",
-      "date": "2026年5月16日",
-      "summary": "Bottega Veneta发布Summer 2026系列广告，由Juergen Teller在威尼斯拍摄，创意总监Louise Trotter的首次系列强调品牌根源，采用粗犷真实风格，展示优雅细节和强轮廓。",
+      "title": "B站鉴定视频引发腕表品牌危机",
+      "brand": "某腕表品牌（未具名）",
+      "category": "危机舆情",
+      "date": "2025年9月（事件发生）",
+      "summary": "2025年9月，B站百万粉丝腕表博主发布视频《我买了一块30万的表，但它用的不是你以为的机芯》，通过开盖实拍揭示某品牌中级价位腕表机芯与官方宣称不符。视频72小时播放820万，微博话题阅读5亿，品牌负面率飙升230%，且危机持续两个月未消退。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "Bottega Veneta Summer 2026 Campaign"
+          "value": "某品牌中级价位腕表机芯争议"
         },
         {
           "label": "地点/平台",
-          "value": "意大利威尼斯，多个城市地点"
+          "value": "B站、微博"
         },
         {
           "label": "数据",
-          "value": "暂无公开数据"
+          "value": "视频播放820万，微博话题阅读5亿，负面率升230%"
         },
         {
           "label": "核心差异",
-          "value": "回归品牌发源地威尼斯，与前任创意总监Daniel Lee的现代主义风格形成对比"
+          "value": "可视化证据使传统公关声明无效，危机持续时间长"
         }
       ],
-      "market_signal": "①战略意图：通过回归威尼斯和Juergen Teller的纪实摄影，重塑Bottega Veneta的工艺叙事，吸引成熟奢侈品消费者。②竞品影响：对Loewe和The Row构成威胁，因三者均强调极简和工艺。③市场建议：Loewe应强化其西班牙工艺故事，通过类似文化根源营销进行差异化。",
-      "source_url": "https://www.purseblog.com/bottega-veneta/bottega-veneta-unveils-a-look-at-its-summer-2026-collection/",
-      "source_name": "PurseBlog",
+      "market_signal": "①战略意图：品牌需建立产品透明度机制，主动披露供应链信息。②竞品影响：所有依赖代工或非自产机芯的腕表品牌均面临类似风险。③市场建议：建议品牌定期发布产品技术白皮书，并建立KOL监测与快速响应团队。",
+      "source_url": "https://knowlesys.cn/blog/white-papers/2026_luxury_whitepaper.html",
+      "source_name": "Knowlesys舆情白皮书",
+      "crisis_level": "严重"
+    },
+    {
+      "title": "LV上海旗舰店'The Louis'开业",
+      "brand": "Louis Vuitton",
+      "category": "渠道零售",
+      "date": "2026年5月7日",
+      "summary": "Louis Vuitton在上海开设约1600平方米旗舰店'The Louis'，设计形似品牌船舶，融合零售、文化与体验空间。Luxury Tribune报道指出，该店是中国市场最具标志性的旗舰店之一，旨在与博物馆、餐厅等竞争消费者时间。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "旗舰店'The Louis'"
+        },
+        {
+          "label": "地点/平台",
+          "value": "中国上海"
+        },
+        {
+          "label": "数据",
+          "value": "面积约1600平方米"
+        },
+        {
+          "label": "核心差异",
+          "value": "船舶造型设计，融合零售与文化体验，超越传统门店"
+        }
+      ],
+      "market_signal": "①战略意图：通过超大规模、独特设计的旗舰店强化品牌形象，吸引高净值消费者停留更长时间。②竞品影响：对Dior、Gucci等在上海的旗舰店构成直接竞争，提升行业体验标准。③市场建议：建议竞品品牌评估上海核心商圈门店体验升级计划，增加文化或艺术元素。",
+      "source_url": "https://www.luxurytribune.com/en/in-china-luxury-flagship-stores-are-making-the-experience-profitable",
+      "source_name": "Luxury Tribune",
       "crisis_level": null
     },
     {
-      "title": "小红书成奢品营销阵地",
-      "brand": "小红书",
+      "title": "中国520营销转向自购体验",
+      "brand": "行业整体",
       "category": "社媒声量",
-      "date": "2026年5月16日",
-      "summary": "小红书在巴黎举办“中国奢侈品数字化创新峰会”，其时尚内容负责人梦寒表示平台UGC内容赋能品牌实现商业转化，商业化负责人轻尘强调小红书是高净值用户聚集地，通过“种草型内容”和“买手型直播”驱动奢侈品销售。",
+      "date": "2026年5月15日",
+      "summary": "Jing Daily 5月15日文章指出，中国520营销传统规则已彻底改变，男性送礼模式式微，自我犒赏、实用奢侈品和情感体验消费崛起。品牌需重新设计520 campaign，聚焦女性自我表达和个性化体验。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "中国奢侈品数字化创新峰会"
+          "value": "520营销趋势变化"
         },
         {
           "label": "地点/平台",
-          "value": "巴黎，小红书平台"
+          "value": "中国全渠道"
         },
         {
           "label": "数据",
-          "value": "小红书月活用户超2.6亿，时尚相关搜索55%为品类关键词"
+          "value": "暂无公开数据"
         },
         {
           "label": "核心差异",
-          "value": "与抖音和微信相比，小红书强调UGC种草和买手直播，而非纯流量驱动"
+          "value": "从男性送礼转向女性自购，强调情感体验而非浪漫叙事"
         }
       ],
-      "market_signal": "①战略意图：小红书正从内容社区转型为奢侈品营销基础设施，通过数据工具（如聚光平台）争夺品牌预算。②竞品影响：对抖音和微信构成威胁，因小红书在高净值用户中的渗透率更高。③市场建议：奢侈品牌应立即增加小红书预算，重点投放买手直播和品类关键词搜索广告。",
-      "source_url": "https://www.ellechina.com/fashion/news/a43456040/16801120782/",
-      "source_name": "ELLE China",
+      "market_signal": "①战略意图：品牌需调整520营销策略，从情侣叙事转向女性自我犒赏和实用价值。②竞品影响：对传统依赖520送礼营销的品牌（如珠宝、腕表）构成挑战，需快速调整内容。③市场建议：建议品牌在520期间推出'自购礼盒'或'体验套餐'，并加强小红书等平台女性自购内容种草。",
+      "source_url": "https://jingdaily.com/china-luxury-news",
+      "source_name": "Jing Daily",
       "crisis_level": null
     },
     {
-      "title": "中国奢侈品市场反弹",
-      "brand": "LVMH",
-      "category": "趋势前瞻",
-      "date": "2026年5月16日",
-      "summary": "Bain和多家机构预测中国奢侈品市场2026年将反弹，富裕消费者支出增加，但中产阶级更谨慎。Louis Vuitton在上海开设船形文化零售地标，显示品牌对中国市场的长期承诺。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "中国奢侈品市场反弹预测"
-        },
-        {
-          "label": "地点/平台",
-          "value": "中国，上海Louis Vuitton文化零售地标"
-        },
-        {
-          "label": "数据",
-          "value": "Bain称中国为奢侈品市场基石，2026年预计反弹"
-        },
-        {
-          "label": "核心差异",
-          "value": "消费从大众转向富裕阶层，品牌需聚焦核心VIP而非广泛营销"
-        }
-      ],
-      "market_signal": "①战略意图：品牌需调整中国策略，从大众营销转向高净值客户维护，如Louis Vuitton的沉浸式零售。②竞品影响：对Gucci和Prada构成机会，若它们能快速适应富裕消费者需求。③市场建议：立即建立VIP客户数据库，提供独家体验和定制服务，如私人预览和工坊参观。",
-      "source_url": "https://finance.yahoo.com/news/china-luxury-market-set-rebound-123128666.html",
-      "source_name": "Yahoo Finance",
-      "crisis_level": null
-    },
-    {
-      "title": "Chanel Cruise秀在Biarritz",
-      "brand": "Chanel",
+      "title": "积家发布101 Secrets神秘腕表",
+      "brand": "Jaeger-LeCoultre",
       "category": "营销动作",
-      "date": "2026年4月28日",
-      "summary": "Chanel在法国Biarritz举办Cruise 2026/27系列秀，展示超大沙滩包趋势，同时宣布下一届Métiers d'Art秀将在罗马举行，延续其全球目的地策略。",
+      "date": "2026年5月（钟表展期间）",
+      "summary": "积家在2026年钟表与奇迹展上推出101 Secrets神秘腕表及101 Bangles腕表，采用101型机芯，设计灵感源自装饰艺术风格。神秘腕表通过隐藏按钮显示时间，表盘为红色漆面，镶嵌多排钻石，定位高级珠宝时计。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "Chanel Cruise 2026/27 Show"
+          "value": "101 Secrets神秘腕表与101 Bangles腕表"
         },
         {
           "label": "地点/平台",
-          "value": "法国Biarritz"
+          "value": "日内瓦钟表与奇迹展"
         },
         {
           "label": "数据",
@@ -228,28 +228,28 @@
         },
         {
           "label": "核心差异",
-          "value": "Biarritz秀强调度假场景，与Dior的巴黎历史叙事形成对比"
+          "value": "隐藏式时间显示设计，结合高级珠宝与复杂机芯"
         }
       ],
-      "market_signal": "①战略意图：通过目的地秀强化Chanel的旅行生活方式定位，吸引高净值度假消费者。②竞品影响：对Dior和Louis Vuitton构成威胁，因三者均争夺度假市场。③市场建议：Dior可考虑在Saint-Tropez或Capri举办类似活动，以差异化竞争。",
-      "source_url": "https://wwd.com/fashion-news/fashion-scoops/lvmh-les-journees-particulieres-2026-dates-open-doors-event-1238926395/",
-      "source_name": "WWD",
+      "market_signal": "①战略意图：通过高级珠宝腕表提升品牌在女性高端市场的定位，与卡地亚、梵克雅宝竞争。②竞品影响：对卡地亚神秘腕表系列构成直接竞争，强化积家在复杂机芯与珠宝结合领域的优势。③市场建议：建议竞品品牌关注女性复杂功能腕表需求，推出类似隐藏式或可转换设计。",
+      "source_url": "https://www.jaeger-lecoultre.com/sg-sc/news/watchmaking/101-secrets-101-bangles",
+      "source_name": "Jaeger-LeCoultre官网",
       "crisis_level": null
     },
     {
-      "title": "Cartier推Grain de Café腕表",
-      "brand": "Cartier",
+      "title": "中国高净值人群转向体验消费",
+      "brand": "行业整体",
       "category": "趋势前瞻",
-      "date": "2026年5月16日",
-      "summary": "Cartier在Watches & Wonders 2026推出Grain de Café系列腕表，灵感来自1930年代设计，采用钻石咖啡豆造型，由Grace Kelly在1950年代推广，2023年首次复兴后再次升级。",
+      "date": "2026年5月（报告发布）",
+      "summary": "Jing Daily援引胡润奢侈品消费者调查显示，中国高净值人群正从传统硬奢（如劳力士）转向文化丰富的旅行体验。品牌需重新定义'奢侈'，从物质拥有转向精神体验和个性化服务。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "Cartier Grain de Café系列腕表"
+          "value": "胡润中国高净值人群消费趋势调查"
         },
         {
           "label": "地点/平台",
-          "value": "Watches & Wonders 2026，日内瓦"
+          "value": "中国全国"
         },
         {
           "label": "数据",
@@ -257,70 +257,12 @@
         },
         {
           "label": "核心差异",
-          "value": "将历史珠宝元素（咖啡豆）转化为腕表设计，与Bvlgari的彩色宝石策略形成对比"
+          "value": "高净值人群偏好从物质奢侈品转向文化体验旅行"
         }
       ],
-      "market_signal": "①战略意图：通过复兴历史系列吸引女性收藏家，强化Cartier在珠宝腕表领域的领导地位。②竞品影响：对Bvlgari和Chanel构成威胁，因三者均争夺女性高端腕表市场。③市场建议：Bvlgari应加速推出Serpenti Aeterna的限量版，强调彩色宝石的独特性。",
-      "source_url": "https://www.vogue.com/article/the-state-of-watches-in-2026",
-      "source_name": "Vogue",
-      "crisis_level": null
-    },
-    {
-      "title": "LVMH Prize评委阵容揭晓",
-      "brand": "LVMH",
-      "category": "营销动作",
-      "date": "2026年5月16日",
-      "summary": "2026年LVMH Prize第13届评委名单公布，包括Dior创意总监Jonathan Anderson、Givenchy的Sarah Burton、Fendi的Maria Grazia Chiuri、Louis Vuitton的Nicolas Ghesquière等，显示LVMH集团内部创意领袖的深度参与。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "2026 LVMH Prize for Young Fashion Designers 13th Edition"
-        },
-        {
-          "label": "地点/平台",
-          "value": "巴黎"
-        },
-        {
-          "label": "数据",
-          "value": "第13届，评委包括8位LVMH旗下品牌创意总监"
-        },
-        {
-          "label": "核心差异",
-          "value": "评委阵容涵盖Dior、Givenchy、Fendi、Louis Vuitton等，显示集团对年轻人才的系统性投资"
-        }
-      ],
-      "market_signal": "①战略意图：通过LVMH Prize发掘并绑定新兴设计师，为集团未来创意储备人才，同时提升品牌形象。②竞品影响：对Kering和Chanel构成压力，因LVMH在人才争夺中占据先机。③市场建议：Kering应加强其类似计划（如Kering Award），或与顶级设计学校合作，以抗衡LVMH的人才网络。",
-      "source_url": "https://www.lvmh.com/en/news-lvmh/2026-lvmh-prize-for-young-fashion-designers-13th-edition",
-      "source_name": "LVMH",
-      "crisis_level": null
-    },
-    {
-      "title": "Champion联名丁禹兮",
-      "brand": "Champion",
-      "category": "社媒声量",
-      "date": "2026年5月16日",
-      "summary": "Champion在中国市场与代言人丁禹兮推出联名系列，包括“小茄紫T恤”和“冠贝鞋”，通过抖音和Instagram直播首发，利用明星效应驱动年轻消费者购买。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "Champion X 丁禹兮联名系列"
-        },
-        {
-          "label": "地点/平台",
-          "value": "抖音官方直播间、Instagram"
-        },
-        {
-          "label": "数据",
-          "value": "暂无公开数据"
-        },
-        {
-          "label": "核心差异",
-          "value": "与奢侈品牌不同，Champion通过明星联名和直播直接转化销售，而非品牌叙事"
-        }
-      ],
-      "market_signal": "①战略意图：通过本土明星联名和直播电商，Champion在中国市场实现快速渗透，对抗Nike和Adidas。②竞品影响：对Nike和Adidas构成威胁，因Champion以更低价格和明星效应吸引Z世代。③市场建议：奢侈品牌可借鉴此模式，与本土KOL推出限量联名，在抖音直播首发，但需保持品牌调性。",
-      "source_url": "https://www.instagram.com/reel/DXRSy45EoNh/",
-      "source_name": "Instagram",
+      "market_signal": "①战略意图：品牌需开发体验式产品和服务，如定制旅行、文化工坊等，以吸引高净值客户。②竞品影响：对硬奢品牌（腕表、珠宝）构成长期挑战，需加强品牌故事和体验营销。③市场建议：建议品牌与高端旅行社或文化机构合作，推出联名体验项目，如腕表工坊参观、私人博物馆导览。",
+      "source_url": "https://jingdaily.com/posts/chinese-hnwi-trends-2025-hurun-luxury-consumer-survey",
+      "source_name": "Jing Daily",
       "crisis_level": null
     }
   ]
