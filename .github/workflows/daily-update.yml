@@ -20,7 +20,7 @@ jobs:
           node-version: '20'
       - name: 抓取今日时尚情报
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node generate.js
       - name: 提交并推送
         run: |
