@@ -21,7 +21,6 @@ jobs:
       - name: 抓取今日时尚情报
         env:
           DS_API_KEY: ${{ secrets.DS_API_KEY }}
-          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         run: node generate.js
       - name: 提交并推送
         run: |
