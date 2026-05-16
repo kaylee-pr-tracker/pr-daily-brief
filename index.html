@@ -145,6 +145,19 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang 
 .state-empty p{font-size:12px;color:var(--ink-4);line-height:1.9;}
 .hidden{display:none;}
 
+/* ── DEEP ANALYSIS BLOCKS ── */
+.dp-wrapper{border-top:1px solid var(--rule-light);padding-top:0.9rem;margin-top:0.2rem;display:flex;flex-direction:column;gap:0.6rem;}
+.dp-block{padding:0.9rem 1rem;}
+.dp-mkt{background:#EBF0F7;border:1px solid #B8CCD8;}
+.dp-pr{background:#F5EBF2;border:1px solid #D4B8CC;}
+.dp-title{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.65rem;font-weight:400;}
+.dp-title-mkt{color:#1A3A5C;}
+.dp-title-pr{color:#4A1A3A;}
+.dp-row{margin-bottom:0.45rem;}
+.dp-key{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-3);margin-bottom:2px;}
+.dp-val{font-size:11px;color:var(--ink-2);line-height:1.65;}
+.dp-opportunity{background:rgba(255,255,255,0.6);border-left:2px solid var(--gold);padding:0.4rem 0.6rem;font-style:italic;}
+
 @media(max-width:800px){
   .forecast-grid,.cards-grid,.report-grid-3,.report-grid-2{grid-template-columns:1fr;}
   .stats-row{grid-template-columns:repeat(3,1fr);}
@@ -208,7 +221,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang 
 <div id="tab-quarterly" class="hidden report-body"></div>
 
 <footer class="foot">
-  <span>时尚情报 · Fashion Intelligence Brief</span>
+  <span>Fashion News · Fashion Intelligence Brief</span>
   <span id="footer-ts">--</span>
 </footer>
 
@@ -331,11 +344,60 @@ function renderDaily(data){
         <div class="next-text">${item.next_move}</div>
       </div>`:''}
       ${srcHtml}
+      ${renderMarketingPR(item)}
     </div>`;
   });
 
   html+=`</div>`;
   document.getElementById('main-content').innerHTML=html;
+}
+
+// ── Marketing + PR 分析渲染 ─────────────────────────────────
+function renderMarketingPR(item) {
+  const ma = item.marketing_analysis || {};
+  const pa = item.pr_analysis || {};
+  if (!ma.strategy && !pa.narrative) return '';
+
+  const MKT_FIELDS = [
+    ['target_audience','目标受众'],
+    ['4p_focus','4P发力点'],
+    ['strategy','创意策略'],
+    ['channel_logic','渠道逻辑'],
+    ['roi_measure','效果衡量'],
+    ['market_opportunity','潜在市场机会']
+  ];
+  const PR_FIELDS = [
+    ['narrative','品牌叙事'],
+    ['media_reach','媒体传播'],
+    ['risk_points','舆情风险'],
+    ['crisis_protocol','危机预案'],
+    ['pr_opportunity','PR机会点']
+  ];
+
+  const mktRows = MKT_FIELDS.filter(([k])=>ma[k]).map(([k,l])=>`
+    <div class="dp-row">
+      <div class="dp-key">${l}</div>
+      <div class="dp-val ${k==='market_opportunity'?'dp-opportunity':''}">${ma[k]}</div>
+    </div>`).join('');
+
+  const prRows = PR_FIELDS.filter(([k])=>pa[k]).map(([k,l])=>`
+    <div class="dp-row">
+      <div class="dp-key">${l}</div>
+      <div class="dp-val ${k==='pr_opportunity'?'dp-opportunity':''}">${pa[k]}</div>
+    </div>`).join('');
+
+  if (!mktRows && !prRows) return '';
+
+  return `<div class="dp-wrapper">
+    ${mktRows?`<div class="dp-block dp-mkt">
+      <div class="dp-title dp-title-mkt">Marketing 分析</div>
+      ${mktRows}
+    </div>`:''}
+    ${prRows?`<div class="dp-block dp-pr">
+      <div class="dp-title dp-title-pr">PR 分析</div>
+      ${prRows}
+    </div>`:''}
+  </div>`;
 }
 
 // ── 周期报告渲染 ──────────────────────────────────────────────
