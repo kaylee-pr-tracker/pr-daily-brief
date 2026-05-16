@@ -273,7 +273,7 @@ ${contextText}
       model: 'deepseek-chat',
       messages: [{ role: 'system', content: SYSTEM }, { role: 'user', content: USER }],
       temperature: 0.2,
-      max_tokens: 12000
+      max_tokens: 7000
     });
     const req = https.request({
       hostname: 'api.deepseek.com', path: '/chat/completions',
@@ -425,14 +425,30 @@ ${contextText}
   });
 }
 
-// ── JSON 解析工具 ─────────────────────────────────────────────
+// ── JSON 解析工具（带截断修复）────────────────────────────────
 function parseJSON(raw) {
-  let jsonStr = raw.trim()
-    .replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
+  let jsonStr = raw.trim().replace(/^[^{]*/,'');
   const s = jsonStr.indexOf('{');
-  const e = jsonStr.lastIndexOf('}');
-  if (s === -1) throw new Error(`未找到JSON\n原始:\n${raw.slice(0, 500)}`);
-  return JSON.parse(jsonStr.slice(s, e + 1));
+  if (s === -1) throw new Error('未找到JSON');
+  jsonStr = jsonStr.slice(s);
+  try {
+    const e = jsonStr.lastIndexOf('}');
+    return JSON.parse(jsonStr.slice(0, e + 1));
+  } catch(e1) {
+    console.log('  ⚠️  JSON不完整，尝试修复...');
+    for (let trim = 0; trim < 3000; trim += 5) {
+      const candidate = jsonStr.slice(0, jsonStr.length - trim);
+      const opens = (candidate.split('{').length - 1);
+      const closes = (candidate.split('}').length - 1);
+      const arrOpens = (candidate.split('[').length - 1);
+      const arrCloses = (candidate.split(']').length - 1);
+      if (opens >= closes && arrOpens >= arrCloses) {
+        const fixedStr = candidate + ']'.repeat(arrOpens-arrCloses) + '}'.repeat(opens-closes);
+        try { const r = JSON.parse(fixedStr); console.log('  ✅ 修复成功'); return r; } catch {}
+      }
+    }
+    throw new Error('JSON修复失败: ' + e1.message);
+  }
 }
 
 // ── 主流程 ────────────────────────────────────────────────────
