@@ -20,7 +20,7 @@ jobs:
           node-version: '20'
       - name: 抓取今日时尚情报
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: node generate.js
       - name: 提交并推送
         run: |
