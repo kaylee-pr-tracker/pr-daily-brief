@@ -17,6 +17,9 @@
   --rule: #D8D2CA;
   --rule-light: #E8E2DA;
   --gold: #7A6E62;
+  --next: #2A4A3A;
+  --next-bg: #EEF4F0;
+  --next-rule: #C0D4C8;
   --cat-m-border: #B8C4D4; --cat-m-text: #4A5E88;
   --cat-s-border: #D4B8D0; --cat-s-text: #785870;
   --cat-r-border: #B8D4C0; --cat-r-text: #486A52;
@@ -27,12 +30,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.7; min-height: 100vh; }
 
-/* MASTHEAD */
 .mast { padding: 2.4rem 2.4rem 0; border-bottom: 1px solid var(--rule); }
 .mast-eyebrow { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2rem; }
 .mast-center { text-align: center; padding-bottom: 1.6rem; }
 .mast-title { font-family: 'Cormorant', serif; font-size: 3.6rem; font-weight: 300; letter-spacing: 0.18em; color: var(--ink); line-height: 1; }
-.mast-title em { font-style: italic; font-weight: 300; color: var(--gold); }
+.mast-title em { font-style: italic; color: var(--gold); }
 .mast-ornament { display: flex; align-items: center; gap: 1rem; margin: 1rem auto; width: 200px; }
 .mast-ornament-line { flex: 1; height: 1px; background: var(--rule); }
 .mast-ornament-dot { width: 4px; height: 4px; background: var(--ink-3); border-radius: 50%; }
@@ -40,32 +42,27 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
 .mast-nav { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-4); }
 .nav-items { display: flex; gap: 1.8rem; }
 
-/* BODY */
 .body { padding: 2rem 2.4rem; }
 
-/* STATS */
-.stats-row { display: grid; grid-template-columns: repeat(5, 1fr); margin-bottom: 2.4rem; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.stats-row { display: grid; grid-template-columns: repeat(5,1fr); margin-bottom: 2.4rem; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
 .stat { padding: 1.2rem 0.6rem; text-align: center; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .stat-n { font-family: 'Cormorant', serif; font-size: 2.4rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 4px; }
 .stat-l { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
 
-/* SECTION HEADING */
 .sec-h { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.4rem; }
 .sec-h-line { flex: 1; height: 1px; background: var(--rule); }
 .sec-h-text { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
 
-/* FORECAST */
-.forecast-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); margin-bottom: 2.4rem; }
+.forecast-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); margin-bottom: 2.4rem; }
 .fc { padding: 1.6rem 1.4rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .fc-horizon { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.6rem; }
 .fc-title { font-family: 'Cormorant', serif; font-size: 1.4rem; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 0.7rem; }
-.fc-body { font-size: 12px; font-weight: 300; color: var(--ink-2); line-height: 1.85; margin-bottom: 0.9rem; }
+.fc-body { font-size: 12px; color: var(--ink-2); line-height: 1.85; margin-bottom: 0.9rem; }
 .fc-signals { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-.fc-sig { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); border: 1px solid var(--rule); padding: 2px 8px; letter-spacing: 0.04em; }
+.fc-sig { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); border: 1px solid var(--rule); padding: 2px 8px; }
 
-/* INTEL CARDS */
 .cards-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
-.icard { padding: 1.6rem 1.6rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.icard { padding: 1.6rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .icard.crisis { border-top: 2px solid var(--crisis); }
 
 .cmeta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
@@ -77,31 +74,34 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
 .ctag-t { border-color: var(--cat-t-border); color: var(--cat-t-text); }
 .bpill { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); padding: 2px 8px; border: 1px solid var(--rule); }
 .cdt { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-4); margin-left: auto; }
-.clv { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--crisis); letter-spacing: 0.08em; }
+.clv { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--crisis); }
 
 .ctitle { font-family: 'Cormorant', serif; font-size: 1.25rem; font-weight: 400; color: var(--ink); line-height: 1.4; margin-bottom: 0.6rem; }
-.cbody { font-size: 12px; font-weight: 300; color: var(--ink-2); line-height: 1.9; margin-bottom: 1rem; }
+.cbody { font-size: 12px; color: var(--ink-2); line-height: 1.9; margin-bottom: 1rem; }
 
 .facts { border-top: 1px solid var(--rule-light); padding-top: 0.85rem; margin-bottom: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; }
 .fact { display: flex; gap: 0.8rem; }
-.fk { font-family: 'DM Mono', monospace; font-size: 8px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-4); min-width: 52px; flex-shrink: 0; padding-top: 2px; line-height: 1.6; }
-.fv { font-size: 12px; color: var(--ink-2); line-height: 1.7; font-weight: 300; }
+.fk { font-family: 'DM Mono', monospace; font-size: 8px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-4); min-width: 52px; flex-shrink: 0; padding-top: 2px; }
+.fv { font-size: 12px; color: var(--ink-2); line-height: 1.7; }
 
-.msig { display: flex; gap: 0.8rem; align-items: flex-start; border-top: 1px solid var(--rule-light); padding-top: 0.85rem; margin-bottom: 0.8rem; }
+.msig { display: flex; gap: 0.8rem; align-items: flex-start; border-top: 1px solid var(--rule-light); padding-top: 0.85rem; margin-bottom: 0.75rem; }
 .ms-l { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; padding-top: 2px; flex-shrink: 0; }
-.ms-t { font-size: 12px; color: var(--ink-2); line-height: 1.8; font-style: italic; font-weight: 300; }
+.ms-t { font-size: 12px; color: var(--ink-2); line-height: 1.8; font-style: italic; }
 
-/* SOURCE */
+/* next_move — 核心新增模块 */
+.next-move { background: var(--next-bg); border: 1px solid var(--next-rule); border-left: 3px solid var(--next); padding: 0.9rem 1rem; margin-bottom: 0.8rem; }
+.next-label { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--next); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
+.next-label::before { content: '→'; }
+.next-text { font-size: 12px; color: #2A4A3A; line-height: 1.75; }
+
 .source-row { display: flex; align-items: center; gap: 0.5rem; padding-top: 0.65rem; border-top: 1px solid var(--rule-light); overflow: hidden; }
 .source-icon { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.1em; flex-shrink: 0; }
 .source-name { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-4); flex-shrink: 0; }
-.source-link { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); text-decoration: none; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid var(--rule-light); transition: color 0.15s, border-color 0.15s; }
-.source-link:hover { color: var(--ink); border-color: var(--ink-3); }
+.source-link { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid var(--rule-light); transition: color 0.15s; }
+.source-link:hover { color: var(--ink); }
 
-/* FOOTER */
 .foot { border-top: 1px solid var(--rule); padding: 1rem 2.4rem; display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-4); }
 
-/* EMPTY STATE */
 .state-empty { text-align: center; padding: 5rem 2rem; }
 .state-empty h2 { font-family: 'Cormorant', serif; font-size: 1.6rem; font-weight: 300; color: var(--ink-3); margin-bottom: 0.75rem; }
 .state-empty p { font-size: 12px; color: var(--ink-4); line-height: 1.9; }
@@ -109,10 +109,10 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
 
 @media (max-width: 800px) {
   .forecast-grid, .cards-grid { grid-template-columns: 1fr; }
-  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .stats-row { grid-template-columns: repeat(3,1fr); }
   .mast, .body { padding-left: 1.2rem; padding-right: 1.2rem; }
-  .mast-nav { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  .foot { flex-direction: column; gap: 0.4rem; padding-left: 1.2rem; padding-right: 1.2rem; }
+  .mast-nav { flex-direction: column; gap: 0.5rem; }
+  .foot { flex-direction: column; gap: 0.4rem; padding-left: 1.2rem; }
 }
 </style>
 </head>
@@ -134,11 +134,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
   </div>
   <div class="mast-nav">
     <div class="nav-items">
-      <span>营销动作</span>
-      <span>社媒声量</span>
-      <span>渠道零售</span>
-      <span>危机舆情</span>
-      <span>趋势前瞻</span>
+      <span>营销动作</span><span>社媒声量</span><span>渠道零售</span><span>危机舆情</span><span>趋势前瞻</span>
     </div>
     <span>LVMH · 历峰 · 开云 · CHANEL · 爱马仕 · 观夏 · 山下有松 · 精选品牌</span>
   </div>
@@ -148,8 +144,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
   <div id="main-content">
     <div class="state-empty">
       <h2>等待今日情报</h2>
-      <p>首次运行请执行 <code>node generate.js</code><br>
-      或等待 GitHub Actions 每日 08:00 自动更新</p>
+      <p>首次运行请执行 <code>node generate.js</code><br>或等待 GitHub Actions 每日 08:00 自动更新</p>
     </div>
   </div>
 </main>
@@ -160,50 +155,40 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
 </footer>
 
 <script>
-// 分类映射 — 同时覆盖中文全称和可能的缩写/变体
 const CAT_MAP = {
-  '营销动作': 'm', '营销': 'm', 'campaign': 'm', 'marketing': 'm',
-  '社媒声量': 's', '社媒': 's', 'social': 's',
-  '渠道零售': 'r', '渠道': 'r', '零售': 'r', 'retail': 'r',
-  '危机舆情': 'c', '危机': 'c', '舆情': 'c', 'crisis': 'c',
-  '趋势前瞻': 't', '趋势': 't', 'trend': 't'
+  '营销动作':'m','营销':'m','campaign':'m',
+  '社媒声量':'s','社媒':'s','social':'s',
+  '渠道零售':'r','渠道':'r','零售':'r','retail':'r',
+  '危机舆情':'c','危机':'c','舆情':'c','crisis':'c',
+  '趋势前瞻':'t','趋势':'t','trend':'t'
 };
 const CATS = ['营销动作','社媒声量','渠道零售','危机舆情','趋势前瞻'];
 
-function getCatKey(category) {
-  if (!category) return 't';
-  const lower = category.trim().toLowerCase();
-  // 精确匹配
-  if (CAT_MAP[category.trim()]) return CAT_MAP[category.trim()];
-  // 模糊匹配
-  for (const [key, val] of Object.entries(CAT_MAP)) {
-    if (lower.includes(key.toLowerCase()) || key.toLowerCase().includes(lower)) return val;
+function getCatKey(cat) {
+  if (!cat) return 't';
+  if (CAT_MAP[cat.trim()]) return CAT_MAP[cat.trim()];
+  const lower = cat.toLowerCase();
+  for (const [k,v] of Object.entries(CAT_MAP)) {
+    if (lower.includes(k.toLowerCase())) return v;
   }
   return 't';
 }
 
-function normalizeCat(category) {
-  if (!category) return '趋势前瞻';
-  const ck = getCatKey(category);
-  const reverse = { 'm':'营销动作', 's':'社媒声量', 'r':'渠道零售', 'c':'危机舆情', 't':'趋势前瞻' };
-  return reverse[ck];
+function normCat(cat) {
+  const k = getCatKey(cat);
+  return { m:'营销动作',s:'社媒声量',r:'渠道零售',c:'危机舆情',t:'趋势前瞻' }[k];
 }
 
 document.getElementById('issue-date').textContent =
   new Date().toLocaleDateString('zh-CN', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
 
-fetch('news-data.json?t=' + Date.now())
-  .then(r => r.json())
-  .then(render)
-  .catch(() => {});
+fetch('news-data.json?t=' + Date.now()).then(r => r.json()).then(render).catch(() => {});
 
 function render(data) {
   if (!data?.items?.length) return;
   const { items, trend_forecast, updated } = data;
 
-  // 标准化所有 category
-  items.forEach(item => { item._cat = normalizeCat(item.category); });
-
+  items.forEach(item => { item._cat = normCat(item.category); });
   document.getElementById('footer-ts').textContent = '最后更新 · ' + (updated || '--') + ' · 由 AI 生成';
 
   const counts = {};
@@ -219,52 +204,52 @@ function render(data) {
       <div class="stat-l">${c}</div>
     </div>`).join('')}</div>`;
 
-  // trend forecast
+  // forecast
   if (trend_forecast?.length) {
     html += `<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">趋势前瞻 · Trend Forecast</div><div class="sec-h-line"></div></div>`;
     html += `<div class="forecast-grid">${trend_forecast.map(t => `
       <div class="fc">
-        <div class="fc-horizon">${t.horizon || ''}</div>
-        <div class="fc-title">${t.title || ''}</div>
-        <div class="fc-body">${t.summary || ''}</div>
-        <div class="fc-signals">${(t.signals || []).map(s => `<span class="fc-sig">${s}</span>`).join('')}</div>
-      </div>`).join('')}
-    </div>`;
+        <div class="fc-horizon">${t.horizon||''}</div>
+        <div class="fc-title">${t.title||''}</div>
+        <div class="fc-body">${t.summary||''}</div>
+        <div class="fc-signals">${(t.signals||[]).map(s=>`<span class="fc-sig">${s}</span>`).join('')}</div>
+      </div>`).join('')}</div>`;
   }
 
-  // intel cards
+  // cards
   html += `<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">今日情报 · Intelligence Feed</div><div class="sec-h-line"></div></div>`;
   html += `<div class="cards-grid">`;
 
   items.forEach(item => {
     const ck = getCatKey(item.category);
     const isCrisis = ck === 'c';
-    const displayCat = item._cat;
 
-    let sourceHtml = '';
-    if (item.source_url) {
-      const display = item.source_url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
-      const truncated = display.length > 50 ? display.slice(0, 50) + '…' : display;
-      sourceHtml = `
-        <div class="source-row">
-          <span class="source-icon">来源</span>
-          ${item.source_name ? `<span class="source-name">${item.source_name} /</span>` : ''}
-          <a class="source-link" href="${item.source_url}" target="_blank" rel="noopener" title="${item.source_url}">${truncated}</a>
-        </div>`;
-    }
+    const sourceHtml = item.source_url ? `
+      <div class="source-row">
+        <span class="source-icon">来源</span>
+        ${item.source_name ? `<span class="source-name">${item.source_name} /</span>` : ''}
+        <a class="source-link" href="${item.source_url}" target="_blank" rel="noopener"
+           title="${item.source_url}">${item.source_url.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,'').slice(0,50)}</a>
+      </div>` : '';
+
+    const nextHtml = item.next_move ? `
+      <div class="next-move">
+        <div class="next-label">下一步预判</div>
+        <div class="next-text">${item.next_move}</div>
+      </div>` : '';
 
     html += `
-    <div class="icard${isCrisis ? ' crisis' : ''}">
+    <div class="icard${isCrisis?' crisis':''}">
       <div class="cmeta">
-        <span class="ctag ctag-${ck}">${displayCat}</span>
-        <span class="bpill">${item.brand || ''}</span>
-        ${isCrisis && item.crisis_level ? `<span class="clv">⚑ ${item.crisis_level}</span>` : ''}
-        <span class="cdt">${item.date || ''}</span>
+        <span class="ctag ctag-${ck}">${item._cat}</span>
+        <span class="bpill">${item.brand||''}</span>
+        ${isCrisis&&item.crisis_level?`<span class="clv">⚑ ${item.crisis_level}</span>`:''}
+        <span class="cdt">${item.date||''}</span>
       </div>
-      <div class="ctitle">${item.title || ''}</div>
-      <div class="cbody">${item.summary || ''}</div>
+      <div class="ctitle">${item.title||''}</div>
+      <div class="cbody">${item.summary||''}</div>
       <div class="facts">
-        ${(item.facts || []).map(f => `
+        ${(item.facts||[]).map(f=>`
           <div class="fact">
             <span class="fk">${f.label}</span>
             <span class="fv">${f.value}</span>
@@ -272,8 +257,9 @@ function render(data) {
       </div>
       <div class="msig">
         <span class="ms-l">市场信号</span>
-        <span class="ms-t">${item.market_signal || ''}</span>
+        <span class="ms-t">${item.market_signal||''}</span>
       </div>
+      ${nextHtml}
       ${sourceHtml}
     </div>`;
   });
