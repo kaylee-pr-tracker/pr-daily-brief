@@ -2,267 +2,268 @@
   "updated": "2026年5月16日",
   "trend_forecast": [
     {
-      "title": "中国520消费变革",
+      "title": "联名疲劳破局",
       "horizon": "近期 · 1–4周",
-      "summary": "Jing Daily 2026年5月15日报道指出，中国520营销传统正在瓦解，从男性送礼转向自我犒赏、实用奢侈和情感体验。品牌需重新设计520 campaign，聚焦女性自我表达而非浪漫叙事。",
+      "summary": "Swatch与Audemars Piguet的'Royal Pop'联名引发消费者排队抢购，Swatch股价上涨，证明稀缺性与可及性平衡可突破联名疲劳。",
       "signals": [
-        "Jing Daily 5月15日文章明确520规则已变，自购和体验消费崛起",
-        "Bain报告显示2025年中国个人奢侈品市场收缩3%-5%，消费者更注重价值与体验",
-        "Hurun调查显示中国高净值人群偏好文化体验旅行，而非传统硬奢"
+        "Swatch与Audemars Piguet联名'Royal Pop'引发门店排队",
+        "Swatch股价因联名上涨",
+        "分析师认为联名成功在于新颖性、可及性与稀缺性的结合"
       ]
     },
     {
-      "title": "体验式旗舰店竞争",
+      "title": "奢侈品复苏承压",
       "horizon": "中期 · 1–3个月",
-      "summary": "Louis Vuitton在上海开设约1600平方米旗舰店'The Louis'，形似品牌船舶，融合零售与文化体验。Luxury Tribune 5月7日报道指出，中国旗舰店正与博物馆、餐厅争夺消费者时间，品牌需超越欧洲传统门店模式。",
+      "summary": "Berenberg建议'卖出任何反弹'，Barclays预测长期停滞；Burberry虽销售加速但谨慎展望令市场失望；Ferragamo季度销售微降但直营店增长。",
       "signals": [
-        "Louis Vuitton上海'The Louis'旗舰店面积约1600平方米，设计独特",
-        "Balenciaga在香港旗舰店设立首个VIC私人预约区",
-        "Hermès在台北SOGO复兴店推出城市灵感零售概念"
+        "Berenberg建议'卖出任何反弹'",
+        "Barclays预测长期停滞",
+        "Burberry CEO Joshua Schulman聚焦经典围巾和风衣策略见效但展望谨慎",
+        "Ferragamo季度销售微降，直营店销售增长"
       ]
     },
     {
-      "title": "专业内容危机升级",
+      "title": "品牌资产交易活跃",
       "horizon": "长期 · 季度级",
-      "summary": "2026奢侈品行业舆情白皮书揭示，B站鉴定博主拆解视频引发某腕表品牌系统性危机，视频72小时播放820万，微博话题阅读5亿，负面率飙升230%。传统公关手段在可视化证据前几乎无效。",
+      "summary": "LVMH将Marc Jacobs出售给WHP Global，NYC Alliance收购Derek Lam 10 Crosby知识产权，品牌控股公司加速整合。",
       "signals": [
-        "B站百万粉丝博主拆解视频引发品牌机芯争议，播放量820万",
-        "微博话题阅读量突破5亿，负面率高于基线230%",
-        "白皮书提出PRISM风险预警框架，强调价格公平感知和渠道信任"
+        "LVMH出售Marc Jacobs给WHP Global，Marc Jacobs留任创意总监",
+        "NYC Alliance收购Derek Lam 10 Crosby知识产权",
+        "品牌控股公司模式在奢侈品领域扩张"
       ]
     }
   ],
   "items": [
     {
-      "title": "LV任命奥运冠军刘娅莉为大使",
-      "brand": "Louis Vuitton",
+      "title": "LVMH出售Marc Jacobs",
+      "brand": "LVMH",
+      "category": "渠道零售",
+      "date": "2026年5月14日",
+      "summary": "LVMH将旗下品牌Marc Jacobs出售给品牌控股公司WHP Global，交易金额未披露。Marc Jacobs本人将继续担任创意总监。此举是LVMH精简品牌组合的一部分。",
+      "facts": [
+        {
+          "label": "交易方",
+          "value": "LVMH出售给WHP Global"
+        },
+        {
+          "label": "涉及人物",
+          "value": "Marc Jacobs留任创意总监"
+        },
+        {
+          "label": "数据",
+          "value": "暂无公开数据"
+        },
+        {
+          "label": "核心差异",
+          "value": "LVMH首次将旗下品牌出售给品牌控股公司，而非直接关闭或整合"
+        }
+      ],
+      "market_signal": "①战略意图：LVMH聚焦核心奢侈品牌，剥离非核心资产 ②竞品影响：对开云集团等多元化集团形成示范，可能加速品牌组合优化 ③市场建议：关注WHP Global对Marc Jacobs的运营策略，评估品牌控股模式对奢侈品行业的长期影响",
+      "source_url": "https://www.businessoffashion.com/articles/luxury/confirmed-lvmh-sells-marc-jacobs-to-whp-global/",
+      "source_name": "Business of Fashion",
+      "crisis_level": null
+    },
+    {
+      "title": "Ferragamo任命新首席品牌官",
+      "brand": "Ferragamo",
       "category": "营销动作",
-      "date": "2026年5月11日",
-      "summary": "Louis Vuitton于2026年5月宣布任命奥运金牌得主、花样滑冰运动员Alysa Liu（刘娅莉）为最新品牌大使。刘娅莉此前已出席LV 2026秋冬秀场前排，并在Vanity Fair奥斯卡派对等红毯场合多次穿着LV。此举延续品牌与体育明星的合作策略，强化年轻化与运动时尚关联。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "品牌大使任命"
-        },
-        {
-          "label": "地点/平台",
-          "value": "全球（官宣）"
-        },
-        {
-          "label": "数据",
-          "value": "暂无公开数据"
-        },
-        {
-          "label": "核心差异",
-          "value": "首次选择花样滑冰奥运冠军，区别于以往足球、网球等主流运动明星"
-        }
-      ],
-      "market_signal": "①战略意图：通过非传统体育明星（花样滑冰）拓展年轻女性消费者，强化运动时尚与优雅并存的品牌形象。②竞品影响：对Dior、Chanel等依赖传统名人的品牌构成差异化竞争，尤其在冬奥会周期前抢占体育时尚话语权。③市场建议：建议竞品品牌关注2026年冬奥会相关运动员，提前布局代言或合作。",
-      "source_url": "https://www.thezoereport.com/fashion/may-2026-fashion-news",
-      "source_name": "The Zoe Report",
-      "crisis_level": null
-    },
-    {
-      "title": "积家新加坡ION新店开业",
-      "brand": "Jaeger-LeCoultre",
-      "category": "渠道零售",
-      "date": "2026年5月8日",
-      "summary": "积家于2026年5月8日在新加坡ION Orchard购物中心开设全新精品店。该店位于新加坡核心高端商圈，旨在加强品牌在东南亚市场的零售布局。同期，积家在2026年钟表与奇迹展上推出多款新品，包括Master Hybris Mechanica超薄三问陀飞轮腕表。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "ION Orchard精品店开业"
-        },
-        {
-          "label": "地点/平台",
-          "value": "新加坡ION Orchard购物中心"
-        },
-        {
-          "label": "数据",
-          "value": "暂无公开数据"
-        },
-        {
-          "label": "核心差异",
-          "value": "选址新加坡顶级购物中心，强化东南亚高端零售网络"
-        }
-      ],
-      "market_signal": "①战略意图：通过线下精品店深化东南亚市场渗透，与钟表展新品形成联动推广。②竞品影响：对同价位段竞品如朗格、宝玑构成渠道竞争，抢占高净值游客和本地消费者。③市场建议：建议竞品品牌评估新加坡核心商圈入驻机会，或加强现有门店体验服务。",
-      "source_url": "https://www.jaeger-lecoultre.com/sg-sc/news/watchmaking/watches-and-wonders-2026",
-      "source_name": "Jaeger-LeCoultre官网",
-      "crisis_level": null
-    },
-    {
-      "title": "中国二手奢侈品市场增长15-20%",
-      "brand": "行业整体",
-      "category": "趋势前瞻",
-      "date": "2026年5月（报告发布）",
-      "summary": "Bain & Company最新报告显示，2025年中国个人奢侈品市场收缩3%-5%，但二手奢侈品市场逆势增长15%-20%，目前规模仍不足一级市场的10%。消费者更注重价值驱动型奢侈品，偏好兼具品质、排他性和实用性的产品。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "中国奢侈品市场报告"
-        },
-        {
-          "label": "地点/平台",
-          "value": "中国全国"
-        },
-        {
-          "label": "数据",
-          "value": "二手市场增长15%-20%，一级市场收缩3%-5%"
-        },
-        {
-          "label": "核心差异",
-          "value": "二手市场增速远超一级市场，显示消费观念转变"
-        }
-      ],
-      "market_signal": "①战略意图：品牌需重视二手市场对品牌价值的双刃剑效应，可探索官方认证二手业务。②竞品影响：对硬奢品牌（腕表、珠宝）影响最大，二手渠道可能分流新品销售。③市场建议：建议品牌建立官方二手交易平台或认证体系，控制流通渠道并获取消费者数据。",
-      "source_url": "https://www.bain.com/about/media-center/press-releases/2026/chinas-personal-luxury-market-contracts-35-in-2025-but-shows-signs-of-recovery/",
-      "source_name": "Bain & Company",
-      "crisis_level": null
-    },
-    {
-      "title": "B站鉴定视频引发腕表品牌危机",
-      "brand": "某腕表品牌（未具名）",
-      "category": "危机舆情",
-      "date": "2025年9月（事件发生）",
-      "summary": "2025年9月，B站百万粉丝腕表博主发布视频《我买了一块30万的表，但它用的不是你以为的机芯》，通过开盖实拍揭示某品牌中级价位腕表机芯与官方宣称不符。视频72小时播放820万，微博话题阅读5亿，品牌负面率飙升230%，且危机持续两个月未消退。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "某品牌中级价位腕表机芯争议"
-        },
-        {
-          "label": "地点/平台",
-          "value": "B站、微博"
-        },
-        {
-          "label": "数据",
-          "value": "视频播放820万，微博话题阅读5亿，负面率升230%"
-        },
-        {
-          "label": "核心差异",
-          "value": "可视化证据使传统公关声明无效，危机持续时间长"
-        }
-      ],
-      "market_signal": "①战略意图：品牌需建立产品透明度机制，主动披露供应链信息。②竞品影响：所有依赖代工或非自产机芯的腕表品牌均面临类似风险。③市场建议：建议品牌定期发布产品技术白皮书，并建立KOL监测与快速响应团队。",
-      "source_url": "https://knowlesys.cn/blog/white-papers/2026_luxury_whitepaper.html",
-      "source_name": "Knowlesys舆情白皮书",
-      "crisis_level": "严重"
-    },
-    {
-      "title": "LV上海旗舰店'The Louis'开业",
-      "brand": "Louis Vuitton",
-      "category": "渠道零售",
-      "date": "2026年5月7日",
-      "summary": "Louis Vuitton在上海开设约1600平方米旗舰店'The Louis'，设计形似品牌船舶，融合零售、文化与体验空间。Luxury Tribune报道指出，该店是中国市场最具标志性的旗舰店之一，旨在与博物馆、餐厅等竞争消费者时间。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "旗舰店'The Louis'"
-        },
-        {
-          "label": "地点/平台",
-          "value": "中国上海"
-        },
-        {
-          "label": "数据",
-          "value": "面积约1600平方米"
-        },
-        {
-          "label": "核心差异",
-          "value": "船舶造型设计，融合零售与文化体验，超越传统门店"
-        }
-      ],
-      "market_signal": "①战略意图：通过超大规模、独特设计的旗舰店强化品牌形象，吸引高净值消费者停留更长时间。②竞品影响：对Dior、Gucci等在上海的旗舰店构成直接竞争，提升行业体验标准。③市场建议：建议竞品品牌评估上海核心商圈门店体验升级计划，增加文化或艺术元素。",
-      "source_url": "https://www.luxurytribune.com/en/in-china-luxury-flagship-stores-are-making-the-experience-profitable",
-      "source_name": "Luxury Tribune",
-      "crisis_level": null
-    },
-    {
-      "title": "中国520营销转向自购体验",
-      "brand": "行业整体",
-      "category": "社媒声量",
       "date": "2026年5月15日",
-      "summary": "Jing Daily 5月15日文章指出，中国520营销传统规则已彻底改变，男性送礼模式式微，自我犒赏、实用奢侈品和情感体验消费崛起。品牌需重新设计520 campaign，聚焦女性自我表达和个性化体验。",
+      "summary": "Ferragamo任命前Valentino首席营销官Yigit Turhan为首席品牌官，推动品牌转型。此前Ferragamo季度销售微降，但直营店销售增长，显示产品精简策略初见成效。",
       "facts": [
         {
-          "label": "产品/活动",
-          "value": "520营销趋势变化"
+          "label": "人物",
+          "value": "Yigit Turhan（前Valentino CMO）"
         },
         {
-          "label": "地点/平台",
-          "value": "中国全渠道"
+          "label": "职位",
+          "value": "首席品牌官（新设职位）"
         },
         {
           "label": "数据",
-          "value": "暂无公开数据"
+          "value": "Ferragamo季度销售微降，直营店销售增长"
         },
         {
           "label": "核心差异",
-          "value": "从男性送礼转向女性自购，强调情感体验而非浪漫叙事"
+          "value": "从外部引入营销高管，强化品牌转型执行力"
         }
       ],
-      "market_signal": "①战略意图：品牌需调整520营销策略，从情侣叙事转向女性自我犒赏和实用价值。②竞品影响：对传统依赖520送礼营销的品牌（如珠宝、腕表）构成挑战，需快速调整内容。③市场建议：建议品牌在520期间推出'自购礼盒'或'体验套餐'，并加强小红书等平台女性自购内容种草。",
-      "source_url": "https://jingdaily.com/china-luxury-news",
-      "source_name": "Jing Daily",
+      "market_signal": "①战略意图：通过高管任命加速品牌年轻化与产品精简 ②竞品影响：对Tod's、Zegna等意大利奢侈品牌构成人才竞争压力 ③市场建议：关注Yigit Turhan上任后的营销策略变化，评估其对Ferragamo品牌定位的调整",
+      "source_url": "https://www.businessoffashion.com/news/luxury/ferragamo-names-yigit-turhan-chief-brand-officer/",
+      "source_name": "Business of Fashion",
       "crisis_level": null
     },
     {
-      "title": "积家发布101 Secrets神秘腕表",
-      "brand": "Jaeger-LeCoultre",
-      "category": "营销动作",
-      "date": "2026年5月（钟表展期间）",
-      "summary": "积家在2026年钟表与奇迹展上推出101 Secrets神秘腕表及101 Bangles腕表，采用101型机芯，设计灵感源自装饰艺术风格。神秘腕表通过隐藏按钮显示时间，表盘为红色漆面，镶嵌多排钻石，定位高级珠宝时计。",
+      "title": "Swatch×AP联名引爆排队",
+      "brand": "Swatch",
+      "category": "社媒声量",
+      "date": "2026年5月13日",
+      "summary": "Swatch与Audemars Piguet的'Royal Pop'联名腕表引发消费者在门店外排队抢购，Swatch股价上涨。分析师认为联名成功在于新颖性、可及性与稀缺性的结合，打破了联名疲劳。",
       "facts": [
         {
-          "label": "产品/活动",
-          "value": "101 Secrets神秘腕表与101 Bangles腕表"
+          "label": "产品",
+          "value": "Royal Pop联名腕表"
         },
         {
-          "label": "地点/平台",
-          "value": "日内瓦钟表与奇迹展"
+          "label": "地点",
+          "value": "全球Swatch门店"
         },
         {
           "label": "数据",
-          "value": "暂无公开数据"
+          "value": "Swatch股价上涨"
         },
         {
           "label": "核心差异",
-          "value": "隐藏式时间显示设计，结合高级珠宝与复杂机芯"
+          "value": "与高端制表品牌联名，平衡稀缺性与可及性"
         }
       ],
-      "market_signal": "①战略意图：通过高级珠宝腕表提升品牌在女性高端市场的定位，与卡地亚、梵克雅宝竞争。②竞品影响：对卡地亚神秘腕表系列构成直接竞争，强化积家在复杂机芯与珠宝结合领域的优势。③市场建议：建议竞品品牌关注女性复杂功能腕表需求，推出类似隐藏式或可转换设计。",
-      "source_url": "https://www.jaeger-lecoultre.com/sg-sc/news/watchmaking/101-secrets-101-bangles",
-      "source_name": "Jaeger-LeCoultre官网",
+      "market_signal": "①战略意图：Swatch通过高端联名提升品牌热度与股价 ②竞品影响：对Timex、Casio等大众腕表品牌形成压力，推动联名策略升级 ③市场建议：评估与高端品牌联名的可行性，注重稀缺性与可及性的平衡",
+      "source_url": "https://www.businessoffashion.com/briefings/luxury/can-a-buzzy-audemars-piguet-tie-up-boost-swatch/",
+      "source_name": "Business of Fashion",
       "crisis_level": null
     },
     {
-      "title": "中国高净值人群转向体验消费",
-      "brand": "行业整体",
+      "title": "Burberry谨慎展望引失望",
+      "brand": "Burberry",
+      "category": "危机舆情",
+      "date": "2026年5月14日",
+      "summary": "Burberry销售加速，CEO Joshua Schulman聚焦经典围巾和风衣的策略见效，但公司对未来的谨慎展望令市场失望。Berenberg建议'卖出任何反弹'，Barclays预测长期停滞。",
+      "facts": [
+        {
+          "label": "策略",
+          "value": "聚焦经典围巾和风衣"
+        },
+        {
+          "label": "人物",
+          "value": "CEO Joshua Schulman"
+        },
+        {
+          "label": "数据",
+          "value": "销售加速，但展望谨慎"
+        },
+        {
+          "label": "核心差异",
+          "value": "策略见效但市场信心不足，反映奢侈品行业整体悲观情绪"
+        }
+      ],
+      "market_signal": "①战略意图：Burberry回归核心产品，但宏观环境压制估值 ②竞品影响：对Gucci、Prada等正在转型的品牌形成警示，市场对转型故事耐心有限 ③市场建议：关注Burberry下一季度业绩，评估经典产品策略的可持续性",
+      "source_url": "https://www.businessoffashion.com/news/luxury/burberry-sales-improve-as-turnaround-bears-fruit/",
+      "source_name": "Business of Fashion",
+      "crisis_level": "轻微"
+    },
+    {
+      "title": "Dior Cruise秀登陆洛杉矶",
+      "brand": "Dior",
       "category": "趋势前瞻",
-      "date": "2026年5月（报告发布）",
-      "summary": "Jing Daily援引胡润奢侈品消费者调查显示，中国高净值人群正从传统硬奢（如劳力士）转向文化丰富的旅行体验。品牌需重新定义'奢侈'，从物质拥有转向精神体验和个性化服务。",
+      "date": "2026年5月14日",
+      "summary": "Dior在洛杉矶举办2027 Cruise系列时装秀，这是Jonathan Anderson接手Dior创意总监一年后的重要展示。评论称秀场'既令人兴奋又未完全解决'，显示Anderson的革新仍在进行中。",
       "facts": [
         {
-          "label": "产品/活动",
-          "value": "胡润中国高净值人群消费趋势调查"
+          "label": "活动",
+          "value": "Dior 2027 Cruise系列时装秀"
         },
         {
-          "label": "地点/平台",
-          "value": "中国全国"
+          "label": "地点",
+          "value": "洛杉矶"
         },
         {
-          "label": "数据",
-          "value": "暂无公开数据"
+          "label": "人物",
+          "value": "创意总监Jonathan Anderson"
         },
         {
           "label": "核心差异",
-          "value": "高净值人群偏好从物质奢侈品转向文化体验旅行"
+          "value": "Anderson上任一年后的首次Cruise秀，选址好莱坞强化品牌娱乐产业关联"
         }
       ],
-      "market_signal": "①战略意图：品牌需开发体验式产品和服务，如定制旅行、文化工坊等，以吸引高净值客户。②竞品影响：对硬奢品牌（腕表、珠宝）构成长期挑战，需加强品牌故事和体验营销。③市场建议：建议品牌与高端旅行社或文化机构合作，推出联名体验项目，如腕表工坊参观、私人博物馆导览。",
-      "source_url": "https://jingdaily.com/posts/chinese-hnwi-trends-2025-hurun-luxury-consumer-survey",
-      "source_name": "Jing Daily",
+      "market_signal": "①战略意图：Dior通过好莱坞选址强化与娱乐产业的关联，扩大美国市场影响力 ②竞品影响：对Chanel、Gucci等品牌形成竞争，争夺美国高端消费者注意力 ③市场建议：评估Dior Cruise秀的社交媒体反响，关注Anderson设计方向对品牌定位的长期影响",
+      "source_url": "https://www.businessoffashion.com/reviews/fashion-week/dior-cruise-2027-jonathan-anderson/",
+      "source_name": "Business of Fashion",
+      "crisis_level": null
+    },
+    {
+      "title": "米兰时装周禁皮草",
+      "brand": "意大利国家时装商会",
+      "category": "趋势前瞻",
+      "date": "2026年5月15日",
+      "summary": "意大利国家时装商会宣布将不再在活动或社交媒体上推广皮草。此举是时尚行业可持续趋势的延续，可能影响Gucci、Prada等意大利奢侈品牌的皮草使用策略。",
+      "facts": [
+        {
+          "label": "组织",
+          "value": "意大利国家时装商会"
+        },
+        {
+          "label": "政策",
+          "value": "不再推广皮草"
+        },
+        {
+          "label": "影响范围",
+          "value": "米兰时装周及社交媒体"
+        },
+        {
+          "label": "核心差异",
+          "value": "从推广层面禁皮草，而非强制禁止，给予品牌灵活性"
+        }
+      ],
+      "market_signal": "①战略意图：意大利时尚行业加速可持续转型，响应消费者伦理诉求 ②竞品影响：对使用皮草的意大利品牌（如Fendi、Gucci）形成舆论压力 ③市场建议：评估自身皮草使用策略，提前准备替代材料方案",
+      "source_url": "https://www.businessoffashion.com/news/sustainability/milan-fashion-week-will-ask-brands-not-to-show-fur/",
+      "source_name": "Business of Fashion",
+      "crisis_level": null
+    },
+    {
+      "title": "The Ordinary纽约快闪",
+      "brand": "The Ordinary",
+      "category": "营销动作",
+      "date": "2026年5月15日",
+      "summary": "雅诗兰黛旗下护肤品牌The Ordinary在纽约推出最新沉浸式快闪店，是其全球系列快闪中最激进的一次。品牌通过本地化、沉浸式体验吸引消费者，强化直接对话。",
+      "facts": [
+        {
+          "label": "活动",
+          "value": "沉浸式快闪店"
+        },
+        {
+          "label": "地点",
+          "value": "纽约"
+        },
+        {
+          "label": "品牌",
+          "value": "The Ordinary（雅诗兰黛旗下）"
+        },
+        {
+          "label": "核心差异",
+          "value": "比以往快闪更激进，强调沉浸式体验与本地化"
+        }
+      ],
+      "market_signal": "①战略意图：The Ordinary通过激进快闪强化品牌体验，提升消费者忠诚度 ②竞品影响：对CeraVe、La Roche-Posay等大众护肤品牌形成体验营销压力 ③市场建议：评估The Ordinary快闪的社交媒体反响，考虑在关键市场复制类似体验",
+      "source_url": "https://www.businessoffashion.com/articles/beauty/the-ordinary-bus-markup-marche-pore-playground/",
+      "source_name": "Business of Fashion",
+      "crisis_level": null
+    },
+    {
+      "title": "美国腕表收藏家推动增长",
+      "brand": "Watches of Switzerland",
+      "category": "渠道零售",
+      "date": "2026年5月14日",
+      "summary": "Watches of Switzerland集团营收创纪录，利润超预期，主要受美国腕表收藏家强劲需求推动。美国市场成为高端腕表增长的关键驱动力。",
+      "facts": [
+        {
+          "label": "品牌",
+          "value": "Watches of Switzerland"
+        },
+        {
+          "label": "市场",
+          "value": "美国"
+        },
+        {
+          "label": "数据",
+          "value": "营收创纪录，利润超预期"
+        },
+        {
+          "label": "核心差异",
+          "value": "美国腕表收藏家成为增长核心驱动力，而非欧洲或亚洲市场"
+        }
+      ],
+      "market_signal": "①战略意图：Watches of Switzerland加大美国市场投入，抓住收藏家需求 ②竞品影响：对Rolex、Patek Philippe等品牌授权零售商形成竞争，争夺美国市场份额 ③市场建议：评估美国腕表收藏家细分市场，考虑加强在美国的零售布局",
+      "source_url": "https://www.businessoffashion.com/news/luxury/watches-of-switzerland-hits-record-driven-by-us-watch-collectors/",
+      "source_name": "Business of Fashion",
       "crisis_level": null
     }
   ]
