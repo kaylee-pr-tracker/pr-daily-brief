@@ -106,6 +106,7 @@ async function gatherIntel() {
     { q: 'site:hualizhi.com 品牌 营销', label: '华丽志' },
     { q: 'site:socialbeta.com 品牌 案例', label: 'SocialBeta' },
     { q: 'site:jiemian.com 时尚 奢侈品', label: '界面时尚' },
+    { q: 'site:cn.concall.com 时尚 奢侈品 品牌', label: 'Concall' },
     { q: 'luxury brand China consumer behavior trend 2026', label: '消费趋势' },
     { q: 'LVMH Chanel Hermes Gucci China strategy 2026', label: '奢品集团' },
   ];
@@ -426,11 +427,35 @@ ${contextText}
 }
 
 // ── JSON 解析工具（带截断修复）────────────────────────────────
+function cleanJSON(str) {
+  // 清理字符串值内的非法控制字符（换行、制表等）
+  let result = '';
+  let inString = false;
+  let escape = false;
+  for (let i = 0; i < str.length; i++) {
+    const ch = str[i];
+    const code = str.charCodeAt(i);
+    if (escape) { result += ch; escape = false; continue; }
+    if (ch === '\\') { escape = true; result += ch; continue; }
+    if (ch === '"') { inString = !inString; result += ch; continue; }
+    if (inString && code < 0x20) {
+      // 替换非法控制字符
+      if (code === 0x0A) { result += '\\n'; }
+      else if (code === 0x0D) { result += '\\r'; }
+      else if (code === 0x09) { result += '\\t'; }
+      // 其他控制字符直接跳过
+      continue;
+    }
+    result += ch;
+  }
+  return result;
+}
+
 function parseJSON(raw) {
-  let jsonStr = raw.trim().replace(/^[^{]*/,'');
+  let jsonStr = raw.trim().replace(/^[^{]*/, '');
   const s = jsonStr.indexOf('{');
   if (s === -1) throw new Error('未找到JSON');
-  jsonStr = jsonStr.slice(s);
+  jsonStr = cleanJSON(jsonStr.slice(s));
   try {
     const e = jsonStr.lastIndexOf('}');
     return JSON.parse(jsonStr.slice(0, e + 1));
@@ -438,12 +463,12 @@ function parseJSON(raw) {
     console.log('  ⚠️  JSON不完整，尝试修复...');
     for (let trim = 0; trim < 3000; trim += 5) {
       const candidate = jsonStr.slice(0, jsonStr.length - trim);
-      const opens = (candidate.split('{').length - 1);
-      const closes = (candidate.split('}').length - 1);
-      const arrOpens = (candidate.split('[').length - 1);
-      const arrCloses = (candidate.split(']').length - 1);
+      const opens = candidate.split('{').length - 1;
+      const closes = candidate.split('}').length - 1;
+      const arrOpens = candidate.split('[').length - 1;
+      const arrCloses = candidate.split(']').length - 1;
       if (opens >= closes && arrOpens >= arrCloses) {
-        const fixedStr = candidate + ']'.repeat(arrOpens-arrCloses) + '}'.repeat(opens-closes);
+        const fixedStr = candidate + ']'.repeat(arrOpens - arrCloses) + '}'.repeat(opens - closes);
         try { const r = JSON.parse(fixedStr); console.log('  ✅ 修复成功'); return r; } catch {}
       }
     }
