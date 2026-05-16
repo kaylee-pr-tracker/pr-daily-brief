@@ -98,7 +98,7 @@ function callGemini() {
       }
     });
 
-    const path = `/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+    const path = `/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
     const options = {
       hostname: 'generativelanguage.googleapis.com',
