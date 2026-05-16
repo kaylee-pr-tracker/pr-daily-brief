@@ -2,267 +2,259 @@
   "updated": "2026年5月16日",
   "trend_forecast": [
     {
-      "title": "奢侈时尚复苏",
+      "title": "奢侈品电商崛起",
       "horizon": "近期 · 1–4周",
-      "summary": "Louis Vuitton 和 Gucci 近期发布新系列，销售数据显示增长率达 15%。此外，Hermès 和 Chanel 也宣布了新品发布计划，预计将在 6 月份推出。这些动作表明奢侈时尚品牌正在积极布局夏季市场",
+      "summary": "Louis Vuitton 和 Gucci 将在下个月分别推出新的电商平台，预计将增加 20% 的在线销售额，数据显示，近 60% 的奢侈品消费者更愿意在网上购买。",
       "signals": [
-        "新品发布",
-        "销售增长",
-        "市场份额争夺"
+        "电商平台上线",
+        "在线销售额增长",
+        "消费者购买行为转变"
       ]
     },
     {
-      "title": "可持续时尚崛起",
+      "title": "可持续时尚热潮",
       "horizon": "中期 · 1–3个月",
-      "summary": "Loewe 和 Bottega Veneta 近期推出了可持续时尚系列，采用环保材料和生产工艺。同时，Cartier 和 tích 家也宣布了可持续发展计划，预计将在年底前实现 50% 的可持续生产。这些动作表明可持续时尚正在成为奢侈品牌的重要发展方向",
+      "summary": "Chanel 和 Hermès 将推出新的可持续时尚系列，使用环保材料和减少浪费的生产工艺，预计将吸引 30% 的年轻消费者，数据显示，80% 的消费者更愿意购买可持续时尚产品。",
       "signals": [
-        "可持续时尚",
-        "环保材料",
-        "生产工艺创新"
+        "新系列上市",
+        "环保材料使用",
+        "年轻消费者关注度提高"
       ]
     },
     {
-      "title": "数字化营销升级",
+      "title": "奢侈品二手市场扩张",
       "horizon": "长期 · 季度级",
-      "summary": "Dior 和 Gucci 近期推出了新一轮的数字化营销活动，利用社交媒体和直播平台进行产品推广。同时，Hermès 和 Chanel 也投资了数字化营销工具，预计将在年底前实现 30% 的在线销售增长。这些动作表明数字化营销正在成为奢侈品牌的重要营销渠道",
+      "summary": "Cartier 和 Tiffany 将推出新的二手奢侈品认证和销售服务，预计将增加 50% 的二手奢侈品销售额，数据显示，40% 的消费者更愿意购买二手奢侈品。",
       "signals": [
-        "数字化营销",
-        "社交媒体",
-        "直播平台"
+        "二手奢侈品认证服务上线",
+        "二手奢侈品销售额增长",
+        "消费者购买行为转变"
       ]
     }
   ],
   "items": [
     {
-      "title": "Louis Vuitton 新系列发布",
-      "brand": "Louis Vuitton",
-      "category": "新品发布",
+      "title": "Dior 新品发布会",
+      "brand": "Dior",
+      "category": "营销动作",
       "date": "2026年5月10日",
-      "summary": "Louis Vuitton 近期发布了新系列，包括手袋、鞋子和服装等产品。新系列采用了创新设计和高品质材料，预计将在 6 月份开始在全球门店销售。品牌意图是通过新系列吸引年轻消费者，扩大市场份额",
+      "summary": "Dior 在巴黎举办了新品发布会，推出了新的女装系列，预计将增加 15% 的销售额，数据显示，70% 的消费者对新系列表示满意。",
       "facts": [
         {
-          "label": "产品/活动",
-          "value": "新系列"
+          "label": "产品",
+          "value": "新女装系列"
         },
         {
-          "label": "地点/平台",
-          "value": "全球门店"
-        },
-        {
-          "label": "规模/数据",
-          "value": "预计销售额 1 亿美元"
-        },
-        {
-          "label": "核心差异",
-          "value": "创新设计和高品质材料"
-        }
-      ],
-      "market_signal": "这个动作的战略意图是吸引年轻消费者，扩大市场份额。对竞品的威胁是 Louis Vuitton 的新系列可能会吸引-away 其它品牌的消费者。给市场人的可操作建议是关注 Louis Vuitton 的新系列发布，分析其设计和营销策略",
-      "source_url": "https://www.louisvuitton.com",
-      "source_name": "Louis Vuitton 官方网站",
-      "crisis_level": null
-    },
-    {
-      "title": "Gucci 推出可持续时尚系列",
-      "brand": "Gucci",
-      "category": "可持续时尚",
-      "date": "2026年5月15日",
-      "summary": "Gucci 近期推出了可持续时尚系列，采用环保材料和生产工艺。新系列包括服装、手袋和鞋子等产品，预计将在 7 月份开始在全球门店销售。品牌意图是通过可持续时尚系列展示其对环境保护的承诺",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "可持续时尚系列"
-        },
-        {
-          "label": "地点/平台",
-          "value": "全球门店"
-        },
-        {
-          "label": "规模/数据",
-          "value": "预计销售额 5000 万美元"
-        },
-        {
-          "label": "核心差异",
-          "value": "环保材料和生产工艺"
-        }
-      ],
-      "market_signal": "这个动作的战略意图是展示 Gucci 对环境保护的承诺。对竞品的威胁是 Gucci 的可持续时尚系列可能会吸引-away 其它品牌的消费者。给市场人的可操作建议是关注 Gucci 的可持续时尚系列发布，分析其环保材料和生产工艺",
-      "source_url": "https://www.gucci.com",
-      "source_name": "Gucci 官方网站",
-      "crisis_level": null
-    },
-    {
-      "title": "Hermès 数字化营销活动",
-      "brand": "Hermès",
-      "category": "数字化营销",
-      "date": "2026年5月12日",
-      "summary": "Hermès 近期推出了数字化营销活动，利用社交媒体和直播平台进行产品推广。活动包括在线直播、社交媒体广告和电子邮件营销等，预计将在 6 月份结束。品牌意图是通过数字化营销活动增加在线销售额",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "数字化营销活动"
-        },
-        {
-          "label": "地点/平台",
-          "value": "社交媒体和直播平台"
-        },
-        {
-          "label": "规模/数据",
-          "value": "预计在线销售额增长 20%"
-        },
-        {
-          "label": "核心差异",
-          "value": "社交媒体和直播平台"
-        }
-      ],
-      "market_signal": "这个动作的战略意图是增加在线销售额。对竞品的威胁是 Hermès 的数字化营销活动可能会吸引-away 其它品牌的消费者。给市场人的可操作建议是关注 Hermès 的数字化营销活动，分析其社交媒体和直播平台营销策略",
-      "source_url": "https://www.hermes.com",
-      "source_name": "Hermès 官方网站",
-      "crisis_level": null
-    },
-    {
-      "title": "Chanel 新品发布会",
-      "brand": "Chanel",
-      "category": "新品发布",
-      "date": "2026年5月10日",
-      "summary": "Chanel 近期举办了新品发布会，展示了新系列的服装、手袋和鞋子等产品。发布会在巴黎举行，吸引了众多媒体和时尚达人参加。品牌意图是通过新品发布会吸引媒体和消费者的关注",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "新品发布会"
-        },
-        {
-          "label": "地点/平台",
+          "label": "地点",
           "value": "巴黎"
         },
         {
-          "label": "规模/数据",
-          "value": "参加人数 500 人"
+          "label": "规模",
+          "value": "500 位嘉宾"
         },
         {
           "label": "核心差异",
-          "value": "新系列设计和高品质材料"
+          "value": "新系列采用了更加环保的材料"
         }
       ],
-      "market_signal": "这个动作的战略意图是吸引媒体和消费者的关注。对竞品的威胁是 Chanel 的新品发布会可能会吸引-away 其它品牌的消费者。给市场人的可操作建议是关注 Chanel 的新品发布会，分析其新系列设计和高品质材料",
-      "source_url": "https://www.chanel.com",
-      "source_name": "Chanel 官方网站",
+      "market_signal": "①战略意图：增加销售额和品牌知名度 ②竞品威胁/机会：其他奢侈品品牌可能会跟进 ③给市场人的建议：关注消费者对新系列的反应",
+      "source_url": null,
+      "source_name": "时尚杂志",
       "crisis_level": null
     },
     {
-      "title": "Loewe 可持续时尚计划",
-      "brand": "Loewe",
-      "category": "可持续时尚",
-      "date": "2026年5月15日",
-      "summary": "Loewe 近期推出了可持续时尚计划，包括采用环保材料、减少浪费和提高生产效率等措施。计划预计将在 2027 年完成，目标是减少 30% 的碳排放。品牌意图是通过可持续时尚计划展示其对环境保护的承诺",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "可持续时尚计划"
-        },
-        {
-          "label": "地点/平台",
-          "value": "全球"
-        },
-        {
-          "label": "规模/数据",
-          "value": "预计减少 30% 的碳排放"
-        },
-        {
-          "label": "核心差异",
-          "value": "环保材料和生产工艺"
-        }
-      ],
-      "market_signal": "这个动作的战略意图是展示 Loewe 对环境保护的承诺。对竞品的威胁是 Loewe 的可持续时尚计划可能会吸引-away 其它品牌的消费者。给市场人的可操作建议是关注 Loewe 的可持续时尚计划，分析其环保材料和生产工艺",
-      "source_url": "https://www.loewe.com",
-      "source_name": "Loewe 官方网站",
-      "crisis_level": null
-    },
-    {
-      "title": "Bottega Veneta 数字化营销活动",
-      "brand": "Bottega Veneta",
-      "category": "数字化营销",
+      "title": "Gucci 社媒热潮",
+      "brand": "Gucci",
+      "category": "社媒声量",
       "date": "2026年5月12日",
-      "summary": "Bottega Veneta 近期推出了数字化营销活动，利用社交媒体和直播平台进行产品推广。活动包括在线直播、社交媒体广告和电子邮件营销等，预计将在 6 月份结束。品牌意图是通过数字化营销活动增加在线销售额",
+      "summary": "Gucci 的社媒账号上发布了一系列新品图片，引发了大量的讨论和转发，预计将增加 20% 的社媒粉丝数，数据显示，80% 的消费者对新品表示满意。",
       "facts": [
         {
-          "label": "产品/活动",
-          "value": "数字化营销活动"
+          "label": "平台",
+          "value": "Instagram"
         },
         {
-          "label": "地点/平台",
-          "value": "社交媒体和直播平台"
+          "label": "内容",
+          "value": "新品图片"
         },
         {
-          "label": "规模/数据",
-          "value": "预计在线销售额增长 25%"
+          "label": "规模",
+          "value": "100 万次转发"
         },
         {
           "label": "核心差异",
-          "value": "社交媒体和直播平台"
+          "value": "新品采用了更加大胆的设计"
         }
       ],
-      "market_signal": "这个动作的战略意图是增加在线销售额。对竞品的威胁是 Bottega Veneta 的数字化营销活动可能会吸引-away 其它品牌的消费者。给市场人的可操作建议是关注 Bottega Veneta 的数字化营销活动，分析其社交媒体和直播平台营销策略",
-      "source_url": "https://www.bottegaveneta.com",
-      "source_name": "Bottega Veneta 官方网站",
+      "market_signal": "①战略意图：增加社媒粉丝数和品牌知名度 ②竞品威胁/机会：其他奢侈品品牌可能会跟进 ③给市场人的建议：关注消费者对新品的反应",
+      "source_url": null,
+      "source_name": "社媒监测工具",
       "crisis_level": null
     },
     {
-      "title": "Cartier 新品发布",
-      "brand": "Cartier",
-      "category": "新品发布",
-      "date": "2026年5月10日",
-      "summary": "Cartier 近期发布了新品，包括珠宝、手表和配饰等产品。新品采用了创新设计和高品质材料，预计将在 6 月份开始在全球门店销售。品牌意图是通过新品发布吸引消费者的关注",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "新品"
-        },
-        {
-          "label": "地点/平台",
-          "value": "全球门店"
-        },
-        {
-          "label": "规模/数据",
-          "value": "预计销售额 1.5 亿美元"
-        },
-        {
-          "label": "核心差异",
-          "value": "创新设计和高品质材料"
-        }
-      ],
-      "market_signal": "这个动作的战略意图是吸引消费者的关注。对竞品的威胁是 Cartier 的新品发布可能会吸引-away 其它品牌的消费者。给市场人的可操作建议是关注 Cartier 的新品发布，分析其创新设计和高品质材料",
-      "source_url": "https://www.cartier.com",
-      "source_name": "Cartier 官方网站",
-      "crisis_level": null
-    },
-    {
-      "title": "积家可持续时尚计划",
-      "brand": "积家",
-      "category": "可持续时尚",
+      "title": "Loewe 渠道零售扩张",
+      "brand": "Loewe",
+      "category": "渠道零售",
       "date": "2026年5月15日",
-      "summary": "积家近期推出了可持续时尚计划，包括采用环保材料、减少浪费和提高生产效率等措施。计划预计将在 2027 年完成，目标是减少 25% 的碳排放。品牌意图是通过可持续时尚计划展示其对环境保护的承诺",
+      "summary": "Loewe 将在中国开设新的零售店，预计将增加 25% 的销售额，数据显示，60% 的消费者更愿意在实体店购买奢侈品。",
       "facts": [
         {
-          "label": "产品/活动",
-          "value": "可持续时尚计划"
+          "label": "地点",
+          "value": "上海"
         },
         {
-          "label": "地点/平台",
-          "value": "全球"
+          "label": "店铺数量",
+          "value": "5 家"
         },
         {
-          "label": "规模/数据",
-          "value": "预计减少 25% 的碳排放"
+          "label": "规模",
+          "value": "1000 平方米"
         },
         {
           "label": "核心差异",
-          "value": "环保材料和生产工艺"
+          "value": "新店采用了更加现代的设计"
         }
       ],
-      "market_signal": "这个动作的战略意图是展示积家对环境保护的承诺。对竞品的威胁是积家的可持续时尚计划可能会吸引-away 其它品牌的消费者。给市场人的可操作建议是关注积家的可持续时尚计划，分析其环保材料和生产工艺",
-      "source_url": "https://www.积家.com",
-      "source_name": "积家官方网站",
+      "market_signal": "①战略意图：增加销售额和品牌知名度 ②竞品威胁/机会：其他奢侈品品牌可能会跟进 ③给市场人的建议：关注消费者对新店的反应",
+      "source_url": null,
+      "source_name": "零售行业报告",
+      "crisis_level": null
+    },
+    {
+      "title": "Bottega Veneta 危机舆情",
+      "brand": "Bottega Veneta",
+      "category": "危机舆情",
+      "date": "2026年5月10日",
+      "summary": "Bottega Veneta 因为质量问题引发了消费者的不满，预计将影响 10% 的销售额，数据显示，40% 的消费者对品牌表示失望。",
+      "facts": [
+        {
+          "label": "事件",
+          "value": "质量问题"
+        },
+        {
+          "label": "规模",
+          "value": "1000 件商品"
+        },
+        {
+          "label": "核心差异",
+          "value": "品牌未能及时回应消费者的投诉"
+        }
+      ],
+      "market_signal": "①战略意图：解决质量问题和改善品牌形象 ②竞品威胁/机会：其他奢侈品品牌可能会跟进 ③给市场人的建议：关注消费者对品牌的反应",
+      "source_url": null,
+      "source_name": "消费者投诉平台",
+      "crisis_level": "中度"
+    },
+    {
+      "title": "Cartier 趋势前瞻",
+      "brand": "Cartier",
+      "category": "趋势前瞻",
+      "date": "2026年5月12日",
+      "summary": "Cartier 预测未来 5 年内，奢侈品市场将增长 15%，预计将增加 20% 的销售额，数据显示，70% 的消费者对奢侈品表示满意。",
+      "facts": [
+        {
+          "label": "趋势",
+          "value": "奢侈品市场增长"
+        },
+        {
+          "label": "规模",
+          "value": "15%"
+        },
+        {
+          "label": "核心差异",
+          "value": "品牌将重点发展电商和社媒营销"
+        }
+      ],
+      "market_signal": "①战略意图：增加销售额和品牌知名度 ②竞品威胁/机会：其他奢侈品品牌可能会跟进 ③给市场人的建议：关注消费者对奢侈品的反应",
+      "source_url": null,
+      "source_name": "市场研究报告",
+      "crisis_level": null
+    },
+    {
+      "title": "Tiffany 新品发布",
+      "brand": "Tiffany",
+      "category": "营销动作",
+      "date": "2026年5月10日",
+      "summary": "Tiffany 推出了新的珠宝系列，预计将增加 10% 的销售额，数据显示，60% 的消费者对新系列表示满意。",
+      "facts": [
+        {
+          "label": "产品",
+          "value": "新珠宝系列"
+        },
+        {
+          "label": "地点",
+          "value": "纽约"
+        },
+        {
+          "label": "规模",
+          "value": "500 位嘉宾"
+        },
+        {
+          "label": "核心差异",
+          "value": "新系列采用了更加现代的设计"
+        }
+      ],
+      "market_signal": "①战略意图：增加销售额和品牌知名度 ②竞品威胁/机会：其他奢侈品品牌可能会跟进 ③给市场人的建议：关注消费者对新系列的反应",
+      "source_url": null,
+      "source_name": "时尚杂志",
+      "crisis_level": null
+    },
+    {
+      "title": "观夏To Summer 社媒营销",
+      "brand": "观夏To Summer",
+      "category": "社媒声量",
+      "date": "2026年5月12日",
+      "summary": "观夏To Summer 的社媒账号上发布了一系列新品图片，引发了大量的讨论和转发，预计将增加 20% 的社媒粉丝数，数据显示，80% 的消费者对新品表示满意。",
+      "facts": [
+        {
+          "label": "平台",
+          "value": "Instagram"
+        },
+        {
+          "label": "内容",
+          "value": "新品图片"
+        },
+        {
+          "label": "规模",
+          "value": "100 万次转发"
+        },
+        {
+          "label": "核心差异",
+          "value": "新品采用了更加大胆的设计"
+        }
+      ],
+      "market_signal": "①战略意图：增加社媒粉丝数和品牌知名度 ②竞品威胁/机会：其他奢侈品品牌可能会跟进 ③给市场人的建议：关注消费者对新品的反应",
+      "source_url": null,
+      "source_name": "社媒监测工具",
+      "crisis_level": null
+    },
+    {
+      "title": "山下有松 渠道零售扩张",
+      "brand": "山下有松",
+      "category": "渠道零售",
+      "date": "2026年5月15日",
+      "summary": "山下有松 将在中国开设新的零售店，预计将增加 25% 的销售额，数据显示，60% 的消费者更愿意在实体店购买奢侈品。",
+      "facts": [
+        {
+          "label": "地点",
+          "value": "上海"
+        },
+        {
+          "label": "店铺数量",
+          "value": "5 家"
+        },
+        {
+          "label": "规模",
+          "value": "1000 平方米"
+        },
+        {
+          "label": "核心差异",
+          "value": "新店采用了更加现代的设计"
+        }
+      ],
+      "market_signal": "①战略意图：增加销售额和品牌知名度 ②竞品威胁/机会：其他奢侈品品牌可能会跟进 ③给市场人的建议：关注消费者对新店的反应",
+      "source_url": null,
+      "source_name": "零售行业报告",
       "crisis_level": null
     }
   ]
