@@ -27,6 +27,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Fashion Intel Bot"
-          git add news-data.json
+          git add news-data.json archive/
           git diff --staged --quiet || git commit -m "📰 时尚情报更新 $(date +'%Y-%m-%d')"
           git push
