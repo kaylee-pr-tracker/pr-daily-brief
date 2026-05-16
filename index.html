@@ -3,23 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>时尚情报 · 每日内参</title>
+<title>Fashion News · 每日内参</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #F4F1EC; --surface: #FDFCF9; --ink: #2A2720; --ink-2: #5A5248;
-  --ink-3: #8A8278; --ink-4: #B8B0A8; --rule: #D8D2CA; --rule-light: #E8E2DA;
-  --gold: #7A6E62;
-  --mkt: #1A3A5C; --mkt-bg: #EBF0F7; --mkt-rule: #B8CCD8;
-  --pr: #4A1A3A; --pr-bg: #F5EBF2; --pr-rule: #D4B8CC;
-  --next: #1A3A2A; --next-bg: #EBF5EE; --next-rule: #B8D4C0;
-  --crisis: #8A5050;
-  --cat-m-border:#B8C4D4; --cat-m-text:#4A5E88;
-  --cat-s-border:#D4B8D0; --cat-s-text:#785870;
-  --cat-r-border:#B8D4C0; --cat-r-text:#486A52;
-  --cat-c-border:#D4B8B8; --cat-c-text:#885858;
-  --cat-t-border:#C8B8D4; --cat-t-text:#605080;
+  --bg:#F4F1EC;--surface:#FDFCF9;--ink:#2A2720;--ink-2:#5A5248;
+  --ink-3:#8A8278;--ink-4:#B8B0A8;--rule:#D8D2CA;--rule-light:#E8E2DA;--gold:#7A6E62;
+  --consumer-bg:#FFF8F0;--consumer-border:#E8D8C0;--consumer-ink:#5A3A10;
+  --mkt-bg:#EBF0F7;--mkt-border:#B8CCD8;--mkt-ink:#1A3A5C;
+  --pr-bg:#F5EBF2;--pr-border:#D4B8CC;--pr-ink:#4A1A3A;
+  --next-bg:#EBF5EE;--next-border:#B8D4C0;--next-ink:#1A3A2A;
+  --pestel-bg:#F5F0E8;--pestel-border:#D8CCBC;
+  --crisis:#8A5050;
+  --cat-m-border:#B8C4D4;--cat-m:#4A5E88;
+  --cat-s-border:#D4B8D0;--cat-s:#785870;
+  --cat-r-border:#B8D4C0;--cat-r:#486A52;
+  --cat-c-border:#D4B8B8;--cat-c:#885858;
+  --cat-t-border:#C8B8D4;--cat-t:#605080;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;font-weight:300;font-size:14px;line-height:1.7;min-height:100vh;}
@@ -40,10 +41,16 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang 
 /* ARCHIVE BAR */
 .archive-bar{background:var(--surface);border-bottom:1px solid var(--rule);padding:0.6rem 2.4rem;display:flex;align-items:center;gap:1rem;overflow-x:auto;}
 .archive-label{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-3);white-space:nowrap;flex-shrink:0;}
-.archive-dates{display:flex;gap:0.4rem;flex-wrap:nowrap;}
-.archive-btn{font-family:'DM Mono',monospace;font-size:8px;padding:3px 10px;border:1px solid var(--rule);background:transparent;cursor:pointer;color:var(--ink-3);white-space:nowrap;transition:all 0.15s;}
+.archive-btn{font-family:'DM Mono',monospace;font-size:8px;padding:3px 10px;border:1px solid var(--rule);background:transparent;cursor:pointer;color:var(--ink-3);white-space:nowrap;transition:all 0.15s;position:relative;}
 .archive-btn:hover{border-color:var(--ink-3);color:var(--ink);}
 .archive-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+.archive-btn .badge{position:absolute;top:-4px;right:-4px;width:8px;height:8px;background:var(--gold);border-radius:50%;}
+
+/* TAB NAV */
+.tab-nav{display:flex;gap:0;border-bottom:1px solid var(--rule);padding:0 2.4rem;}
+.tab-btn{font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;padding:0.7rem 1.2rem;border:none;background:transparent;cursor:pointer;color:var(--ink-3);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.15s;}
+.tab-btn:hover{color:var(--ink);}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--ink);}
 
 .body{padding:2rem 2.4rem;}
 
@@ -64,73 +71,117 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang 
 .fc-horizon{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:0.6rem;}
 .fc-title{font-family:'Cormorant',serif;font-size:1.4rem;font-weight:400;color:var(--ink);line-height:1.3;margin-bottom:0.7rem;}
 .fc-body{font-size:12px;color:var(--ink-2);line-height:1.85;margin-bottom:0.75rem;}
-.fc-signals{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;}
+.fc-signals{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.9rem;}
 .fc-sig{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-3);border:1px solid var(--rule);padding:2px 8px;}
-.fc-implications{display:flex;flex-direction:column;gap:0.4rem;margin-top:0.6rem;}
-.fc-impl{font-size:11px;line-height:1.6;padding:0.5rem 0.7rem;}
-.fc-impl-mkt{background:var(--mkt-bg);border-left:2px solid var(--mkt);color:var(--mkt);}
-.fc-impl-pr{background:var(--pr-bg);border-left:2px solid var(--pr);color:var(--pr);}
-.fc-impl-label{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;opacity:0.7;}
+.fc-analysis{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem;border-top:1px solid var(--rule-light);padding-top:0.8rem;}
+.fc-block{padding:0.6rem 0.75rem;font-size:11px;line-height:1.65;}
+.fc-block-label{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px;}
+.fc-consumer{background:var(--consumer-bg);border-left:2px solid var(--consumer-border);}
+.fc-consumer .fc-block-label{color:var(--consumer-ink);}
+.fc-mkt{background:var(--mkt-bg);border-left:2px solid var(--mkt-border);}
+.fc-mkt .fc-block-label{color:var(--mkt-ink);}
+.fc-pr{background:var(--pr-bg);border-left:2px solid var(--pr-border);}
+.fc-pr .fc-block-label{color:var(--pr-ink);}
 
 /* CARDS */
 .cards-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
 .icard{padding:1.6rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
 .icard.crisis{border-top:2px solid var(--crisis);}
-
 .cmeta{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.9rem;flex-wrap:wrap;}
 .ctag{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 9px;border:1px solid;}
-.ctag-m{border-color:var(--cat-m-border);color:var(--cat-m-text);}
-.ctag-s{border-color:var(--cat-s-border);color:var(--cat-s-text);}
-.ctag-r{border-color:var(--cat-r-border);color:var(--cat-r-text);}
-.ctag-c{border-color:var(--cat-c-border);color:var(--cat-c-text);}
-.ctag-t{border-color:var(--cat-t-border);color:var(--cat-t-text);}
+.ctag-m{border-color:var(--cat-m-border);color:var(--cat-m);}
+.ctag-s{border-color:var(--cat-s-border);color:var(--cat-s);}
+.ctag-r{border-color:var(--cat-r-border);color:var(--cat-r);}
+.ctag-c{border-color:var(--cat-c-border);color:var(--cat-c);}
+.ctag-t{border-color:var(--cat-t-border);color:var(--cat-t);}
 .bpill{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-3);padding:2px 8px;border:1px solid var(--rule);}
 .cdt{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-4);margin-left:auto;}
 .clv{font-family:'DM Mono',monospace;font-size:8px;color:var(--crisis);}
-
 .ctitle{font-family:'Cormorant',serif;font-size:1.25rem;font-weight:400;color:var(--ink);line-height:1.4;margin-bottom:0.6rem;}
 .cbody{font-size:12px;color:var(--ink-2);line-height:1.9;margin-bottom:1rem;}
-
 .facts{border-top:1px solid var(--rule-light);padding-top:0.85rem;margin-bottom:0.9rem;display:flex;flex-direction:column;gap:0.4rem;}
 .fact{display:flex;gap:0.8rem;}
 .fk{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-4);min-width:52px;flex-shrink:0;padding-top:2px;}
 .fv{font-size:12px;color:var(--ink-2);line-height:1.7;}
 
-/* ANALYSIS BLOCKS */
-.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.75rem;border-top:1px solid var(--rule-light);padding-top:0.85rem;}
-.analysis-block{padding:0.8rem 0.9rem;}
-.analysis-block-mkt{background:var(--mkt-bg);border:1px solid var(--mkt-rule);}
-.analysis-block-pr{background:var(--pr-bg);border:1px solid var(--pr-rule);}
-.analysis-title{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;font-weight:400;}
-.analysis-title-mkt{color:var(--mkt);}
-.analysis-title-pr{color:var(--pr);}
-.analysis-row{margin-bottom:0.4rem;}
+/* CONSUMER ANALYSIS */
+.consumer-section{background:var(--consumer-bg);border:1px solid var(--consumer-border);padding:1rem;margin-bottom:0.75rem;}
+.consumer-title{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:var(--consumer-ink);margin-bottom:0.7rem;}
+.consumer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;}
+.consumer-card{background:white;padding:0.6rem 0.7rem;border:1px solid var(--consumer-border);}
+.consumer-card-label{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:var(--consumer-ink);margin-bottom:3px;}
+.consumer-card-text{font-size:11px;color:var(--ink-2);line-height:1.6;}
+.consumer-unmet{margin-top:0.5rem;padding:0.5rem 0.7rem;background:rgba(255,200,100,0.15);border-left:2px solid #D4A840;font-size:11px;color:var(--ink-2);line-height:1.6;}
+.consumer-unmet-label{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:#7A5800;margin-bottom:2px;}
+
+/* MKT ANALYSIS */
+.mkt-section{background:var(--mkt-bg);border:1px solid var(--mkt-border);padding:1rem;margin-bottom:0.75rem;}
+.mkt-title{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:var(--mkt-ink);margin-bottom:0.7rem;}
+.analysis-row{margin-bottom:0.45rem;}
 .analysis-key{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-3);margin-bottom:1px;}
-.analysis-val{font-size:11px;color:var(--ink-2);line-height:1.6;}
+.analysis-val{font-size:11px;color:var(--ink-2);line-height:1.65;}
+
+/* PR ANALYSIS */
+.pr-section{background:var(--pr-bg);border:1px solid var(--pr-border);padding:1rem;margin-bottom:0.75rem;}
+.pr-title{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:var(--pr-ink);margin-bottom:0.7rem;}
+.race-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.4rem;margin-top:0.5rem;}
+.race-item{background:rgba(74,26,58,0.06);padding:0.5rem 0.6rem;}
+.race-label{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:var(--pr-ink);margin-bottom:2px;}
+.race-val{font-size:11px;color:var(--ink-2);line-height:1.6;}
 
 /* NEXT MOVE */
-.next-move{background:var(--next-bg);border:1px solid var(--next-rule);border-left:3px solid var(--next);padding:0.85rem 1rem;margin-bottom:0.75rem;}
-.next-label{font-family:'DM Mono',monospace;font-size:8px;color:var(--next);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.35rem;}
+.next-move{background:var(--next-bg);border:1px solid var(--next-border);border-left:3px solid var(--next-ink);padding:0.85rem 1rem;margin-bottom:0.75rem;}
+.next-label{font-family:'DM Mono',monospace;font-size:8px;color:var(--next-ink);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.35rem;}
 .next-text{font-size:12px;color:#1A3A2A;line-height:1.75;}
 
 /* SOURCE */
 .source-row{display:flex;align-items:center;gap:0.5rem;padding-top:0.65rem;border-top:1px solid var(--rule-light);overflow:hidden;}
-.source-icon{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.1em;flex-shrink:0;}
+.source-icon{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;flex-shrink:0;}
 .source-name{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-4);flex-shrink:0;}
-.source-link{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-3);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-bottom:1px solid var(--rule-light);transition:color 0.15s;}
+.source-link{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-3);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-bottom:1px solid var(--rule-light);}
 .source-link:hover{color:var(--ink);}
+
+/* PERIODIC REPORT */
+.periodic-section{margin-bottom:2.4rem;}
+.exec-summary{background:var(--ink);color:var(--bg);padding:1.4rem 1.6rem;margin-bottom:1.4rem;}
+.exec-title{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
+.exec-points{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.exec-points li{font-size:13px;line-height:1.6;padding-left:1rem;position:relative;}
+.exec-points li::before{content:'→';position:absolute;left:0;opacity:0.5;}
+.periodic-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:1.4rem;}
+.periodic-card{background:var(--surface);padding:1.2rem;}
+.periodic-card-title{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-3);margin-bottom:0.8rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);}
+.periodic-item{margin-bottom:0.7rem;}
+.periodic-item-key{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-4);margin-bottom:2px;}
+.periodic-item-val{font-size:12px;color:var(--ink-2);line-height:1.7;}
+.consumer-profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:1.4rem;}
+.profile-card{background:var(--surface);padding:1.2rem;}
+.profile-card-label{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.8rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);}
+.z-gen .profile-card-label{color:#605080;}
+.hnw .profile-card-label{color:#486A52;}
+.new-mid .profile-card-label{color:#785870;}
+.recommendations{border:1px solid var(--rule);margin-bottom:1.4rem;}
+.rec-item{padding:1rem 1.2rem;border-bottom:1px solid var(--rule);}
+.rec-item:last-child{border-bottom:none;}
+.rec-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.4rem;}
+.rec-audience{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-3);}
+.rec-priority{font-family:'DM Mono',monospace;font-size:7px;padding:1px 6px;border-radius:2px;}
+.rec-priority.high{background:#FAEAEA;color:#885858;}
+.rec-priority.mid{background:#FFF3E0;color:#7A5800;}
+.rec-action{font-size:12px;color:var(--ink-2);line-height:1.7;}
 
 .foot{border-top:1px solid var(--rule);padding:1rem 2.4rem;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-4);}
 .state-empty{text-align:center;padding:5rem 2rem;}
 .state-empty h2{font-family:'Cormorant',serif;font-size:1.6rem;font-weight:300;color:var(--ink-3);margin-bottom:0.75rem;}
 .state-empty p{font-size:12px;color:var(--ink-4);line-height:1.9;}
 .state-empty code{font-family:'DM Mono',monospace;font-size:11px;background:var(--surface);border:1px solid var(--rule);padding:2px 8px;color:var(--ink-2);}
+.hidden{display:none;}
 
-@media(max-width:800px){
-  .forecast-grid,.cards-grid,.analysis-grid{grid-template-columns:1fr;}
+@media(max-width:900px){
+  .forecast-grid,.cards-grid,.consumer-grid,.consumer-profiles,.periodic-grid,.race-grid{grid-template-columns:1fr;}
   .stats-row{grid-template-columns:repeat(3,1fr);}
   .mast,.body{padding-left:1.2rem;padding-right:1.2rem;}
-  .archive-bar{padding-left:1.2rem;}
+  .archive-bar,.tab-nav{padding-left:1.2rem;}
   .mast-nav{flex-direction:column;gap:0.5rem;}
   .foot{flex-direction:column;gap:0.4rem;padding-left:1.2rem;}
 }
@@ -140,7 +191,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang 
 
 <header class="mast">
   <div class="mast-eyebrow">
-    <span>Fashion Intelligence Brief</span>
+    <span>Fashion Intelligence Brief · Marketing + PR · Consumer Psychology</span>
     <span id="issue-date">--</span>
   </div>
   <div class="mast-center">
@@ -150,137 +201,157 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang 
       <div class="mast-ornament-dot"></div>
       <div class="mast-ornament-line"></div>
     </div>
-    <div class="mast-tagline">For Market Practitioners &nbsp;·&nbsp; Marketing + PR 双视角 &nbsp;·&nbsp; 每日 08:00 自动更新</div>
+    <div class="mast-tagline">消费者心理 · 4P分析 · PESTEL宏观 · PR RACE模型 · 每日 08:00 自动更新</div>
   </div>
   <div class="mast-nav">
     <div class="nav-items">
       <span>营销动作</span><span>社媒声量</span><span>渠道零售</span><span>危机舆情</span><span>趋势前瞻</span>
     </div>
-    <span>LVMH · 历峰 · 开云 · CHANEL · 爱马仕 · 观夏 · 山下有松 · 精选品牌</span>
+    <span>LVMH · 历峰 · 开云 · CHANEL · 爱马仕 · 观夏 · 山下有松</span>
   </div>
 </header>
 
-<!-- 历史归档导航栏 -->
 <div class="archive-bar">
   <span class="archive-label">历史档案</span>
-  <div class="archive-dates" id="archiveDates">
-    <button class="archive-btn active" onclick="loadData('news-data.json', this)">今日</button>
+  <div id="archiveDates" style="display:flex;gap:0.4rem;">
+    <button class="archive-btn active" onclick="loadData('news-data.json',this)">今日</button>
   </div>
 </div>
 
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('daily',this)">每日情报</button>
+  <button class="tab-btn" id="weeklyTab" onclick="switchTab('weekly',this)" style="display:none;">本周报告</button>
+  <button class="tab-btn" id="monthlyTab" onclick="switchTab('monthly',this)" style="display:none;">月度报告</button>
+  <button class="tab-btn" id="quarterlyTab" onclick="switchTab('quarterly',this)" style="display:none;">季度报告</button>
+</div>
+
 <main class="body">
-  <div id="main-content">
-    <div class="state-empty">
-      <h2>等待今日情报</h2>
-      <p>首次运行请执行 <code>node generate.js</code><br>或等待 GitHub Actions 每日 08:00 自动更新</p>
+  <div id="tab-daily">
+    <div id="main-content">
+      <div class="state-empty">
+        <h2>等待今日情报</h2>
+        <p>首次运行请执行 <code>node generate.js</code><br>或等待 GitHub Actions 每日 08:00 自动更新</p>
+      </div>
     </div>
   </div>
+  <div id="tab-weekly" class="hidden"></div>
+  <div id="tab-monthly" class="hidden"></div>
+  <div id="tab-quarterly" class="hidden"></div>
 </main>
 
 <footer class="foot">
-  <span>时尚情报 · Fashion Intelligence Brief · Marketing + PR 双视角</span>
+  <span>时尚情报 · Fashion Intelligence Brief</span>
   <span id="footer-ts">--</span>
 </footer>
 
 <script>
-const CAT_MAP = {
-  '营销动作':'m','营销':'m','社媒声量':'s','社媒':'s',
-  '渠道零售':'r','渠道':'r','零售':'r','危机舆情':'c',
-  '危机':'c','舆情':'c','趋势前瞻':'t','趋势':'t'
-};
-const CATS = ['营销动作','社媒声量','渠道零售','危机舆情','趋势前瞻'];
+const CAT_MAP={'营销动作':'m','营销':'m','社媒声量':'s','社媒':'s','渠道零售':'r','渠道':'r','零售':'r','危机舆情':'c','危机':'c','舆情':'c','趋势前瞻':'t','趋势':'t'};
+const CATS=['营销动作','社媒声量','渠道零售','危机舆情','趋势前瞻'];
+function getCatKey(cat){if(!cat)return't';if(CAT_MAP[cat.trim()])return CAT_MAP[cat.trim()];for(const[k,v]of Object.entries(CAT_MAP)){if(cat.toLowerCase().includes(k.toLowerCase()))return v;}return't';}
+function normCat(cat){return{m:'营销动作',s:'社媒声量',r:'渠道零售',c:'危机舆情',t:'趋势前瞻'}[getCatKey(cat)];}
 
-function getCatKey(cat) {
-  if (!cat) return 't';
-  if (CAT_MAP[cat.trim()]) return CAT_MAP[cat.trim()];
-  for (const [k,v] of Object.entries(CAT_MAP)) {
-    if (cat.toLowerCase().includes(k.toLowerCase())) return v;
-  }
-  return 't';
-}
-function normCat(cat) {
-  return {m:'营销动作',s:'社媒声量',r:'渠道零售',c:'危机舆情',t:'趋势前瞻'}[getCatKey(cat)];
-}
+document.getElementById('issue-date').textContent=new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
 
-document.getElementById('issue-date').textContent =
-  new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
+let currentData=null;
 
-// 加载归档索引
-fetch('archive/index.json?t='+Date.now())
-  .then(r=>r.json())
-  .then(index=>{
-    const container = document.getElementById('archiveDates');
-    index.slice(0,30).forEach(entry=>{
-      const btn = document.createElement('button');
-      btn.className = 'archive-btn';
-      btn.textContent = entry.date_key;
-      btn.onclick = () => loadData(`archive/${entry.date_key}.json`, btn);
-      container.appendChild(btn);
-    });
-  }).catch(()=>{});
+// 归档索引
+fetch('archive/index.json?t='+Date.now()).then(r=>r.json()).then(index=>{
+  const container=document.getElementById('archiveDates');
+  index.slice(0,30).forEach(entry=>{
+    const btn=document.createElement('button');
+    btn.className='archive-btn';
+    btn.textContent=entry.date_key;
+    if(entry.has_weekly||entry.has_monthly||entry.has_quarterly){
+      const badge=document.createElement('span');
+      badge.className='badge';
+      btn.appendChild(badge);
+    }
+    btn.onclick=()=>loadData(`archive/${entry.date_key}.json`,btn);
+    container.appendChild(btn);
+  });
+}).catch(()=>{});
 
-// 加载数据
-function loadData(url, btn) {
+function loadData(url,btn){
   document.querySelectorAll('.archive-btn').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  fetch(url+'?t='+Date.now()).then(r=>r.json()).then(render).catch(()=>{});
+  if(btn)btn.classList.add('active');
+  fetch(url+'?t='+Date.now()).then(r=>r.json()).then(data=>{
+    currentData=data;
+    renderDaily(data);
+    // 显示/隐藏周期报告 tab
+    const pr=data.periodic_reports||{};
+    showTab('weeklyTab',!!pr.weekly);
+    showTab('monthlyTab',!!pr.monthly);
+    showTab('quarterlyTab',!!pr.quarterly);
+    if(pr.weekly)renderPeriodic('weekly',pr.weekly);
+    if(pr.monthly)renderPeriodic('monthly',pr.monthly);
+    if(pr.quarterly)renderPeriodic('quarterly',pr.quarterly);
+    switchTab('daily',document.querySelector('.tab-btn'));
+  }).catch(()=>{});
 }
 
-// 初始加载今日数据
-loadData('news-data.json', document.querySelector('.archive-btn'));
+function showTab(id,show){
+  const el=document.getElementById(id);
+  if(el)el.style.display=show?'':'none';
+}
 
-function render(data) {
-  if (!data?.items?.length) return;
-  const {items, trend_forecast, updated} = data;
-  items.forEach(item => { item._cat = normCat(item.category); });
-  document.getElementById('footer-ts').textContent = '情报日期 · '+(updated||'--')+' · 由 AI 生成';
+function switchTab(tab,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  ['daily','weekly','monthly','quarterly'].forEach(t=>{
+    const el=document.getElementById('tab-'+t);
+    if(el)el.classList.toggle('hidden',t!==tab);
+  });
+}
 
-  const counts = {};
-  CATS.forEach(c=>counts[c]=0);
-  items.forEach(i=>{ if(counts[i._cat]!==undefined) counts[i._cat]++; });
+loadData('news-data.json',document.querySelector('.archive-btn'));
 
-  let html = '';
+function renderDaily(data){
+  if(!data?.items?.length)return;
+  const{items,trend_forecast,updated}=data;
+  items.forEach(item=>{item._cat=normCat(item.category);});
+  document.getElementById('footer-ts').textContent='情报日期 · '+(updated||'--')+' · AI多框架分析';
 
-  // stats
-  html += `<div class="stats-row">${CATS.map(c=>`
-    <div class="stat"><div class="stat-n">${counts[c]}</div><div class="stat-l">${c}</div></div>`).join('')}</div>`;
+  const counts={};CATS.forEach(c=>counts[c]=0);
+  items.forEach(i=>{if(counts[i._cat]!==undefined)counts[i._cat]++;});
 
-  // forecast
+  let html='';
+  html+=`<div class="stats-row">${CATS.map(c=>`<div class="stat"><div class="stat-n">${counts[c]}</div><div class="stat-l">${c}</div></div>`).join('')}</div>`;
+
   if(trend_forecast?.length){
-    html += `<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">趋势前瞻 · Trend Forecast</div><div class="sec-h-line"></div></div>`;
-    html += `<div class="forecast-grid">${trend_forecast.map(t=>`
-      <div class="fc">
+    html+=`<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">趋势前瞻 · 消费者心理 + PESTEL + Marketing + PR</div><div class="sec-h-line"></div></div>`;
+    html+=`<div class="forecast-grid">${trend_forecast.map(t=>{
+      const cp=t.consumer_psychology||{};
+      return`<div class="fc">
         <div class="fc-horizon">${t.horizon||''}</div>
         <div class="fc-title">${t.title||''}</div>
         <div class="fc-body">${t.summary||''}</div>
         <div class="fc-signals">${(t.signals||[]).map(s=>`<span class="fc-sig">${s}</span>`).join('')}</div>
-        <div class="fc-implications">
-          ${t.marketing_implication?`<div class="fc-impl fc-impl-mkt"><div class="fc-impl-label">Marketing</div>${t.marketing_implication}</div>`:''}
-          ${t.pr_implication?`<div class="fc-impl fc-impl-pr"><div class="fc-impl-label">PR</div>${t.pr_implication}</div>`:''}
+        <div class="fc-analysis">
+          ${cp.z_gen||cp.hnw||cp.new_middle?`<div class="fc-block fc-consumer"><div class="fc-block-label">消费者心理</div>
+            ${cp.z_gen?`<div style="margin-bottom:4px"><strong style="font-size:10px">Z世代</strong>：${cp.z_gen}</div>`:''}
+            ${cp.hnw?`<div style="margin-bottom:4px"><strong style="font-size:10px">高净值</strong>：${cp.hnw}</div>`:''}
+            ${cp.new_middle?`<div><strong style="font-size:10px">新中产</strong>：${cp.new_middle}</div>`:''}
+          </div>`:''}
+          ${t.pestel_context?`<div class="fc-block fc-consumer" style="background:var(--pestel-bg);border-left-color:var(--pestel-border)"><div class="fc-block-label" style="color:#5A3A10">PESTEL宏观</div>${t.pestel_context}</div>`:''}
+          ${t.marketing_implication?`<div class="fc-block fc-mkt"><div class="fc-block-label">Marketing影响</div>${t.marketing_implication}</div>`:''}
+          ${t.pr_implication?`<div class="fc-block fc-pr"><div class="fc-block-label">PR影响</div>${t.pr_implication}</div>`:''}
         </div>
-      </div>`).join('')}</div>`;
+      </div>`;
+    }).join('')}</div>`;
   }
 
-  // cards
-  html += `<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">今日情报 · Intelligence Feed</div><div class="sec-h-line"></div></div>`;
-  html += `<div class="cards-grid">`;
+  html+=`<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">今日情报 · Intelligence Feed</div><div class="sec-h-line"></div></div>`;
+  html+=`<div class="cards-grid">`;
 
   items.forEach(item=>{
-    const ck = getCatKey(item.category);
-    const isCrisis = ck==='c';
-    const ma = item.marketing_analysis || {};
-    const pa = item.pr_analysis || {};
+    const ck=getCatKey(item.category);
+    const isCrisis=ck==='c';
+    const ca=item.consumer_analysis||{};
+    const ma=item.marketing_analysis||{};
+    const pa=item.pr_analysis||{};
+    const race=pa.race_model||{};
 
-    const sourceHtml = item.source_url ? `
-      <div class="source-row">
-        <span class="source-icon">来源</span>
-        ${item.source_name?`<span class="source-name">${item.source_name} /</span>`:''}
-        <a class="source-link" href="${item.source_url}" target="_blank" rel="noopener"
-           title="${item.source_url}">${item.source_url.replace(/^https?:\/\/(www\.)?/,'').slice(0,50)}</a>
-      </div>` : '';
-
-    html += `
-    <div class="icard${isCrisis?' crisis':''}">
+    html+=`<div class="icard${isCrisis?' crisis':''}">
       <div class="cmeta">
         <span class="ctag ctag-${ck}">${item._cat}</span>
         <span class="bpill">${item.brand||''}</span>
@@ -289,40 +360,126 @@ function render(data) {
       </div>
       <div class="ctitle">${item.title||''}</div>
       <div class="cbody">${item.summary||''}</div>
-      <div class="facts">
-        ${(item.facts||[]).map(f=>`
-          <div class="fact"><span class="fk">${f.label}</span><span class="fv">${f.value}</span></div>`).join('')}
-      </div>
+      <div class="facts">${(item.facts||[]).map(f=>`<div class="fact"><span class="fk">${f.label}</span><span class="fv">${f.value}</span></div>`).join('')}</div>
 
-      <div class="analysis-grid">
-        <div class="analysis-block analysis-block-mkt">
-          <div class="analysis-title analysis-title-mkt">Marketing 分析</div>
-          ${ma.target_audience?`<div class="analysis-row"><div class="analysis-key">目标受众</div><div class="analysis-val">${ma.target_audience}</div></div>`:''}
-          ${ma.strategy?`<div class="analysis-row"><div class="analysis-key">创意策略</div><div class="analysis-val">${ma.strategy}</div></div>`:''}
-          ${ma.channel_logic?`<div class="analysis-row"><div class="analysis-key">渠道逻辑</div><div class="analysis-val">${ma.channel_logic}</div></div>`:''}
-          ${ma.roi_measure?`<div class="analysis-row"><div class="analysis-key">效果衡量</div><div class="analysis-val">${ma.roi_measure}</div></div>`:''}
-          ${ma.competitor_threat?`<div class="analysis-row"><div class="analysis-key">竞品威胁</div><div class="analysis-val">${ma.competitor_threat}</div></div>`:''}
+      ${ca.primary_target||ca.z_gen_reaction?`
+      <div class="consumer-section">
+        <div class="consumer-title">消费者心理分析</div>
+        ${ca.primary_target?`<div style="font-size:11px;color:var(--ink-2);margin-bottom:0.6rem;font-style:italic">${ca.primary_target}</div>`:''}
+        <div class="consumer-grid">
+          ${ca.z_gen_reaction?`<div class="consumer-card"><div class="consumer-card-label">Z世代反应</div><div class="consumer-card-text">${ca.z_gen_reaction}</div></div>`:''}
+          ${ca.hnw_reaction?`<div class="consumer-card"><div class="consumer-card-label">高净值人群</div><div class="consumer-card-text">${ca.hnw_reaction}</div></div>`:''}
+          ${ca.new_middle_reaction?`<div class="consumer-card"><div class="consumer-card-label">新中产</div><div class="consumer-card-text">${ca.new_middle_reaction}</div></div>`:''}
         </div>
-        <div class="analysis-block analysis-block-pr">
-          <div class="analysis-title analysis-title-pr">PR 分析</div>
-          ${pa.narrative?`<div class="analysis-row"><div class="analysis-key">品牌叙事</div><div class="analysis-val">${pa.narrative}</div></div>`:''}
-          ${pa.media_value?`<div class="analysis-row"><div class="analysis-key">媒体价值</div><div class="analysis-val">${pa.media_value}</div></div>`:''}
-          ${pa.risk_points?`<div class="analysis-row"><div class="analysis-key">舆情风险</div><div class="analysis-val">${pa.risk_points}</div></div>`:''}
-          ${pa.crisis_prep?`<div class="analysis-row"><div class="analysis-key">危机预案</div><div class="analysis-val">${pa.crisis_prep}</div></div>`:''}
-        </div>
-      </div>
-
-      ${item.next_move?`
-      <div class="next-move">
-        <div class="next-label">→ 下一步预判</div>
-        <div class="next-text">${item.next_move}</div>
+        ${ca.unmet_needs?`<div class="consumer-unmet"><div class="consumer-unmet-label">被忽视的需求</div>${ca.unmet_needs}</div>`:''}
       </div>`:''}
-      ${sourceHtml}
+
+      ${ma['4p_focus']||ma.strategy?`
+      <div class="mkt-section">
+        <div class="mkt-title">Marketing 分析（4P框架）</div>
+        ${ma['4p_focus']?`<div class="analysis-row"><div class="analysis-key">4P发力点</div><div class="analysis-val">${ma['4p_focus']}</div></div>`:''}
+        ${ma.strategy?`<div class="analysis-row"><div class="analysis-key">创意策略</div><div class="analysis-val">${ma.strategy}</div></div>`:''}
+        ${ma.channel_logic?`<div class="analysis-row"><div class="analysis-key">渠道逻辑</div><div class="analysis-val">${ma.channel_logic}</div></div>`:''}
+        ${ma.roi_measure?`<div class="analysis-row"><div class="analysis-key">效果衡量</div><div class="analysis-val">${ma.roi_measure}</div></div>`:''}
+        ${ma.cross_category_threat?`<div class="analysis-row"><div class="analysis-key">跨品类威胁</div><div class="analysis-val">${ma.cross_category_threat}</div></div>`:''}
+      </div>`:''}
+
+      ${pa.narrative_built||race.reach?`
+      <div class="pr-section">
+        <div class="pr-title">PR 分析（RACE模型）</div>
+        ${pa.narrative_built?`<div class="analysis-row"><div class="analysis-key">品牌叙事</div><div class="analysis-val">${pa.narrative_built}</div></div>`:''}
+        ${race.reach||race.act?`<div class="race-grid">
+          ${race.reach?`<div class="race-item"><div class="race-label">Reach 触达</div><div class="race-val">${race.reach}</div></div>`:''}
+          ${race.act?`<div class="race-item"><div class="race-label">Act 行动</div><div class="race-val">${race.act}</div></div>`:''}
+          ${race.convert?`<div class="race-item"><div class="race-label">Convert 转化</div><div class="race-val">${race.convert}</div></div>`:''}
+          ${race.engage?`<div class="race-item"><div class="race-label">Engage 互动</div><div class="race-val">${race.engage}</div></div>`:''}
+        </div>`:''}
+        ${pa.risk_assessment?`<div class="analysis-row" style="margin-top:0.5rem"><div class="analysis-key">舆情风险</div><div class="analysis-val">${pa.risk_assessment}</div></div>`:''}
+        ${pa.crisis_protocol?`<div class="analysis-row"><div class="analysis-key">危机预案</div><div class="analysis-val">${pa.crisis_protocol}</div></div>`:''}
+      </div>`:''}
+
+      ${item.next_move?`<div class="next-move"><div class="next-label">→ 下一步预判</div><div class="next-text">${item.next_move}</div></div>`:''}
+
+      ${item.source_url?`<div class="source-row">
+        <span class="source-icon">来源</span>
+        ${item.source_name?`<span class="source-name">${item.source_name} /</span>`:''}
+        <a class="source-link" href="${item.source_url}" target="_blank" rel="noopener"
+           title="${item.source_url}">${item.source_url.replace(/^https?:\/\/(www\.)?/,'').slice(0,50)}</a>
+      </div>`:''}
     </div>`;
   });
 
-  html += `</div>`;
-  document.getElementById('main-content').innerHTML = html;
+  html+=`</div>`;
+  document.getElementById('main-content').innerHTML=html;
+}
+
+function renderPeriodic(period,data){
+  const container=document.getElementById('tab-'+period);
+  if(!container||!data)return;
+  const pestel=data.pestel_scan||{};
+  const consumer=data.consumer_psychology_report||{};
+  const social=data.social_ecosystem_report||{};
+  const market=data.market_share_dynamics||{};
+  const recs=data.actionable_recommendations||[];
+  const zgen=consumer.z_gen_profile||{};
+  const hnw=consumer.hnw_profile||{};
+  const newMid=consumer.new_middle_profile||{};
+
+  container.innerHTML=`
+    <div class="periodic-section">
+      <div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">${data.period_label||''}趋势报告 · ${data.generated_at||''}</div><div class="sec-h-line"></div></div>
+
+      ${data.executive_summary?`<div class="exec-summary">
+        <div class="exec-title">Executive Summary · 高管摘要</div>
+        <ul class="exec-points">${data.executive_summary.split(/[。\n]/).filter(s=>s.trim()).map(s=>`<li>${s.trim()}</li>`).join('')}</ul>
+      </div>`:''}
+
+      <div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">PESTEL 宏观扫描</div><div class="sec-h-line"></div></div>
+      <div class="periodic-grid">
+        ${[['political','政治/政策'],['economic','经济'],['social','社会文化'],['technological','技术'],['environmental','环境/ESG'],['legal','法律合规']].map(([k,l])=>
+          pestel[k]?`<div class="periodic-card"><div class="periodic-card-title">${l}</div><div class="periodic-item-val">${pestel[k]}</div></div>`:''
+        ).join('')}
+      </div>
+
+      <div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">消费者心理报告 · 三类人群画像</div><div class="sec-h-line"></div></div>
+      <div class="consumer-profiles">
+        <div class="profile-card z-gen">
+          <div class="profile-card-label">Z世代（95后）</div>
+          ${Object.entries(zgen).map(([k,v])=>`<div class="periodic-item"><div class="periodic-item-key">${{core_desire:'核心欲望',identity_logic:'身份认同逻辑',pain_points:'被忽视的痛点',emerging_behavior:'新兴行为'}[k]||k}</div><div class="periodic-item-val">${v}</div></div>`).join('')}
+        </div>
+        <div class="profile-card hnw">
+          <div class="profile-card-label">高净值人群（HNW）</div>
+          ${Object.entries(hnw).map(([k,v])=>`<div class="periodic-item"><div class="periodic-item-key">${{core_desire:'核心需求',scarcity_sensitivity:'稀缺性敏感度',channel_preference:'渠道偏好',emerging_behavior:'新兴行为'}[k]||k}</div><div class="periodic-item-val">${v}</div></div>`).join('')}
+        </div>
+        <div class="profile-card new-mid">
+          <div class="profile-card-label">新中产</div>
+          ${Object.entries(newMid).map(([k,v])=>`<div class="periodic-item"><div class="periodic-item-key">${{core_desire:'核心矛盾',affordable_luxury_logic:'轻奢逻辑',social_proof_need:'社交证明需求',emerging_behavior:'新兴行为'}[k]||k}</div><div class="periodic-item-val">${v}</div></div>`).join('')}
+        </div>
+      </div>
+
+      <div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">社交媒体生态报告</div><div class="sec-h-line"></div></div>
+      <div class="periodic-grid">
+        ${[['xiaohongshu','小红书'],['douyin','抖音'],['weibo','微博'],['wechat','微信私域'],['overall_shift','整体生态位移']].map(([k,l])=>
+          social[k]?`<div class="periodic-card"><div class="periodic-card-title">${l}</div><div class="periodic-item-val">${social[k]}</div></div>`:''
+        ).join('')}
+      </div>
+
+      <div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">市场动态</div><div class="sec-h-line"></div></div>
+      <div class="periodic-grid">
+        ${[['rising_brands','上升势头品牌'],['declining_brands','下滑信号品牌'],['positioning_shift','定位位移'],['cross_category_competition','跨品类竞争']].map(([k,l])=>
+          market[k]?`<div class="periodic-card"><div class="periodic-card-title">${l}</div><div class="periodic-item-val">${market[k]}</div></div>`:''
+        ).join('')}
+      </div>
+
+      ${recs.length?`<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">可执行建议</div><div class="sec-h-line"></div></div>
+      <div class="recommendations">${recs.map(r=>`<div class="rec-item">
+        <div class="rec-header">
+          <span class="rec-audience">${r.audience||''}</span>
+          <span class="rec-priority ${r.priority==='高'?'high':'mid'}">${r.priority||''}</span>
+        </div>
+        <div class="rec-action">${r.action||''}</div>
+      </div>`).join('')}</div>`:''}
+    </div>`;
 }
 </script>
 </body>
