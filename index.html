@@ -8,111 +8,131 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #F4F1EC;
-  --surface: #FDFCF9;
-  --ink: #2A2720;
-  --ink-2: #5A5248;
-  --ink-3: #8A8278;
-  --ink-4: #B8B0A8;
-  --rule: #D8D2CA;
-  --rule-light: #E8E2DA;
+  --bg: #F4F1EC; --surface: #FDFCF9; --ink: #2A2720; --ink-2: #5A5248;
+  --ink-3: #8A8278; --ink-4: #B8B0A8; --rule: #D8D2CA; --rule-light: #E8E2DA;
   --gold: #7A6E62;
-  --next: #2A4A3A;
-  --next-bg: #EEF4F0;
-  --next-rule: #C0D4C8;
-  --cat-m-border: #B8C4D4; --cat-m-text: #4A5E88;
-  --cat-s-border: #D4B8D0; --cat-s-text: #785870;
-  --cat-r-border: #B8D4C0; --cat-r-text: #486A52;
-  --cat-c-border: #D4B8B8; --cat-c-text: #885858;
-  --cat-t-border: #C8B8D4; --cat-t-text: #605080;
+  --mkt: #1A3A5C; --mkt-bg: #EBF0F7; --mkt-rule: #B8CCD8;
+  --pr: #4A1A3A; --pr-bg: #F5EBF2; --pr-rule: #D4B8CC;
+  --next: #1A3A2A; --next-bg: #EBF5EE; --next-rule: #B8D4C0;
   --crisis: #8A5050;
+  --cat-m-border:#B8C4D4; --cat-m-text:#4A5E88;
+  --cat-s-border:#D4B8D0; --cat-s-text:#785870;
+  --cat-r-border:#B8D4C0; --cat-r-text:#486A52;
+  --cat-c-border:#D4B8B8; --cat-c-text:#885858;
+  --cat-t-border:#C8B8D4; --cat-t-text:#605080;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.7; min-height: 100vh; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;font-weight:300;font-size:14px;line-height:1.7;min-height:100vh;}
 
-.mast { padding: 2.4rem 2.4rem 0; border-bottom: 1px solid var(--rule); }
-.mast-eyebrow { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2rem; }
-.mast-center { text-align: center; padding-bottom: 1.6rem; }
-.mast-title { font-family: 'Cormorant', serif; font-size: 3.6rem; font-weight: 300; letter-spacing: 0.18em; color: var(--ink); line-height: 1; }
-.mast-title em { font-style: italic; color: var(--gold); }
-.mast-ornament { display: flex; align-items: center; gap: 1rem; margin: 1rem auto; width: 200px; }
-.mast-ornament-line { flex: 1; height: 1px; background: var(--rule); }
-.mast-ornament-dot { width: 4px; height: 4px; background: var(--ink-3); border-radius: 50%; }
-.mast-tagline { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-4); }
-.mast-nav { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-4); }
-.nav-items { display: flex; gap: 1.8rem; }
+/* MASTHEAD */
+.mast{padding:2.4rem 2.4rem 0;border-bottom:1px solid var(--rule);}
+.mast-eyebrow{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2rem;}
+.mast-center{text-align:center;padding-bottom:1.6rem;}
+.mast-title{font-family:'Cormorant',serif;font-size:3.6rem;font-weight:300;letter-spacing:0.18em;color:var(--ink);line-height:1;}
+.mast-title em{font-style:italic;color:var(--gold);}
+.mast-ornament{display:flex;align-items:center;gap:1rem;margin:1rem auto;width:200px;}
+.mast-ornament-line{flex:1;height:1px;background:var(--rule);}
+.mast-ornament-dot{width:4px;height:4px;background:var(--ink-3);border-radius:50%;}
+.mast-tagline{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-4);}
+.mast-nav{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);}
+.nav-items{display:flex;gap:1.8rem;}
 
-.body { padding: 2rem 2.4rem; }
+/* ARCHIVE BAR */
+.archive-bar{background:var(--surface);border-bottom:1px solid var(--rule);padding:0.6rem 2.4rem;display:flex;align-items:center;gap:1rem;overflow-x:auto;}
+.archive-label{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-3);white-space:nowrap;flex-shrink:0;}
+.archive-dates{display:flex;gap:0.4rem;flex-wrap:nowrap;}
+.archive-btn{font-family:'DM Mono',monospace;font-size:8px;padding:3px 10px;border:1px solid var(--rule);background:transparent;cursor:pointer;color:var(--ink-3);white-space:nowrap;transition:all 0.15s;}
+.archive-btn:hover{border-color:var(--ink-3);color:var(--ink);}
+.archive-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink);}
 
-.stats-row { display: grid; grid-template-columns: repeat(5,1fr); margin-bottom: 2.4rem; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
-.stat { padding: 1.2rem 0.6rem; text-align: center; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.stat-n { font-family: 'Cormorant', serif; font-size: 2.4rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 4px; }
-.stat-l { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.body{padding:2rem 2.4rem;}
 
-.sec-h { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.4rem; }
-.sec-h-line { flex: 1; height: 1px; background: var(--rule); }
-.sec-h-text { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);margin-bottom:2.4rem;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
+.stat{padding:1.2rem 0.6rem;text-align:center;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.stat-n{font-family:'Cormorant',serif;font-size:2.4rem;font-weight:300;color:var(--ink);line-height:1;margin-bottom:4px;}
+.stat-l{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);}
 
-.forecast-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); margin-bottom: 2.4rem; }
-.fc { padding: 1.6rem 1.4rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.fc-horizon { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.6rem; }
-.fc-title { font-family: 'Cormorant', serif; font-size: 1.4rem; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 0.7rem; }
-.fc-body { font-size: 12px; color: var(--ink-2); line-height: 1.85; margin-bottom: 0.9rem; }
-.fc-signals { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-.fc-sig { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); border: 1px solid var(--rule); padding: 2px 8px; }
+/* SEC HEADING */
+.sec-h{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.4rem;}
+.sec-h-line{flex:1;height:1px;background:var(--rule);}
+.sec-h-text{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
 
-.cards-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
-.icard { padding: 1.6rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.icard.crisis { border-top: 2px solid var(--crisis); }
+/* FORECAST */
+.forecast-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-left:1px solid var(--rule);margin-bottom:2.4rem;}
+.fc{padding:1.6rem 1.4rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.fc-horizon{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:0.6rem;}
+.fc-title{font-family:'Cormorant',serif;font-size:1.4rem;font-weight:400;color:var(--ink);line-height:1.3;margin-bottom:0.7rem;}
+.fc-body{font-size:12px;color:var(--ink-2);line-height:1.85;margin-bottom:0.75rem;}
+.fc-signals{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;}
+.fc-sig{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-3);border:1px solid var(--rule);padding:2px 8px;}
+.fc-implications{display:flex;flex-direction:column;gap:0.4rem;margin-top:0.6rem;}
+.fc-impl{font-size:11px;line-height:1.6;padding:0.5rem 0.7rem;}
+.fc-impl-mkt{background:var(--mkt-bg);border-left:2px solid var(--mkt);color:var(--mkt);}
+.fc-impl-pr{background:var(--pr-bg);border-left:2px solid var(--pr);color:var(--pr);}
+.fc-impl-label{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;opacity:0.7;}
 
-.cmeta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
-.ctag { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 9px; border: 1px solid; }
-.ctag-m { border-color: var(--cat-m-border); color: var(--cat-m-text); }
-.ctag-s { border-color: var(--cat-s-border); color: var(--cat-s-text); }
-.ctag-r { border-color: var(--cat-r-border); color: var(--cat-r-text); }
-.ctag-c { border-color: var(--cat-c-border); color: var(--cat-c-text); }
-.ctag-t { border-color: var(--cat-t-border); color: var(--cat-t-text); }
-.bpill { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); padding: 2px 8px; border: 1px solid var(--rule); }
-.cdt { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-4); margin-left: auto; }
-.clv { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--crisis); }
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
+.icard{padding:1.6rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.icard.crisis{border-top:2px solid var(--crisis);}
 
-.ctitle { font-family: 'Cormorant', serif; font-size: 1.25rem; font-weight: 400; color: var(--ink); line-height: 1.4; margin-bottom: 0.6rem; }
-.cbody { font-size: 12px; color: var(--ink-2); line-height: 1.9; margin-bottom: 1rem; }
+.cmeta{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.9rem;flex-wrap:wrap;}
+.ctag{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 9px;border:1px solid;}
+.ctag-m{border-color:var(--cat-m-border);color:var(--cat-m-text);}
+.ctag-s{border-color:var(--cat-s-border);color:var(--cat-s-text);}
+.ctag-r{border-color:var(--cat-r-border);color:var(--cat-r-text);}
+.ctag-c{border-color:var(--cat-c-border);color:var(--cat-c-text);}
+.ctag-t{border-color:var(--cat-t-border);color:var(--cat-t-text);}
+.bpill{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-3);padding:2px 8px;border:1px solid var(--rule);}
+.cdt{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-4);margin-left:auto;}
+.clv{font-family:'DM Mono',monospace;font-size:8px;color:var(--crisis);}
 
-.facts { border-top: 1px solid var(--rule-light); padding-top: 0.85rem; margin-bottom: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; }
-.fact { display: flex; gap: 0.8rem; }
-.fk { font-family: 'DM Mono', monospace; font-size: 8px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-4); min-width: 52px; flex-shrink: 0; padding-top: 2px; }
-.fv { font-size: 12px; color: var(--ink-2); line-height: 1.7; }
+.ctitle{font-family:'Cormorant',serif;font-size:1.25rem;font-weight:400;color:var(--ink);line-height:1.4;margin-bottom:0.6rem;}
+.cbody{font-size:12px;color:var(--ink-2);line-height:1.9;margin-bottom:1rem;}
 
-.msig { display: flex; gap: 0.8rem; align-items: flex-start; border-top: 1px solid var(--rule-light); padding-top: 0.85rem; margin-bottom: 0.75rem; }
-.ms-l { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; padding-top: 2px; flex-shrink: 0; }
-.ms-t { font-size: 12px; color: var(--ink-2); line-height: 1.8; font-style: italic; }
+.facts{border-top:1px solid var(--rule-light);padding-top:0.85rem;margin-bottom:0.9rem;display:flex;flex-direction:column;gap:0.4rem;}
+.fact{display:flex;gap:0.8rem;}
+.fk{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-4);min-width:52px;flex-shrink:0;padding-top:2px;}
+.fv{font-size:12px;color:var(--ink-2);line-height:1.7;}
 
-/* next_move — 核心新增模块 */
-.next-move { background: var(--next-bg); border: 1px solid var(--next-rule); border-left: 3px solid var(--next); padding: 0.9rem 1rem; margin-bottom: 0.8rem; }
-.next-label { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--next); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
-.next-label::before { content: '→'; }
-.next-text { font-size: 12px; color: #2A4A3A; line-height: 1.75; }
+/* ANALYSIS BLOCKS */
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.75rem;border-top:1px solid var(--rule-light);padding-top:0.85rem;}
+.analysis-block{padding:0.8rem 0.9rem;}
+.analysis-block-mkt{background:var(--mkt-bg);border:1px solid var(--mkt-rule);}
+.analysis-block-pr{background:var(--pr-bg);border:1px solid var(--pr-rule);}
+.analysis-title{font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;font-weight:400;}
+.analysis-title-mkt{color:var(--mkt);}
+.analysis-title-pr{color:var(--pr);}
+.analysis-row{margin-bottom:0.4rem;}
+.analysis-key{font-family:'DM Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-3);margin-bottom:1px;}
+.analysis-val{font-size:11px;color:var(--ink-2);line-height:1.6;}
 
-.source-row { display: flex; align-items: center; gap: 0.5rem; padding-top: 0.65rem; border-top: 1px solid var(--rule-light); overflow: hidden; }
-.source-icon { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.1em; flex-shrink: 0; }
-.source-name { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-4); flex-shrink: 0; }
-.source-link { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid var(--rule-light); transition: color 0.15s; }
-.source-link:hover { color: var(--ink); }
+/* NEXT MOVE */
+.next-move{background:var(--next-bg);border:1px solid var(--next-rule);border-left:3px solid var(--next);padding:0.85rem 1rem;margin-bottom:0.75rem;}
+.next-label{font-family:'DM Mono',monospace;font-size:8px;color:var(--next);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.35rem;}
+.next-text{font-size:12px;color:#1A3A2A;line-height:1.75;}
 
-.foot { border-top: 1px solid var(--rule); padding: 1rem 2.4rem; display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-4); }
+/* SOURCE */
+.source-row{display:flex;align-items:center;gap:0.5rem;padding-top:0.65rem;border-top:1px solid var(--rule-light);overflow:hidden;}
+.source-icon{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.1em;flex-shrink:0;}
+.source-name{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-4);flex-shrink:0;}
+.source-link{font-family:'DM Mono',monospace;font-size:8px;color:var(--ink-3);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-bottom:1px solid var(--rule-light);transition:color 0.15s;}
+.source-link:hover{color:var(--ink);}
 
-.state-empty { text-align: center; padding: 5rem 2rem; }
-.state-empty h2 { font-family: 'Cormorant', serif; font-size: 1.6rem; font-weight: 300; color: var(--ink-3); margin-bottom: 0.75rem; }
-.state-empty p { font-size: 12px; color: var(--ink-4); line-height: 1.9; }
-.state-empty code { font-family: 'DM Mono', monospace; font-size: 11px; background: var(--surface); border: 1px solid var(--rule); padding: 2px 8px; color: var(--ink-2); }
+.foot{border-top:1px solid var(--rule);padding:1rem 2.4rem;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-4);}
+.state-empty{text-align:center;padding:5rem 2rem;}
+.state-empty h2{font-family:'Cormorant',serif;font-size:1.6rem;font-weight:300;color:var(--ink-3);margin-bottom:0.75rem;}
+.state-empty p{font-size:12px;color:var(--ink-4);line-height:1.9;}
+.state-empty code{font-family:'DM Mono',monospace;font-size:11px;background:var(--surface);border:1px solid var(--rule);padding:2px 8px;color:var(--ink-2);}
 
-@media (max-width: 800px) {
-  .forecast-grid, .cards-grid { grid-template-columns: 1fr; }
-  .stats-row { grid-template-columns: repeat(3,1fr); }
-  .mast, .body { padding-left: 1.2rem; padding-right: 1.2rem; }
-  .mast-nav { flex-direction: column; gap: 0.5rem; }
-  .foot { flex-direction: column; gap: 0.4rem; padding-left: 1.2rem; }
+@media(max-width:800px){
+  .forecast-grid,.cards-grid,.analysis-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:repeat(3,1fr);}
+  .mast,.body{padding-left:1.2rem;padding-right:1.2rem;}
+  .archive-bar{padding-left:1.2rem;}
+  .mast-nav{flex-direction:column;gap:0.5rem;}
+  .foot{flex-direction:column;gap:0.4rem;padding-left:1.2rem;}
 }
 </style>
 </head>
@@ -130,7 +150,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
       <div class="mast-ornament-dot"></div>
       <div class="mast-ornament-line"></div>
     </div>
-    <div class="mast-tagline">For Market Practitioners &nbsp;·&nbsp; 中国市场视角 &nbsp;·&nbsp; 每日 08:00 自动更新</div>
+    <div class="mast-tagline">For Market Practitioners &nbsp;·&nbsp; Marketing + PR 双视角 &nbsp;·&nbsp; 每日 08:00 自动更新</div>
   </div>
   <div class="mast-nav">
     <div class="nav-items">
@@ -139,6 +159,14 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
     <span>LVMH · 历峰 · 开云 · CHANEL · 爱马仕 · 观夏 · 山下有松 · 精选品牌</span>
   </div>
 </header>
+
+<!-- 历史归档导航栏 -->
+<div class="archive-bar">
+  <span class="archive-label">历史档案</span>
+  <div class="archive-dates" id="archiveDates">
+    <button class="archive-btn active" onclick="loadData('news-data.json', this)">今日</button>
+  </div>
+</div>
 
 <main class="body">
   <div id="main-content">
@@ -150,69 +178,86 @@ body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', 'P
 </main>
 
 <footer class="foot">
-  <span>时尚情报 · Fashion Intelligence Brief</span>
+  <span>时尚情报 · Fashion Intelligence Brief · Marketing + PR 双视角</span>
   <span id="footer-ts">--</span>
 </footer>
 
 <script>
 const CAT_MAP = {
-  '营销动作':'m','营销':'m','campaign':'m',
-  '社媒声量':'s','社媒':'s','social':'s',
-  '渠道零售':'r','渠道':'r','零售':'r','retail':'r',
-  '危机舆情':'c','危机':'c','舆情':'c','crisis':'c',
-  '趋势前瞻':'t','趋势':'t','trend':'t'
+  '营销动作':'m','营销':'m','社媒声量':'s','社媒':'s',
+  '渠道零售':'r','渠道':'r','零售':'r','危机舆情':'c',
+  '危机':'c','舆情':'c','趋势前瞻':'t','趋势':'t'
 };
 const CATS = ['营销动作','社媒声量','渠道零售','危机舆情','趋势前瞻'];
 
 function getCatKey(cat) {
   if (!cat) return 't';
   if (CAT_MAP[cat.trim()]) return CAT_MAP[cat.trim()];
-  const lower = cat.toLowerCase();
   for (const [k,v] of Object.entries(CAT_MAP)) {
-    if (lower.includes(k.toLowerCase())) return v;
+    if (cat.toLowerCase().includes(k.toLowerCase())) return v;
   }
   return 't';
 }
-
 function normCat(cat) {
-  const k = getCatKey(cat);
-  return { m:'营销动作',s:'社媒声量',r:'渠道零售',c:'危机舆情',t:'趋势前瞻' }[k];
+  return {m:'营销动作',s:'社媒声量',r:'渠道零售',c:'危机舆情',t:'趋势前瞻'}[getCatKey(cat)];
 }
 
 document.getElementById('issue-date').textContent =
-  new Date().toLocaleDateString('zh-CN', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
+  new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
 
-fetch('news-data.json?t=' + Date.now()).then(r => r.json()).then(render).catch(() => {});
+// 加载归档索引
+fetch('archive/index.json?t='+Date.now())
+  .then(r=>r.json())
+  .then(index=>{
+    const container = document.getElementById('archiveDates');
+    index.slice(0,30).forEach(entry=>{
+      const btn = document.createElement('button');
+      btn.className = 'archive-btn';
+      btn.textContent = entry.date_key;
+      btn.onclick = () => loadData(`archive/${entry.date_key}.json`, btn);
+      container.appendChild(btn);
+    });
+  }).catch(()=>{});
+
+// 加载数据
+function loadData(url, btn) {
+  document.querySelectorAll('.archive-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  fetch(url+'?t='+Date.now()).then(r=>r.json()).then(render).catch(()=>{});
+}
+
+// 初始加载今日数据
+loadData('news-data.json', document.querySelector('.archive-btn'));
 
 function render(data) {
   if (!data?.items?.length) return;
-  const { items, trend_forecast, updated } = data;
-
+  const {items, trend_forecast, updated} = data;
   items.forEach(item => { item._cat = normCat(item.category); });
-  document.getElementById('footer-ts').textContent = '最后更新 · ' + (updated || '--') + ' · 由 AI 生成';
+  document.getElementById('footer-ts').textContent = '情报日期 · '+(updated||'--')+' · 由 AI 生成';
 
   const counts = {};
-  CATS.forEach(c => counts[c] = 0);
-  items.forEach(i => { if (counts[i._cat] !== undefined) counts[i._cat]++; });
+  CATS.forEach(c=>counts[c]=0);
+  items.forEach(i=>{ if(counts[i._cat]!==undefined) counts[i._cat]++; });
 
   let html = '';
 
   // stats
-  html += `<div class="stats-row">${CATS.map(c => `
-    <div class="stat">
-      <div class="stat-n">${counts[c]}</div>
-      <div class="stat-l">${c}</div>
-    </div>`).join('')}</div>`;
+  html += `<div class="stats-row">${CATS.map(c=>`
+    <div class="stat"><div class="stat-n">${counts[c]}</div><div class="stat-l">${c}</div></div>`).join('')}</div>`;
 
   // forecast
-  if (trend_forecast?.length) {
+  if(trend_forecast?.length){
     html += `<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">趋势前瞻 · Trend Forecast</div><div class="sec-h-line"></div></div>`;
-    html += `<div class="forecast-grid">${trend_forecast.map(t => `
+    html += `<div class="forecast-grid">${trend_forecast.map(t=>`
       <div class="fc">
         <div class="fc-horizon">${t.horizon||''}</div>
         <div class="fc-title">${t.title||''}</div>
         <div class="fc-body">${t.summary||''}</div>
         <div class="fc-signals">${(t.signals||[]).map(s=>`<span class="fc-sig">${s}</span>`).join('')}</div>
+        <div class="fc-implications">
+          ${t.marketing_implication?`<div class="fc-impl fc-impl-mkt"><div class="fc-impl-label">Marketing</div>${t.marketing_implication}</div>`:''}
+          ${t.pr_implication?`<div class="fc-impl fc-impl-pr"><div class="fc-impl-label">PR</div>${t.pr_implication}</div>`:''}
+        </div>
       </div>`).join('')}</div>`;
   }
 
@@ -220,22 +265,18 @@ function render(data) {
   html += `<div class="sec-h"><div class="sec-h-line"></div><div class="sec-h-text">今日情报 · Intelligence Feed</div><div class="sec-h-line"></div></div>`;
   html += `<div class="cards-grid">`;
 
-  items.forEach(item => {
+  items.forEach(item=>{
     const ck = getCatKey(item.category);
-    const isCrisis = ck === 'c';
+    const isCrisis = ck==='c';
+    const ma = item.marketing_analysis || {};
+    const pa = item.pr_analysis || {};
 
     const sourceHtml = item.source_url ? `
       <div class="source-row">
         <span class="source-icon">来源</span>
-        ${item.source_name ? `<span class="source-name">${item.source_name} /</span>` : ''}
+        ${item.source_name?`<span class="source-name">${item.source_name} /</span>`:''}
         <a class="source-link" href="${item.source_url}" target="_blank" rel="noopener"
-           title="${item.source_url}">${item.source_url.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,'').slice(0,50)}</a>
-      </div>` : '';
-
-    const nextHtml = item.next_move ? `
-      <div class="next-move">
-        <div class="next-label">下一步预判</div>
-        <div class="next-text">${item.next_move}</div>
+           title="${item.source_url}">${item.source_url.replace(/^https?:\/\/(www\.)?/,'').slice(0,50)}</a>
       </div>` : '';
 
     html += `
@@ -250,16 +291,32 @@ function render(data) {
       <div class="cbody">${item.summary||''}</div>
       <div class="facts">
         ${(item.facts||[]).map(f=>`
-          <div class="fact">
-            <span class="fk">${f.label}</span>
-            <span class="fv">${f.value}</span>
-          </div>`).join('')}
+          <div class="fact"><span class="fk">${f.label}</span><span class="fv">${f.value}</span></div>`).join('')}
       </div>
-      <div class="msig">
-        <span class="ms-l">市场信号</span>
-        <span class="ms-t">${item.market_signal||''}</span>
+
+      <div class="analysis-grid">
+        <div class="analysis-block analysis-block-mkt">
+          <div class="analysis-title analysis-title-mkt">Marketing 分析</div>
+          ${ma.target_audience?`<div class="analysis-row"><div class="analysis-key">目标受众</div><div class="analysis-val">${ma.target_audience}</div></div>`:''}
+          ${ma.strategy?`<div class="analysis-row"><div class="analysis-key">创意策略</div><div class="analysis-val">${ma.strategy}</div></div>`:''}
+          ${ma.channel_logic?`<div class="analysis-row"><div class="analysis-key">渠道逻辑</div><div class="analysis-val">${ma.channel_logic}</div></div>`:''}
+          ${ma.roi_measure?`<div class="analysis-row"><div class="analysis-key">效果衡量</div><div class="analysis-val">${ma.roi_measure}</div></div>`:''}
+          ${ma.competitor_threat?`<div class="analysis-row"><div class="analysis-key">竞品威胁</div><div class="analysis-val">${ma.competitor_threat}</div></div>`:''}
+        </div>
+        <div class="analysis-block analysis-block-pr">
+          <div class="analysis-title analysis-title-pr">PR 分析</div>
+          ${pa.narrative?`<div class="analysis-row"><div class="analysis-key">品牌叙事</div><div class="analysis-val">${pa.narrative}</div></div>`:''}
+          ${pa.media_value?`<div class="analysis-row"><div class="analysis-key">媒体价值</div><div class="analysis-val">${pa.media_value}</div></div>`:''}
+          ${pa.risk_points?`<div class="analysis-row"><div class="analysis-key">舆情风险</div><div class="analysis-val">${pa.risk_points}</div></div>`:''}
+          ${pa.crisis_prep?`<div class="analysis-row"><div class="analysis-key">危机预案</div><div class="analysis-val">${pa.crisis_prep}</div></div>`:''}
+        </div>
       </div>
-      ${nextHtml}
+
+      ${item.next_move?`
+      <div class="next-move">
+        <div class="next-label">→ 下一步预判</div>
+        <div class="next-text">${item.next_move}</div>
+      </div>`:''}
       ${sourceHtml}
     </div>`;
   });
