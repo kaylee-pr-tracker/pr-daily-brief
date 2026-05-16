@@ -1,8 +1,9 @@
 // generate.js — 时尚情报每日抓取脚本
-// 架构：SerpAPI → 抓取文章正文 → DeepSeek 深度分析（含 next_move）
+// 架构：SerpAPI → 抓取正文 → DeepSeek 深度分析（Marketing/PR视角）→ 归档存储
 // 依赖环境变量：DS_API_KEY, SERP_API_KEY
 
 const fs = require('fs');
+const path = require('path');
 const https = require('https');
 const http = require('http');
 
@@ -12,7 +13,12 @@ const SERP_KEY = process.env.SERP_API_KEY;
 if (!DS_KEY) { console.error('❌ 缺少 DS_API_KEY'); process.exit(1); }
 if (!SERP_KEY) { console.error('❌ 缺少 SERP_API_KEY'); process.exit(1); }
 
-const today = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+const now = new Date();
+const today = now.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+const dateKey = now.toISOString().slice(0, 10); // 2026-05-16
+
+// ── 确保 archive 目录存在 ─────────────────────────────────────
+if (!fs.existsSync('archive')) fs.mkdirSync('archive');
 
 // ── 抓取文章正文 ──────────────────────────────────────────────
 function fetchArticle(url, maxChars = 1500) {
@@ -35,7 +41,6 @@ function fetchArticle(url, maxChars = 1500) {
         res.on('data', c => chunks.push(c));
         res.on('end', () => {
           const html = Buffer.concat(chunks).toString('utf8');
-          // 提取正文：去掉 script/style/nav/header/footer
           const clean = html
             .replace(/<script[\s\S]*?<\/script>/gi, '')
             .replace(/<style[\s\S]*?<\/style>/gi, '')
@@ -67,7 +72,6 @@ function serpSearch(query, tbs = 'qdr:w') {
       hl: 'zh-cn',
       gl: 'cn'
     });
-
     const req = https.request({
       hostname: 'serpapi.com',
       path: `/search.json?${params}`,
@@ -127,7 +131,6 @@ async function gatherIntel() {
     await new Promise(r => setTimeout(r, 300));
   }
 
-  // 去重
   const seen = new Set();
   const unique = allResults.filter(r => {
     if (!r.url || !r.title || seen.has(r.url)) return false;
@@ -135,101 +138,113 @@ async function gatherIntel() {
     return true;
   });
 
-  console.log(`\n📥 共 ${unique.length} 条结果，开始抓取文章正文...\n`);
+  console.log(`\n📥 共 ${unique.length} 条，抓取文章正文...\n`);
 
-  // 并发抓取前30条文章正文（提升内容深度）
   const withContent = await Promise.all(
     unique.slice(0, 30).map(async (r, i) => {
-      await new Promise(res => setTimeout(res, i * 100)); // 错开请求
+      await new Promise(res => setTimeout(res, i * 100));
       const body = await fetchArticle(r.url);
-      if (body) console.log(`  ✓ 正文[${i+1}] ${r.source} — ${r.title.slice(0, 30)}...`);
+      if (body) console.log(`  ✓ [${i+1}] ${r.source} — ${r.title.slice(0,30)}...`);
       return { ...r, body };
     })
   );
 
-  // 补上没抓正文的条目
-  const remaining = unique.slice(30).map(r => ({ ...r, body: '' }));
-  const final = [...withContent, ...remaining];
-
-  // 来源统计
-  const counts = {};
-  final.forEach(r => { counts[r.queryLabel] = (counts[r.queryLabel] || 0) + 1; });
-  console.log(`\n📰 分布：${Object.entries(counts).map(([k,v]) => `${k}(${v})`).join(' · ')}\n`);
-
-  return final;
+  return [...withContent, ...unique.slice(30).map(r => ({ ...r, body: '' }))];
 }
 
-// ── DeepSeek 深度分析 ─────────────────────────────────────────
+// ── DeepSeek 深度分析（Marketing/PR专业视角）────────────────
 function callDeepSeek(articles) {
   const contextText = articles.slice(0, 40).map((r, i) => {
-    const content = r.body
-      ? `正文摘录：${r.body.slice(0, 800)}`
-      : `摘要：${r.snippet}`;
-    return `[${i+1}]【${r.queryLabel}】${r.title}
-📅 ${r.date || '近期'} | 来源: ${r.source}
-🔗 ${r.url}
-${content}`;
+    const content = r.body ? `正文：${r.body.slice(0, 800)}` : `摘要：${r.snippet}`;
+    return `[${i+1}]【${r.queryLabel}】${r.title}\n📅 ${r.date||'近期'} | ${r.source}\n🔗 ${r.url}\n${content}`;
   }).join('\n\n---\n\n');
 
-  const SYSTEM = `你是一位有15年经验的奢侈品行业市场情报分析师，曾供职于LVMH集团战略部和麦肯锡奢侈品团队。
+  const SYSTEM = `你是一位同时精通 Marketing 和 PR 的奢侈品行业资深顾问，有15年经验，曾供职于LVMH集团和博达大桥公关公司。
 
-你的情报以三个特质著称：
-1. 极度具体——产品系列全名、具体城市/门店/平台、真实数字、涉及人物姓名，每句话都有事实支撑
-2. 洞察深刻——不只记录发生了什么，更要推演「接下来会发生什么」
-3. 对市场人有用——每条情报都给出可立即执行的行动建议
+你用两套思维框架分析每一个品牌动作：
 
-严禁套话：「品牌影响力」「消费者认知」「市场份额」等模糊词汇一律禁止。
-只输出JSON，第一个字符{，最后字符}。`;
+【Marketing 思维】
+- 这个动作的目标受众是谁？用了什么触达路径？
+- 创意策略是什么？与品牌整体策略的关系？
+- 预算结构推断：重金KOL还是内容驱动？渠道分配？
+- ROI 逻辑：如何衡量这个campaign的成效？
+
+【PR 思维】
+- 这个动作的媒体传播价值是什么？
+- 品牌叙事（Brand Narrative）如何构建？
+- 潜在舆情风险点在哪里？如何提前布防？
+- 危机情境下：如何回应？时间窗口？关键信息？
+
+每条情报必须极度具体，严禁套话。只输出JSON。`;
 
   const USER = `今天是${today}。
 
-以下是今日从Google搜索获取的最新时尚行业资讯（含文章正文）：
+以下是今日搜索到的最新时尚行业资讯：
 
 ${contextText}
 
 ---
 
-基于以上真实内容，输出竞品情报简报JSON。每条情报必须包含 next_move 字段——这是最重要的字段，回答「今天发生了这件事，明天它将走向哪里」。
+基于以上内容，从 Marketing + PR 双重专业视角输出竞品情报简报：
 
 {
   "updated": "${today}",
+  "date_key": "${dateKey}",
   "trend_forecast": [
     {
-      "title": "8字内趋势标题，有冲击力",
+      "title": "8字内趋势标题",
       "horizon": "近期 · 1–4周",
-      "summary": "含具体品牌+事件+数据，2-3句，禁止套话",
-      "signals": ["可验证的具体信号", "具体信号", "具体信号"]
+      "summary": "含具体品牌+事件+数据，2-3句",
+      "signals": ["具体信号", "具体信号", "具体信号"],
+      "marketing_implication": "这个趋势对市场营销策略的具体影响，给出可操作的方向建议",
+      "pr_implication": "这个趋势对品牌传播和舆情管理的具体影响"
     },
     {
       "title": "8字内趋势标题",
       "horizon": "中期 · 1–3个月",
       "summary": "含具体品牌+事件+数据，2-3句",
-      "signals": ["具体信号", "具体信号", "具体信号"]
+      "signals": ["具体信号", "具体信号", "具体信号"],
+      "marketing_implication": "营销策略影响",
+      "pr_implication": "传播和舆情影响"
     },
     {
       "title": "8字内趋势标题",
       "horizon": "长期 · 季度级",
       "summary": "含具体品牌+事件+数据，2-3句",
-      "signals": ["具体信号", "具体信号", "具体信号"]
+      "signals": ["具体信号", "具体信号", "具体信号"],
+      "marketing_implication": "营销策略影响",
+      "pr_implication": "传播和舆情影响"
     }
   ],
   "items": [
     {
-      "title": "品牌+具体事件，15字内，直接点明发生了什么",
+      "title": "品牌+具体事件，15字内",
       "brand": "品牌名",
       "category": "营销动作",
-      "date": "从原文提取的具体日期",
-      "summary": "什么产品/系列全名？哪个城市/平台？什么数据？涉及哪些具体人物？品牌意图是什么？3-4句，每句有具体事实",
+      "date": "具体日期",
+      "summary": "什么产品/系列全名？哪个城市/平台？什么数据？涉及哪些具体人物？3-4句，每句有具体事实",
       "facts": [
         {"label": "产品/活动", "value": "产品系列全名或活动完整名称"},
         {"label": "地点/平台", "value": "具体城市+场地，或平台名+账号"},
-        {"label": "数据", "value": "原文中的具体数字，无则填「暂无公开数据」"},
-        {"label": "核心差异", "value": "与该品牌以往做法或竞品的具体区别"}
+        {"label": "数据", "value": "具体数字，无则填「暂无公开数据」"},
+        {"label": "核心差异", "value": "与以往或竞品的具体区别"}
       ],
-      "market_signal": "①战略意图：[品牌这个动作背后的商业逻辑，一句话] ②竞品影响：[对哪个具体竞品构成什么威胁或机会] ③市场建议：[给同赛道市场人一条可立即执行的建议]",
-      "next_move": "基于今天的动作，预判该品牌未来2-4周最可能的下一步是什么？竞品应该在哪里布防？给出具体的预判和建议，2-3句",
-      "source_url": "原文URL，必须来自搜索结果",
-      "source_name": "来源媒体名称",
+      "marketing_analysis": {
+        "target_audience": "目标受众画像：年龄/消费层级/心理特征，要具体",
+        "strategy": "创意策略：用了什么营销手法？为什么这样做？",
+        "channel_logic": "渠道逻辑：选择这个平台/渠道的原因，预算重心判断",
+        "roi_measure": "如何衡量这次营销的效果？关键指标是什么？",
+        "competitor_threat": "对竞品的具体威胁：哪个品牌受影响最大？如何应对？"
+      },
+      "pr_analysis": {
+        "narrative": "品牌叙事：这个动作在讲什么故事？强化了什么品牌形象？",
+        "media_value": "媒体传播价值：哪些媒体会跟进？内容角度是什么？",
+        "risk_points": "潜在舆情风险：可能引发什么负面反应？敏感点在哪？",
+        "crisis_prep": "危机预案：如果出现舆情，品牌应在什么时间窗口用什么口径回应？"
+      },
+      "next_move": "基于今天的动作，预判未来2-4周品牌最可能的下一步，以及竞品应该在哪里布防，2-3句",
+      "source_url": "原文URL",
+      "source_name": "来源媒体",
       "crisis_level": null
     }
   ]
@@ -237,12 +252,11 @@ ${contextText}
 
 规则：
 - 中国境内事件占70%以上
-- 输出8-10条items，每条来自不同品牌
+- 输出8-10条items，覆盖不同品牌
 - 覆盖全部5个category：营销动作、社媒声量、渠道零售、危机舆情、趋势前瞻
-- 危机舆情必须填crisis_level（轻微/中度/严重）
-- next_move每条必填，这是核心价值所在
-- source_url必须是搜索结果中真实存在的URL
-- 内容不足时减少条目，绝不编造
+- 危机舆情必须填crisis_level（轻微/中度/严重），pr_analysis必须特别详细
+- 所有分析字段必须具体，禁止套话
+- source_url必须来自搜索结果的真实URL
 - 只返回JSON`;
 
   return new Promise((resolve, reject) => {
@@ -253,14 +267,14 @@ ${contextText}
         { role: 'user', content: USER }
       ],
       temperature: 0.2,
-      max_tokens: 8000
+      max_tokens: 10000
     });
 
     const req = https.request({
       hostname: 'api.deepseek.com',
       path: '/chat/completions',
       method: 'POST',
-      timeout: 120000,
+      timeout: 180000,
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Authorization': `Bearer ${DS_KEY}`,
@@ -293,7 +307,7 @@ async function main() {
     const articles = await gatherIntel();
     if (articles.length < 3) throw new Error('搜索结果不足，请检查 SERP_API_KEY');
 
-    console.log('🤖 DeepSeek 深度分析中...');
+    console.log('\n🤖 DeepSeek 深度分析（Marketing + PR 双视角）...');
     const raw = await callDeepSeek(articles);
     console.log('✅ 完成，解析JSON...');
 
@@ -306,18 +320,40 @@ async function main() {
 
     const data = JSON.parse(jsonStr);
     data.updated = data.updated || today;
+    data.date_key = data.date_key || dateKey;
     if (!Array.isArray(data.trend_forecast)) data.trend_forecast = [];
     if (!Array.isArray(data.items)) data.items = [];
 
+    // ── 写入今日数据（覆盖）
     fs.writeFileSync('news-data.json', JSON.stringify(data, null, 2), { encoding: 'utf8' });
+    console.log('✅ news-data.json 已更新');
+
+    // ── 写入归档（按日期，永久保存）
+    const archivePath = path.join('archive', `${dateKey}.json`);
+    fs.writeFileSync(archivePath, JSON.stringify(data, null, 2), { encoding: 'utf8' });
+    console.log(`✅ 已归档至 archive/${dateKey}.json`);
+
+    // ── 更新归档索引
+    const indexPath = 'archive/index.json';
+    let archiveIndex = [];
+    if (fs.existsSync(indexPath)) {
+      try { archiveIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8')); } catch {}
+    }
+    if (!archiveIndex.find(d => d.date_key === dateKey)) {
+      archiveIndex.unshift({ date_key: dateKey, updated: today, count: data.items.length });
+      // 只保留最近90天
+      archiveIndex = archiveIndex.slice(0, 90);
+      fs.writeFileSync(indexPath, JSON.stringify(archiveIndex, null, 2), { encoding: 'utf8' });
+      console.log(`✅ 归档索引已更新（共 ${archiveIndex.length} 天）`);
+    }
 
     console.log(`\n📊 趋势前瞻：${data.trend_forecast.length} 条`);
     console.log(`📰 情报条目：${data.items.length} 条\n`);
     data.items.forEach((item, i) => {
       console.log(`  ${i+1}. [${item.category}] ${item.brand} — ${item.title}`);
-      if (item.source_url) console.log(`      └ ${item.source_name} | ${item.source_url}`);
     });
-    console.log('\n✅ 完成\n');
+    console.log('\n✅ 全部完成\n');
+
   } catch(err) {
     console.error('\n❌ 失败:', err.message);
     process.exit(1);
