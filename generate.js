@@ -232,24 +232,22 @@ function parseJSON(raw, isArray = false) {
   }
 }
 
-// ── 每日情报生成 ──────────────────────────────────────────────
-function generateDailyIntel(articles) {
-  const contextText = articles.slice(0, 35).map((r, i) => {
+// ── Pass 1：精简情报列表 ────────────────────────────────────
+function generateDailyPass1(articles) {
+  const ctx = articles.slice(0, 35).map((r, i) => {
     const content = r.body ? r.body.slice(0, 800) : r.snippet;
     return `[${i+1}]【${r.queryLabel}】${r.title}\n📅 ${r.date||'近期'} | ${r.source}\n🔗 ${r.url}\n${content}`;
   }).join('\n\n---\n\n');
 
-  const SYSTEM = `你是奢侈品行业市场情报分析师，有15年经验。
-每条情报必须极度具体：产品系列全名、具体城市/门店/平台、真实数字、涉及人物姓名。
-market_signal三层：①战略意图 ②竞品影响 ③可操作建议。
-next_move：预判品牌未来2-4周下一步，竞品应在哪里布防。
-严禁套话，只输出JSON。`;
+  const SYSTEM = `你是奢侈品行业市场情报分析师，15年经验。
+每条情报极度具体：产品系列全名、具体城市/门店/平台、真实数字、涉及人物姓名。
+market_signal三层：①战略意图 ②竞品影响 ③可操作建议。严禁套话。只输出JSON。`;
 
   const USER = `今天是${today}。
 
 以下是今日最新时尚行业资讯：
 
-${contextText}
+${ctx}
 
 ---
 
@@ -277,7 +275,6 @@ ${contextText}
         {"label": "核心差异", "value": "与以往或竞品的区别"}
       ],
       "market_signal": "①战略意图：[说明] ②竞品影响：[具体品牌受何影响] ③市场建议：[可执行建议]",
-      "next_move": "预判品牌未来2-4周下一步，竞品应在哪里布防，2-3句",
       "source_url": "原文URL",
       "source_name": "来源媒体",
       "crisis_level": null
@@ -286,6 +283,47 @@ ${contextText}
 }
 
 规则：中国境内事件占70%以上，输出6-8条items，覆盖不同品牌，覆盖5个category（营销动作/社媒声量/渠道零售/危机舆情/趋势前瞻），危机舆情填crisis_level（轻微/中度/严重）。只返回JSON。`;
+
+  return callDS(SYSTEM, USER, 5500);
+}
+
+// ── Pass 2：Marketing + PR 深度分析 ──────────────────────────
+function generateDailyPass2(items) {
+  const itemsText = items.map((item, i) =>
+    `[${i+1}] ${item.brand}｜${item.category}｜${item.title}\n${item.summary}`
+  ).join('\n\n');
+
+  const SYSTEM = `你是同时精通 Marketing 和 PR 的奢侈品行业顾问，具备消费者心理学背景。
+分析必须：客观平衡（指出优势也指出矛盾和风险）、区分不同消费群体、有具体事实支撑。
+严禁套话和一刀切的评论。只输出JSON数组。`;
+
+  const USER = `以下是今日时尚情报条目，请为每条生成深度 Marketing + PR 分析。
+
+${itemsText}
+
+---
+
+输出JSON数组，长度与输入条目数完全一致，顺序一致（只返回数组）：
+
+[
+  {
+    "marketing_analysis": {
+      "target_audience": "核心目标消费群体，具体到年龄段/消费力/心理特征，区分不同群体的差异化反应",
+      "4p_focus": "主要在4P哪个维度发力（Product/Price/Place/Promotion）及背后逻辑",
+      "strategy": "创意策略：这个动作背后的营销逻辑，与品牌长期定位的关系",
+      "channel_logic": "渠道选择逻辑：为什么选这个平台/渠道，预算重心在哪里",
+      "roi_measure": "效果衡量：关键指标是什么，如何平衡短期数据与长期品牌资产",
+      "market_opportunity": "潜在市场机会：这个动作打开了哪些新的市场空间？对竞品来说，哪里是可以借势或差异化的机会点？2-3句，具体指出机会在哪"
+    },
+    "pr_analysis": {
+      "narrative": "品牌叙事：这个动作在强化什么故事？这个故事与目标受众价值观是否真正契合，还是存在表面迎合的风险？",
+      "media_reach": "媒体传播价值：哪些媒体/KOL圈层会跟进？内容角度是什么？传播盲点在哪里？",
+      "risk_points": "舆情风险：列出2-3个具体风险点及触发条件，要客观而非片面夸大",
+      "crisis_protocol": "危机预案：如果最大风险点爆发，T+0/T+6/T+24小时分别应做什么，用什么核心口径",
+      "pr_opportunity": "PR层面的潜在机会：这个事件有没有可以主动放大的传播价值？竞品如何借势发声？"
+    }
+  }
+]`;
 
   return callDS(SYSTEM, USER, 6000);
 }
@@ -390,14 +428,38 @@ async function main() {
     const articles = await gatherIntel(extraQueries);
     if (articles.length < 3) throw new Error('搜索结果不足');
 
-    // 2. 每日情报
-    console.log('\n🤖 生成每日情报...');
-    const dailyRaw = await generateDailyIntel(articles);
-    const data = parseJSON(dailyRaw);
+    // 2. 每日情报 — 两阶段生成
+    console.log('\n🤖 Pass 1：生成精简情报列表...');
+    const pass1Raw = await generateDailyPass1(articles);
+    const data = parseJSON(pass1Raw);
     data.updated = data.updated || today;
     data.date_key = dateKey;
     if (!Array.isArray(data.trend_forecast)) data.trend_forecast = [];
     if (!Array.isArray(data.items)) data.items = [];
+
+    console.log(`\n🤖 Pass 2：Marketing + PR 深度分析（${data.items.length} 条）...`);
+    try {
+      const pass2Raw = await generateDailyPass2(data.items);
+      // 解析数组
+      let analyses = [];
+      try {
+        const j = pass2Raw.trim().replace(/^```json\s*/i,'').replace(/^```\s*/i,'').replace(/```\s*$/i,'').trim();
+        const s = j.indexOf('['); const e = j.lastIndexOf(']');
+        if (s !== -1) analyses = JSON.parse(j.slice(s, e+1));
+      } catch(je) { console.log('  ⚠️ Pass 2 JSON解析失败，跳过深度分析'); }
+
+      if (Array.isArray(analyses) && analyses.length > 0) {
+        data.items.forEach((item, i) => {
+          if (analyses[i]) {
+            item.marketing_analysis = analyses[i].marketing_analysis || {};
+            item.pr_analysis = analyses[i].pr_analysis || {};
+          }
+        });
+        console.log('✅ 深度分析合并完成');
+      }
+    } catch(e2) {
+      console.log(`⚠️ Pass 2 调用失败，使用基础情报: ${e2.message}`);
+    }
 
     // 3. 周期性报告（周/月/季）
     const periodicReports = {};
