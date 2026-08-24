@@ -1,5 +1,13 @@
 [
   {
+    "date_key": "2026-08-24",
+    "updated": "2026年8月24日",
+    "count": 8,
+    "has_weekly": true,
+    "has_monthly": false,
+    "has_quarterly": false
+  },
+  {
     "date_key": "2026-08-23",
     "updated": "2026年8月23日",
     "count": 8,
