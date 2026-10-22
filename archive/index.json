@@ -1,5 +1,13 @@
 [
   {
+    "date_key": "2026-10-22",
+    "updated": "2026年10月22日",
+    "count": 7,
+    "has_weekly": false,
+    "has_monthly": false,
+    "has_quarterly": false
+  },
+  {
     "date_key": "2026-10-21",
     "updated": "2026年10月21日",
     "count": 8,
@@ -706,14 +714,6 @@
   {
     "date_key": "2026-06-21",
     "updated": "2026年6月21日",
-    "count": 8,
-    "has_weekly": false,
-    "has_monthly": false,
-    "has_quarterly": false
-  },
-  {
-    "date_key": "2026-06-20",
-    "updated": "2026年6月20日",
     "count": 8,
     "has_weekly": false,
     "has_monthly": false,
