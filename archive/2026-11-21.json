@@ -1,0 +1,270 @@
+{
+  "updated": "2026年11月21日",
+  "date_key": "2026-11-21",
+  "trend_forecast": [
+    {
+      "title": "中国客群需求疲软",
+      "horizon": "近期 · 1–4周",
+      "summary": "LVMH三季报中国客群需求下降15%，亚洲除日本有机收入下降5%；开云Gucci可比销售下降6%，亚太区零售下滑14%。贝恩报告显示2025年中国内地个人奢侈品市场收缩3%-5%，皮具品类下滑8%-11%。",
+      "signals": [
+        "LVMH中国客群需求下降15%",
+        "Gucci亚太区零售可比下滑14%",
+        "中国内地二手奢侈品市场增长15%-20%"
+      ]
+    },
+    {
+      "title": "珠宝增长放缓但韧性强",
+      "horizon": "中期 · 1–3个月",
+      "summary": "历峰2027财年Q2营收59.5亿欧元，同比增长13%，但较Q1的20%增幅放缓；珠宝部门增长14%至44.1亿欧元，低于预期16%。LVMH腕表珠宝部门增速降至6%，开云珠宝业务增速降至11%。",
+      "signals": [
+        "历峰珠宝部门增速从24%回落至14%",
+        "LVMH腕表珠宝增速降至6%",
+        "开云珠宝业务增速降至11%"
+      ]
+    },
+    {
+      "title": "奢侈品牌加码中国体验",
+      "horizon": "长期 · 季度级",
+      "summary": "Gucci将于2027年5月17日在上海举办2028早春时装秀，纪念进入中国30周年；LVMH携七大品牌参展进博会，轩尼诗中国首家旗舰店落地上海前滩太古里；爱马仕推进北京三里屯、成都太古里门店翻新。",
+      "signals": [
+        "Gucci上海办秀纪念入华30年",
+        "轩尼诗前滩太古里旗舰店焕新",
+        "爱马仕核心城市门店翻新"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "title": "Gucci上海办2028早春秀",
+      "brand": "Gucci",
+      "category": "营销动作",
+      "date": "2026-11-16",
+      "summary": "Gucci宣布将于2027年5月17日在上海举办2028早春时装秀，发布艺术总监Demna创作的全新系列。此举恰逢品牌进入中国30周年，旨在通过大型线下活动提振中国市场声量。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "2028早春时装秀"
+        },
+        {
+          "label": "地点/平台",
+          "value": "上海"
+        },
+        {
+          "label": "数据",
+          "value": "2027年5月17日举办，入华30周年"
+        },
+        {
+          "label": "核心差异",
+          "value": "Demna执掌后首个中国大秀，强化本土市场承诺"
+        }
+      ],
+      "market_signal": "①战略意图：以大型时装秀重建品牌在中国市场的热度与话题性，对冲亚太区零售下滑14%的颓势。②竞品影响：直接对标LVMH旗下LV、Dior在华营销节奏，挤压开云系其他品牌资源。③市场建议：竞品应提前锁定上海5月档期媒体与KOL资源，避免声量被虹吸；关注Demna新系列对Gucci经典元素的重构方向。",
+      "source_url": "https://cn.concall.com/article/detail/article_id/6491",
+      "source_name": "Concall",
+      "crisis_level": null
+    },
+    {
+      "title": "LVMH进博会携七品牌参展",
+      "brand": "LVMH",
+      "category": "渠道零售",
+      "date": "2026-11-05",
+      "summary": "LVMH携旗下七大品牌参展第八届进博会，路易威登总裁表示对中国市场“百分之百”看好。轩尼诗宣布中国首家旗舰店将在上海前滩太古里焕新，开云连续第八次参展，大中华区总裁称希望共筑下一个时代。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "进博会七大品牌展"
+        },
+        {
+          "label": "地点/平台",
+          "value": "上海进博会"
+        },
+        {
+          "label": "数据",
+          "value": "七大品牌参展，轩尼诗首店落地前滩太古里"
+        },
+        {
+          "label": "核心差异",
+          "value": "逆势加码中国，以旗舰店和展会强化高端体验"
+        }
+      ],
+      "market_signal": "①战略意图：通过进博会高调展示对中国市场的长期承诺，稳定渠道与消费者信心。②竞品影响：开云、爱马仕同步参展或开店，头部集团在华竞争白热化。③市场建议：关注前滩太古里商圈奢侈品牌集聚效应，评估二线城市的旗舰店下沉机会。",
+      "source_url": "https://timeline.sohu.com/news/0JYTY8NmPM?from=news",
+      "source_name": "搜狐时间线",
+      "crisis_level": null
+    },
+    {
+      "title": "历峰Q2增速放缓至13%",
+      "brand": "历峰集团",
+      "category": "趋势前瞻",
+      "date": "2026-11-14",
+      "summary": "历峰集团2027财年Q2营收59.5亿欧元，同比增长13%，较Q1的20%增幅明显放缓。珠宝部门增长14%至44.1亿欧元，低于分析师预期的16%；专业制表部门增长12%，其他业务增长9%。亚太地区增长10%，中东及非洲下降7%。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "2027财年Q2财报"
+        },
+        {
+          "label": "地点/平台",
+          "value": "全球市场"
+        },
+        {
+          "label": "数据",
+          "value": "营收59.5亿欧元，同比+13%；珠宝部门+14%至44.1亿欧元"
+        },
+        {
+          "label": "核心差异",
+          "value": "增速从Q1的20%回落，但仍为行业最强劲集团之一"
+        }
+      ],
+      "market_signal": "①战略意图：珠宝品类作为抗周期核心，但需应对中国需求正常化。②竞品影响：LVMH腕表珠宝增速6%、开云珠宝11%，历峰仍领先但差距缩小。③市场建议：关注卡地亚、梵克雅宝在中国市场的定价策略与二手市场表现，警惕增长预期下调风险。",
+      "source_url": "https://www.sohu.com/a/1101571611_121948407",
+      "source_name": "搜狐",
+      "crisis_level": null
+    },
+    {
+      "title": "CPB公关翻车舆情发酵",
+      "brand": "CPB肌肤之钥",
+      "category": "危机舆情",
+      "date": "2026-11-17",
+      "summary": "CPB肌肤之钥因代言人粉丝争端引发负面舆情，品牌发布无公章声明后试图“翻篇”，但博主爆料称资生堂副总裁在代言人大会上只夸刘诗诗，引发另一代言人粉丝不满。舆情持续发酵，涉及刘诗诗、檀健次、蔡徐坤等多位明星。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "双11钻光盛典预售"
+        },
+        {
+          "label": "地点/平台",
+          "value": "微博、小红书"
+        },
+        {
+          "label": "数据",
+          "value": "暂无公开数据"
+        },
+        {
+          "label": "核心差异",
+          "value": "品牌声明无公章，公关处理被指敷衍"
+        }
+      ],
+      "market_signal": "①战略意图：CPB试图通过冷处理平息粉丝争端，但缺乏正式道歉激化矛盾。②竞品影响：资生堂集团旗下其他品牌（如NARS、安热沙）可能受连带舆情影响。③市场建议：竞品可借机强化品牌代言人管理规范，避免多代言人粉丝对立；关注CPB双11销售是否受舆情拖累。",
+      "source_url": "https://www.sina.cn/news/detail/5366352028107174.html",
+      "source_name": "新浪新闻",
+      "crisis_level": "中度"
+    },
+    {
+      "title": "王楚然出任Dior品牌大使",
+      "brand": "Dior",
+      "category": "社媒声量",
+      "date": "2026-11-19",
+      "summary": "Dior迪奥宣布演员王楚然出任品牌大使，王楚然出席Dior点灯活动，相关视频在Facebook等社交平台传播。此举旨在借助王楚然在年轻消费群体中的影响力，强化Dior在中国市场的品牌曝光。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "Dior点灯活动"
+        },
+        {
+          "label": "地点/平台",
+          "value": "Facebook等社交平台"
+        },
+        {
+          "label": "数据",
+          "value": "暂无公开数据"
+        },
+        {
+          "label": "核心差异",
+          "value": "王楚然为Dior中国区品牌大使，侧重年轻化沟通"
+        }
+      ],
+      "market_signal": "①战略意图：Dior通过签约新生代演员王楚然，加码中国年轻奢侈品消费群体。②竞品影响：Chanel、Prada等品牌同期也在争夺中国明星资源，代言人竞争加剧。③市场建议：监测王楚然相关内容的互动数据与带货转化，评估Dior在Z世代中的品牌好感度变化。",
+      "source_url": "https://www.facebook.com/100010767194820/videos/1675023964285987/",
+      "source_name": "Facebook",
+      "crisis_level": null
+    },
+    {
+      "title": "肖战出任Boucheron代言人",
+      "brand": "Boucheron",
+      "category": "社媒声量",
+      "date": "2026-11-20",
+      "summary": "开云集团旗下珠宝品牌Boucheron宣布中国演员肖战出任全新品牌大使，相关广告活动在社交平台引发热议。肖战此前已代言多个奢侈品牌，此次合作旨在提升Boucheron在中国年轻高净值人群中的认知度。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "Boucheron广告 campaign"
+        },
+        {
+          "label": "地点/平台",
+          "value": "社交平台"
+        },
+        {
+          "label": "数据",
+          "value": "暂无公开数据"
+        },
+        {
+          "label": "核心差异",
+          "value": "肖战为Boucheron首位中国籍品牌大使"
+        }
+      ],
+      "market_signal": "①战略意图：Boucheron借肖战流量加速中国珠宝市场渗透，对标卡地亚、梵克雅宝。②竞品影响：历峰旗下珠宝品牌面临开云系明星营销的正面竞争。③市场建议：关注肖战代言后Boucheron在天猫、京东的搜索指数与销售转化，评估明星代言对珠宝品类的实际拉动效果。",
+      "source_url": "https://www.google.com/goto?url=CAESlwEBxCJF1yaKWuIdfJXZHQm3KlVUoFkSgM9pMbIhIOZOrXK5YcNC_7zS2XaIVfYoDvtL_ovFK6ps444Kad5ImTnRT-shaRJ2IHOIlr4Acm2Hq_s0yJKoWa-nuUQTBC0SC2kVe0tj1kDqHQ9eFNZH_jf3yCs0vEmygYmKkvfk9ELyOesnssFbQRT2cjXEt_axR7TQvjS3lldO",
+      "source_name": "Google",
+      "crisis_level": null
+    },
+    {
+      "title": "复朗集团面临退市风险",
+      "brand": "Lanvin",
+      "category": "危机舆情",
+      "date": "2026-11-13",
+      "summary": "Lanvin母公司复朗集团（Lanvin Group）公告确认于11月10日收到纽约证券交易所上市合规警告，面临退市风险。集团旗下拥有Lanvin、Wolford、Sergio Rossi等品牌，近年业绩持续承压。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "纽交所上市合规警告"
+        },
+        {
+          "label": "地点/平台",
+          "value": "纽约证券交易所"
+        },
+        {
+          "label": "数据",
+          "value": "11月10日收到警告"
+        },
+        {
+          "label": "核心差异",
+          "value": "复朗集团为少数在美上市的中国资本控股奢侈品牌集团"
+        }
+      ],
+      "market_signal": "①战略意图：复朗集团需通过资产重组或业务调整恢复合规，可能出售品牌或引入战略投资者。②竞品影响：Lanvin品牌价值受损，可能被开云、LVMH等集团低价收购。③市场建议：关注复朗集团旗下品牌在中国市场的门店调整与折扣策略，警惕品牌贬值对二手市场的冲击。",
+      "source_url": "https://www.sohu.com/a/1101571611_121948407",
+      "source_name": "搜狐",
+      "crisis_level": "严重"
+    },
+    {
+      "title": "孙俪自创美妆品牌上线",
+      "brand": "hans × hannah",
+      "category": "营销动作",
+      "date": "2026-11-16",
+      "summary": "演员孙俪携手芳疗专家金韵蓉共同打造美妆品牌hans × hannah甄好，主打芳香与身体护理，目前仅在小红书开设官方店铺。首发新品甄好身体美肤油50ml售价399元，双瓶套装759元。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "甄好身体美肤油"
+        },
+        {
+          "label": "地点/平台",
+          "value": "小红书官方店铺"
+        },
+        {
+          "label": "数据",
+          "value": "50ml售价399元，双瓶套装759元"
+        },
+        {
+          "label": "核心差异",
+          "value": "明星自创品牌，聚焦芳疗细分赛道"
+        }
+      ],
+      "market_signal": "①战略意图：孙俪将个人影响力延伸至美妆消费市场，以芳疗差异化切入。②竞品影响：与范冰冰FAN BEAUTY、赵露思RDD等明星品牌形成竞争，分流小红书美妆流量。③市场建议：监测hans × hannah在小红书的种草转化率与复购率，评估明星光环褪去后的产品力表现。",
+      "source_url": "https://socialbeta.com/campaign/28975",
+      "source_name": "SocialBeta",
+      "crisis_level": null
+    }
+  ]
+}
