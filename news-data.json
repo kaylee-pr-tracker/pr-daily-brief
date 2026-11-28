@@ -1,82 +1,82 @@
 {
-  "updated": "2026年11月27日",
-  "date_key": "2026-11-27",
+  "updated": "2026年11月28日",
+  "date_key": "2026-11-28",
   "trend_forecast": [
     {
-      "title": "奢侈品中国关店潮加速",
+      "title": "奢侈品奥莱大店化",
       "horizon": "近期 · 1–4周",
-      "summary": "Gucci、Dior、Prada等一线品牌2026年持续撤柜，Prada CEO Andrea Guerra明确未来2-3年每年关2-3家中国直营店。上海尚嘉中心Dior于10月31日闭店，Gucci环贸iapm旗舰店3月关闭。本土高端女装UNICA等线上品牌趁机入驻广州万象城等核心商场。",
+      "summary": "UNIBUY奢侈品奥莱2026年新开超2万平方米门店，11月11日澳门项目单层2500平方米开业，12月成都大都会店即将亮相。品类大店模式正成为奥莱新一代主力店，以规模化和多品牌集合提升议价能力与客流吸引力。",
       "signals": [
-        "Prada集团官方关店计划量化至每年2-3家",
-        "Dior上海尚嘉中心十年老店关闭",
-        "UNICA等线上女装品牌接手核心商场铺位"
+        "UNIBUY年内新开超2万平方米，澳门单层2500平方米",
+        "12月成都大都会店即将开业",
+        "品类大店被定义为奥莱新一代主力店"
       ]
     },
     {
-      "title": "韩流偶像双线代言升级",
+      "title": "运动奢牌抢滩中国",
       "horizon": "中期 · 1–3个月",
-      "summary": "Dior于11月20日官宣Stray Kids黄铉辰为成衣与美妆双线大使，由创意总监Jonathan Anderson与全球公关总监Peter Utz同步认领。此前其曾任Versace代言人，现同时手握Cartier、Guess合约。双线签约规格在Dior男艺人中罕见。",
+      "summary": "Alo继10月上海张园快闪后，11月20日于淮海中路1008号开设逾1114平方米三层限时体验空间，并接手Gucci原址筹备环贸iAPM旗舰店（计划2027年Q2开业）。品牌以奢侈背景高管团队和核心商圈围挡策略，直接对标Lululemon中国流量。",
       "signals": [
-        "Dior与Dior Beauty双账号同日官宣",
-        "黄铉辰一年内三度出席Dior巴黎大秀",
-        "官宣前已登韩国版Esquire和GQ封面"
+        "Alo淮海路1114平方米三层体验空间开业",
+        "环贸iAPM旗舰店接手Gucci原址，2027年Q2开业",
+        "天猫+微信购物已先行落地"
       ]
     },
     {
-      "title": "运动奢牌中国渠道战",
+      "title": "二手奢品溢价收窄",
       "horizon": "长期 · 季度级",
-      "summary": "Alo于11月20日在上海淮海中路1008号开设1114平方米限时体验空间，接手Gucci原址的环贸iAPM旗舰店计划2027年Q2开业。香港K11 MUSEA店首周销售额近2000万港元，天猫旗舰店上线一分钟破1000万元。品牌以「健康即奢侈」定位直接挑战Lululemon。",
+      "summary": "伯恩斯坦11月23日报告显示，2026年Q4追踪的12款爱马仕铂金包与凯莉包二手转售价较参考零售价溢价从2022年Q4水平近乎腰斩。二手市场降温将倒逼品牌重新审视配货机制与稀缺性管理，并影响一手市场定价信心。",
       "signals": [
-        "Alo淮海路三层空间超1114平方米",
-        "香港K11 MUSEA首周销售额近2000万港元",
-        "环贸iAPM旗舰店接手Gucci原址"
+        "12款爱马仕铂金包/凯莉包二手溢价近乎腰斩",
+        "伯恩斯坦2026年Q4报告数据",
+        "二手溢价收窄或传导至一手配货体系"
       ]
     }
   ],
   "items": [
     {
-      "title": "Qeelin推纯金珠宝系列",
-      "brand": "Qeelin",
-      "category": "营销动作",
-      "date": "2026-11-21",
-      "summary": "开云集团旗下Qeelin推出GOLD纯金珠宝系列，为国际奢侈品集团首次涉足纯金珠宝品类。品牌通过华丽志独家专访披露该系列定位中国黄金珠宝市场，意图以国际奢侈品集团背书切入周大福、老铺黄金主导的纯金赛道。该系列具体克重、定价及门店铺货范围尚未公开。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "Qeelin GOLD纯金珠宝系列"
-        },
-        {
-          "label": "地点/平台",
-          "value": "中国市场（具体渠道未披露）"
-        },
-        {
-          "label": "数据",
-          "value": "暂无公开数据"
-        },
-        {
-          "label": "核心差异",
-          "value": "国际奢侈品集团首次涉足纯金珠宝，区别于传统K金镶钻路线"
-        }
-      ],
-      "market_signal": "①战略意图：开云集团借Qeelin以纯金品类切入中国消费者对黄金保值属性的偏好，填补国际品牌在纯金珠宝的价格带空白 ②竞品影响：周大福、老铺黄金面临国际品牌溢价竞争，宝格丽、卡地亚的K金产品线可能被分流 ③市场建议：监测Qeelin GOLD系列克重定价与门店转化率，评估是否跟进纯金产品线或强化K金设计差异化",
-      "source_url": "https://luxe.co/category/interview",
-      "source_name": "华丽志",
-      "crisis_level": null
-    },
-    {
-      "title": "Roberto Cavalli中韩激进拓店",
-      "brand": "Roberto Cavalli",
+      "title": "Alo淮海路千平体验店开业",
+      "brand": "Alo",
       "category": "渠道零售",
       "date": "2026-11-20",
-      "summary": "Marquee Brands CEO Heath Golden在米兰Pambianco-PwC时尚奢侈品峰会披露Roberto Cavalli复兴蓝图：以区域伙伴制轻资产模式，从墨西哥、中美洲百货渠道起步，在中韩市场激进拓店，并延伸Roberto Cavalli Home家居线。品牌经历多年股权动荡与持续亏损后，首次给出清晰区域补位路径。",
+      "summary": "Alo“阳光之境”限时体验空间于11月20日在上海淮海中路1008号开放，三层面积逾1114平方米，与正在筹备的环贸iAPM旗舰店隔街相望。该旗舰店接手Gucci原址，计划2027年Q2开业，目前已换上Alo围挡。相比10月张园店，淮海店大幅提升零售空间、商品陈列、试衣设施与服务配置，显示品牌从“打卡场景”向“购物转化”的策略切换。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "Roberto Cavalli全品类+Home家居线"
+          "value": "Alo“阳光之境”限时体验空间"
         },
         {
           "label": "地点/平台",
-          "value": "墨西哥、中美洲百货渠道、中国、韩国"
+          "value": "上海淮海中路1008号；环贸iAPM旗舰店筹备中"
+        },
+        {
+          "label": "数据",
+          "value": "三层逾1114平方米；旗舰店计划2027年Q2开业"
+        },
+        {
+          "label": "核心差异",
+          "value": "从张园快闪的拍照场景转向淮海路的零售转化，并接手Gucci原址围挡"
+        }
+      ],
+      "market_signal": "①战略意图：Alo以“快闪试水+旗舰店围挡”双步走抢占上海核心商圈，借奢侈品牌原址提升定位，直接截流Lululemon高端客群。②竞品影响：Lululemon中国面临核心商圈点位与瑜伽服饰心智的双重挤压，尤其淮海路—环贸商圈客流将被分流。③市场建议：监测Alo环贸iAPM店开业首月坪效与会员转化率；Lululemon需强化社群运营与产品科技叙事以筑壁垒。",
+      "source_url": "https://news.qq.com/rain/a/20261123A0D4TZ00",
+      "source_name": "腾讯新闻/钛媒体",
+      "crisis_level": null
+    },
+    {
+      "title": "Dior官宣Hyunjin双线大使",
+      "brand": "Dior",
+      "category": "营销动作",
+      "date": "2026-11-26",
+      "summary": "Dior于11月26日正式宣布Stray Kids成员Hyunjin（黄铉辰）出任品牌大使，Dior与Dior Beauty同步发文，创意总监Jonathan Anderson和全球公关总监转发认领。Hyunjin将参与Dior美妆产品及Jonathan Anderson主导的时装系列推广，并与美妆创意与形象总监Peter Philips、Parfums Christian Dior创意总监Francis Kurkdjian合作。此前Hyunjin已出席2026年1月Dior男装秀与女装秀，并多次身着Dior登上杂志封面。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "Dior及Dior Beauty品牌大使官宣"
+        },
+        {
+          "label": "地点/平台",
+          "value": "全球同步，社交媒体官宣"
         },
         {
           "label": "数据",
@@ -84,144 +84,173 @@
         },
         {
           "label": "核心差异",
-          "value": "轻资产区域伙伴制，区别于直营主导的传统奢侈品扩张"
+          "value": "双线（时装+美妆）同步官宣，Jonathan Anderson亲自转发认领"
         }
       ],
-      "market_signal": "①战略意图：Marquee Brands以IP授权+区域伙伴模式低成本补位全球零售网络，中国与韩国为增量核心 ②竞品影响：Versace、Dolce&Gabbana等意大利性感风格品牌在二三线城市面临渠道分流 ③市场建议：跟踪Roberto Cavalli中国合作方与首店选址，评估其豹纹IP在年轻客群的接受度",
-      "source_url": "https://www.forbeschina.com/life/72410",
-      "source_name": "福布斯中国",
+      "market_signal": "①战略意图：Dior借K-pop顶流Hyunjin打通时装与美妆双线，在Jonathan Anderson新创意周期内快速抢占Z世代与东南亚市场声量。②竞品影响：Cartier、Guess Jeans等与Hyunjin有合作历史的品牌面临注意力稀释；其他奢侈品牌K-pop大使争夺战进一步升温。③市场建议：追踪官宣后48小时Dior美妆天猫/微信小程序搜索与加购数据；评估Hyunjin带货品类集中度以优化投放。",
+      "source_url": "https://api.socialbeta.com/campaign/29109",
+      "source_name": "SocialBeta",
       "crisis_level": null
     },
     {
-      "title": "黄铉辰任Dior双线大使",
-      "brand": "Dior",
+      "title": "Valentino签Freen全球广告",
+      "brand": "Valentino",
       "category": "社媒声量",
-      "date": "2026-11-20",
-      "summary": "Dior于11月20日官宣Stray Kids成员黄铉辰出任品牌大使，同时覆盖Jonathan Anderson主理的成衣系列与Dior Beauty美妆线。WWD独家首发，创意总监Jonathan Anderson与全球公关总监Peter Utz同步转发认领。黄铉辰一年内三度出席Dior巴黎大秀，官宣前已登韩国版Esquire和GQ封面，9月一条A24联名T恤IG帖获260万点赞。",
+      "date": "2026-11-24",
+      "summary": "Valentino于11月24日官宣泰国演员Freen Sarocha出任品牌大使，出镜Alessandro Michele执导的Cruise Holiday 2027全球广告“The Day After”。该广告在泰国通过Siam Paragon与EmQuartier的Maison Valentino精品店落地。Freen相关微博话题5小时获超80万点赞，小红书出现大量晚宴热帖，显示东南亚明星在中国社媒的跨域引流能力。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "Dior成衣（Jonathan Anderson系列）+Dior Beauty美妆线"
+          "value": "Valentino Cruise Holiday 2027全球广告“The Day After”"
         },
         {
           "label": "地点/平台",
-          "value": "Dior与Dior Beauty官方社交账号、WWD"
+          "value": "泰国Siam Paragon、EmQuartier精品店；微博/小红书"
         },
         {
           "label": "数据",
-          "value": "IG单帖260万点赞；一年三度看秀"
+          "value": "相关微博5小时超80万点赞"
         },
         {
           "label": "核心差异",
-          "value": "Dior少有的时装与美妆双线并行签约男艺人"
+          "value": "Alessandro Michele主导创意，泰国明星辐射中国社媒"
         }
       ],
-      "market_signal": "①战略意图：Dior借K-pop顶流同时拉动成衣与美妆在亚洲年轻客群的转化，Jonathan Anderson新系列需要流量入口 ②竞品影响：Versace失去代言人后品牌热度承压，Cartier、Guess共享其代言资源面临注意力稀释 ③市场建议：监测官宣后Dior Beauty在韩国及中国社交电商的搜索与销售增幅，评估双线代言ROI",
-      "source_url": "https://k.sina.cn/article_7880068200_1d5b04c6806801skfk.html",
+      "market_signal": "①战略意图：Valentino以东南亚明星为支点撬动中国社媒流量，配合Michele的复古戏剧美学强化品牌辨识度，降低对单一中国代言人的依赖。②竞品影响：Gucci、Prada等同样押注东南亚明星的 brand 面临代言人同质化竞争；泰国市场精品店客流争夺加剧。③市场建议：监测Freen同款在Siam Paragon的到店转化率；中国区可测试“东南亚明星+本地KOL”联动内容以放大跨境声量。",
+      "source_url": "https://3g.sina.com.cn/news/detail/5368860959050039.html",
       "source_name": "新浪新闻",
       "crisis_level": null
     },
     {
-      "title": "Alo淮海路最大体验空间开业",
-      "brand": "Alo",
+      "title": "UNIBUY奥莱大店年开2万平",
+      "brand": "UNIBUY",
       "category": "渠道零售",
-      "date": "2026-11-20",
-      "summary": "Alo于11月20日在上海淮海中路1008号开设「阳光之境」限时体验空间，三层逾1114平方米，为其中国内地最大阵仗。此前10月1日张园店揭幕，9月25日香港K11 MUSEA旗舰店开业首周销售额近2000万港元，8月天猫旗舰店上线一分钟成交额破1000万元。品牌接手Gucci原址的环贸iAPM旗舰店计划2027年Q2开业，已换围挡。",
+      "date": "2026-11-25",
+      "summary": "UNIBUY奢侈品奥莱创始人刘平军在2026观点商业年会·零售消费峰会上披露，2026年品牌新开超过2万平方米奢侈品店，内地规模居前列。11月11日澳门项目整层2500平方米开业，12月成都大都会店即将亮相。刘平军将“品类大店”定义为奢侈品奥莱的新一代主力店，强调中高端商业中奢侈品是刚需。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "阳光之境·ALO淮海限时体验空间"
+          "value": "UNIBUY奢侈品奥莱品类大店"
         },
         {
           "label": "地点/平台",
-          "value": "上海淮海中路1008号、香港K11 MUSEA、天猫"
+          "value": "澳门（11月11日2500平方米）、成都大都会（12月）"
         },
         {
           "label": "数据",
-          "value": "1114平方米；香港首周近2000万港元；天猫一分钟破1000万元"
+          "value": "2026年新开超2万平方米；澳门单层2500平方米"
         },
         {
           "label": "核心差异",
-          "value": "以「健康即奢侈」定位贴Lululemon开店，全美84%门店距Lululemon不超1公里"
+          "value": "从奢侈品批发转新零售，以品类大店模式替代传统奥莱小店"
         }
       ],
-      "market_signal": "①战略意图：Alo以限时店+天猫+旗舰店三步走完成中国落地，用淮海路核心地段建立奢侈运动心智 ②竞品影响：Lululemon中国门店面临贴身竞争，仿品泛滥稀释Alo稀缺性 ③市场建议：跟踪Alo淮海店客流与转化、iAPM旗舰店开业节奏，评估Lululemon是否调整中国定价或门店体验",
-      "source_url": "https://www.lanjinger.com/d/1795407060695631678",
-      "source_name": "蓝鲸财经",
+      "market_signal": "①战略意图：UNIBUY以规模化大店锁定奥莱渠道话语权，通过整层拿铺降低租金单价并提升品牌集合议价能力。②竞品影响：传统奥莱运营商与单体奢侈品折扣店面临客流与货源双重挤压；成都大都会周边奥莱项目招商承压。③市场建议：跟踪澳门店开业首月客单价与转化率；评估成都大都会店对周边奥莱的客流分流幅度，作为大店模型复制依据。",
+      "source_url": "https://www.sohu.com/a/1106427930_655634",
+      "source_name": "观点新媒体",
       "crisis_level": null
     },
     {
-      "title": "王玉雯真皮草代言引抵制",
-      "brand": "付智恩",
-      "category": "危机舆情",
-      "date": "2026-11-26",
-      "summary": "演员王玉雯官宣成为真皮草品牌付智恩代言人，消息引发大规模网络抵制。争议核心在于品牌使用人工养殖动物原料虽不违法，但与当下可持续时尚舆论存在割裂感。该事件在社交平台迅速发酵，成为真皮草品类在中国市场舆论风险的又一案例。",
+      "title": "爱马仕二手包溢价近腰斩",
+      "brand": "Hermès",
+      "category": "趋势前瞻",
+      "date": "2026-11-23",
+      "summary": "伯恩斯坦11月23日发布最新报告，2026年Q4追踪的12款爱马仕铂金包与凯莉包二手转售价较参考零售价的溢价，已从2022年Q4水平近乎腰斩。二手溢价收窄反映投机性需求退潮与二手市场供给增加，可能削弱一手市场“配货即保值”的叙事基础。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "付智恩真皮草代言"
+          "value": "12款爱马仕铂金包与凯莉包二手转售追踪"
         },
         {
           "label": "地点/平台",
-          "value": "中国社交平台"
+          "value": "全球二手奢侈品市场"
         },
         {
           "label": "数据",
-          "value": "暂无公开数据"
+          "value": "二手溢价较2022年Q4近乎腰斩"
         },
         {
           "label": "核心差异",
-          "value": "人工养殖原料合法但舆论割裂，区别于国际品牌普遍弃用真皮草趋势"
+          "value": "伯恩斯坦系统性追踪12款核心款，数据连续性强"
         }
       ],
-      "market_signal": "①战略意图：付智恩借明星代言提升品牌认知，但低估可持续舆论敏感度 ②竞品影响：国际奢侈品牌与本土高端女装可强化无皮草声明形成对比 ③市场建议：涉及真皮草品类的品牌应提前做舆情压力测试，代言人选择需匹配ESG叙事",
-      "source_url": "https://www.myzaker.com/article/6b079e8332ce40b164000000",
-      "source_name": "ZAKER",
+      "market_signal": "①战略意图：爱马仕需在维持稀缺性与防止二手溢价崩塌之间再平衡，可能通过控制产量与配货节奏稳住一手价格锚。②竞品影响：Chanel、Louis Vuitton等依赖保值叙事的品牌二手溢价或同步承压；二手平台（如红布林、Plum）定价体系面临重估。③市场建议：监测铂金包/凯莉包二手挂牌价与成交周期；品牌方可强化“使用价值”与工艺叙事，降低对投资属性的依赖。",
+      "source_url": "https://www.jiemian.com/article/15380625.html",
+      "source_name": "界面时尚",
+      "crisis_level": null
+    },
+    {
+      "title": "付智恩皮草代言遭抵制",
+      "brand": "付智恩Firelady Fur",
+      "category": "危机舆情",
+      "date": "2026-11-25",
+      "summary": "皮草品牌付智恩Firelady Fur官宣演员王玉雯为代言人后，因品牌经营狐狸、毛丝鼠等真皮草产品，与王玉雯此前分享宠物日常的形象形成反差，#网友抵制明星代言皮草#登上微博热搜。11月25日晚品牌与艺人工作室紧急联合声明，称合作露出产品为皮衣、派克服、美利奴羊毛外套，并非主推真皮草，并强调毛皮采购渠道合规可溯源。品牌2021—2025年销售额分别为6.3亿、8亿、11亿、28亿、42亿元，2025年同比增长50%。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "王玉雯代言付智恩Firelady Fur"
+        },
+        {
+          "label": "地点/平台",
+          "value": "微博热搜、淘宝"
+        },
+        {
+          "label": "数据",
+          "value": "2025年销售额42亿元，同比增长50%；连续5年全渠道增长翻倍"
+        },
+        {
+          "label": "核心差异",
+          "value": "淘品牌重金签明星升级品牌，却撞上动物保护舆情"
+        }
+      ],
+      "market_signal": "①战略意图：付智恩试图借明星代言从淘品牌向品牌化升级，但皮草品类与代言人宠物人设冲突暴露选品与代言人匹配审查漏洞。②竞品影响：其他皮草及冬装品牌将收紧明星合作条款，动物保护议题或波及整个真皮草赛道；合成皮草品牌可能借势营销。③市场建议：立即评估代言合同中的道德条款与解约成本；品牌应加速合成皮草产品线布局，并将溯源体系转化为可传播的ESG资产。",
+      "source_url": "https://news.qq.com/rain/a/20261127A0ENSV00",
+      "source_name": "腾讯新闻/中国新闻周刊",
       "crisis_level": "中度"
     },
     {
-      "title": "奢侈品撤柜本土品牌补位",
-      "brand": "Gucci/Dior/Prada",
-      "category": "趋势前瞻",
+      "title": "山下有松创始人晒阿尔诺合照",
+      "brand": "山下有松",
+      "category": "社媒声量",
+      "date": "2026-11-26",
+      "summary": "11月26日晚，山下有松创始人付崧在社交媒体发布与LVMH董事长兼CEO阿尔诺的合照，配文“一次愉快的聊天”，引发网友“要收购？”的热议。山下有松作为中国设计师包袋品牌，此次与全球最大奢侈品集团掌门人的同框迅速在社交平台发酵，品牌搜索量与讨论度短期激增。",
+      "facts": [
+        {
+          "label": "产品/活动",
+          "value": "创始人付崧与阿尔诺合照"
+        },
+        {
+          "label": "地点/平台",
+          "value": "社交媒体（微博/小红书等）"
+        },
+        {
+          "label": "数据",
+          "value": "暂无公开数据"
+        },
+        {
+          "label": "核心差异",
+          "value": "中国设计师品牌创始人直接与LVMH掌门人同框，引发收购猜想"
+        }
+      ],
+      "market_signal": "①战略意图：山下有松借阿尔诺同框制造国际化背书与收购想象，以极低成本获取社媒声量，为品牌高端化与出海铺路。②竞品影响：国内设计师包袋品牌（如古良吉吉、Songmont等）面临声量挤压；LVMH若真有意布局中国设计师品牌，将改变本土竞争格局。③市场建议：监测山下有松天猫/微信搜索指数与客单价变化；投资者应关注LVMH中国区投资动向，甄别“合照营销”与实质交易。",
+      "source_url": "https://www.jiemian.com/article/15381341.html",
+      "source_name": "界面时尚",
+      "crisis_level": null
+    },
+    {
+      "title": "PEUTEREY中国首店落地哈尔滨",
+      "brand": "PEUTEREY",
+      "category": "渠道零售",
       "date": "2026-11-24",
-      "summary": "据《财经》不完全统计，2024年以来Gucci、Dior、Cartier、Chanel、Fendi等多个一线品牌关闭中国精品店。Gucci 2025年2月同日关闭上海芮欧百货与新世界大丸百货两店，2026年3月关闭环贸iapm旗舰店，5月21日武汉恒隆店结业。Prada CEO Andrea Guerra明确未来2-3年每年关2-3家中国直营店。本土高端女装UNICA于11月13日在广州万象城开出实体店。",
+      "summary": "意大利高端奢华休闲服装品牌PEUTEREY于11月24日正式进驻哈尔滨卓展，开启中国首店。品牌以高性能羽绒美学为定位，将“新奢侈”理念带入中国都市日常。选择哈尔滨而非北上广作为首店，瞄准东北高端冬装消费力与冰雪旅游客流。",
       "facts": [
         {
           "label": "产品/活动",
-          "value": "国际奢侈品中国关店潮与本土品牌补位"
+          "value": "PEUTEREY中国首店"
         },
         {
           "label": "地点/平台",
-          "value": "上海芮欧、新世界大丸、环贸iapm、武汉恒隆、广州万象城"
-        },
-        {
-          "label": "数据",
-          "value": "Prada每年关2-3家；Gucci三年关闭至少4店"
-        },
-        {
-          "label": "核心差异",
-          "value": "本土线上女装品牌首次系统进入高端商场核心铺位"
-        }
-      ],
-      "market_signal": "①战略意图：国际品牌收缩低效门店保利润，本土品牌借商场招商调整窗口抢占核心点位 ②竞品影响：Gucci、Prada、Dior在二三线城市曝光下降，UNICA等本土品牌分流高端客群 ③市场建议：建立中国核心商场品牌替换监测表，评估本土品牌坪效与客单价能否支撑高端定位",
-      "source_url": "https://timeline.sohu.com/news/cQXOJnSvGB",
-      "source_name": "财经杂志",
-      "crisis_level": null
-    },
-    {
-      "title": "轩尼诗加码中国三项举措",
-      "brand": "轩尼诗",
-      "category": "营销动作",
-      "date": "2026-11-10",
-      "summary": "轩尼诗全球总裁兼CEO Delapalme在进博会开幕仪式上官宣加码中国市场三项重大举措。具体内容涉及渠道、产品与体验布局，品牌强调品质始终如一、创新从未停止。该动作发生在国际烈酒品牌中国竞争加剧、干邑品类面临关税与消费疲软双重压力的背景下。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "轩尼诗加码中国市场三项举措"
-        },
-        {
-          "label": "地点/平台",
-          "value": "中国国际进口博览会"
+          "value": "哈尔滨卓展"
         },
         {
           "label": "数据",
@@ -229,41 +258,12 @@
         },
         {
           "label": "核心差异",
-          "value": "全球CEO亲自在进博会官宣，规格高于常规渠道发布"
+          "value": "首店选址哈尔滨而非一线城市，主打高性能羽绒“新奢侈”"
         }
       ],
-      "market_signal": "①战略意图：LVMH旗下轩尼诗以进博会为窗口稳定中国经销商与消费者信心，对冲干邑品类压力 ②竞品影响：人头马、马爹利面临渠道资源与营销声量竞争 ③市场建议：跟踪三项举措落地细节（是否涉及低度化产品或即饮渠道），评估干邑品类中国复苏节奏",
-      "source_url": "https://luxe.co/category/interview",
-      "source_name": "华丽志",
-      "crisis_level": null
-    },
-    {
-      "title": "梵克雅宝CEO谈克制营销",
-      "brand": "梵克雅宝",
-      "category": "趋势前瞻",
-      "date": "2026-11-21",
-      "summary": "梵克雅宝全球CEO Catherine Rénier接受华丽志专访，表示品牌不愿仓促行事，只分享对自己有价值的内容。专访透过近期珠宝、腕表和文化艺术活动梳理品牌传播逻辑。在奢侈品行业普遍加大社媒投放的背景下，梵克雅宝坚持克制的内容策略形成差异化。",
-      "facts": [
-        {
-          "label": "产品/活动",
-          "value": "梵克雅宝珠宝、腕表及文化艺术活动"
-        },
-        {
-          "label": "地点/平台",
-          "value": "华丽志专访"
-        },
-        {
-          "label": "数据",
-          "value": "暂无公开数据"
-        },
-        {
-          "label": "核心差异",
-          "value": "克制内容策略，区别于行业普遍加大社媒投放"
-        }
-      ],
-      "market_signal": "①战略意图：历峰集团旗下梵克雅宝以稀缺内容维持高端调性，避免过度曝光稀释品牌溢价 ②竞品影响：卡地亚、宝格丽高频营销可能面临调性稀释对比 ③市场建议：监测梵克雅宝中国社媒互动率与搜索指数，评估克制策略在年轻客群的触达效率",
-      "source_url": "https://luxe.co/category/interview",
-      "source_name": "华丽志",
+      "market_signal": "①战略意图：PEUTEREY以哈尔滨冰雪旅游热与东北高端冬装刚需为切口，低成本测试中国市场，再图一线城市扩张。②竞品影响：Moncler、Canada Goose在东北高端羽绒市场面临新进入者分流；哈尔滨卓展奢侈品矩阵进一步强化。③市场建议：跟踪首店开业首月坪效与客群构成（本地vs游客）；若模型跑通，预判其2027年进入北京SKP或上海恒隆的选址动向。",
+      "source_url": "https://www.jiemian.com/article/15372428.html",
+      "source_name": "界面时尚",
       "crisis_level": null
     }
   ]
